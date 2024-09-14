@@ -125,7 +125,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 # URL to access static files
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 
 # This is where Django will collect all static files for production
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
