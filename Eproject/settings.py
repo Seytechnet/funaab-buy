@@ -124,11 +124,17 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
+# URL to access static files
 STATIC_URL = 'static/'
 
+# This is where Django will collect all static files for production
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+# Locations of your static files in development
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'Eapp/static'),
 ]
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
