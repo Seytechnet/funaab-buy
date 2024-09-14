@@ -32,6 +32,7 @@ ALLOWED_HOSTS = [
     'localhost',
     '127.0.0.1',
     '172.20.10.4',
+    'funaab-buy.onrender.com',
 ]
 
 
