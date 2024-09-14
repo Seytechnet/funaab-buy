@@ -1,0 +1,1046 @@
+{% load static %}
+<html lang="en">
+  <head>
+    <!-- Basic Meta Tags -->
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="format-detection" content="telephone=no" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+
+<!-- SEO Meta Tags -->
+<meta name="author" content="FUNAAB BUY" />
+<meta name="keywords" content="FUNAAB marketplace, FUNAAB students, student marketplace, buy and sell FUNAAB, student products Nigeria, online marketplace FUNAAB, student commerce, FUNAAB online shop" />
+<meta name="description" content="Welcome to FUNAAB BUY, the premier online marketplace designed exclusively for FUNAAB students. Buy, sell, and trade a wide range of products and services tailored to the needs of FUNAAB community members. Enjoy a seamless shopping experience with secure transactions and fast delivery across the FUNAAB campus." />
+
+<!-- Open Graph Meta Tags (For Social Media) -->
+<meta property="og:title" content="FUNAAB BUY - FUNAAB's Premier Online Marketplace" />
+<meta property="og:description" content="Discover a dedicated online marketplace for FUNAAB students. Buy, sell, and trade products and services tailored to your needs. Join our community today!" />
+<meta property="og:image" content="https://i.ibb.co/WyhMQ37/FUNAAB-BUY-LOGO.webp" />
+<meta property="og:url" content="https://funaab-buy.netlify.app/" />
+<meta property="og:type" content="website" />
+
+<!-- Twitter Card Meta Tags -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="FUNAAB BUY - FUNAAB's Premier Online Marketplace" />
+<meta name="twitter:description" content="Join FUNAAB BUY, the exclusive online marketplace for FUNAAB students. Buy, sell, and connect with fellow students effortlessly." />
+<meta name="twitter:image" content="https://yourwebsite.com/static/images/twitter-image.webp" />
+<meta name="twitter:site" content="https://funaab-buy.netlify.app/" />
+
+<!-- Favicon and Theme Color -->
+<link rel="icon" href="{% static 'images/favicon.ico' %}" />
+<meta name="theme-color" content="#ff6600" />
+    <title>HOME | FUNAAB BUY</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Work+Sans:300,400,500,600,700&amp;amp;subset=latin-ext"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+
+    <link
+      rel="stylesheet"
+      href="{% static 'plugins/font-awesome/css/font-awesome.min.css' %}"
+    />
+    <link
+      rel="stylesheet"
+      href="{% static 'fonts/Linearicons/Linearicons/Font/demo-files/demo.css' %}"
+    />
+    <link
+      rel="stylesheet"
+      href="{% static 'plugins/bootstrap/css/bootstrap.min.css' %}"
+    />
+    <link
+      rel="stylesheet"
+      href="{% static 'plugins/owl-carousel/assets/owl.carousel.min.css' %}"
+    />
+    <link
+      rel="stylesheet"
+      href="{% static 'plugins/owl-carousel/assets/owl.theme.default.min.css' %}"
+    />
+    <link
+      rel="stylesheet"
+      href="{% static 'plugins/slick/slick/slick.css' %}"
+    />
+    <link
+      rel="stylesheet"
+      href="{% static 'plugins/nouislider/nouislider.min.css' %}"
+    />
+    <link
+      rel="stylesheet"
+      href="{% static 'plugins/lightGallery-master/dist/css/lightgallery.min.css' %}"
+    />
+    <link
+      rel="stylesheet"
+      href="{% static 'plugins/jquery-bar-rating/dist/themes/fontawesome-stars.css' %}"
+    />
+    <link
+      rel="stylesheet"
+      href="{% static 'plugins/select2/dist/css/select2.min.css' %}"
+    />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+  </head>
+
+  <body>
+    <header class="header header--1" data-sticky="true">
+      <div class="header__top">
+        <div class="ps-container">
+          <div class="header__left">
+            <div class="menu--product-categories"></div>
+            <a class="ps-logo" href=""
+              ><img src="{% static 'img/logo_light.png' %}" alt=""
+            /></a>
+          </div>
+          <div class="header__center"></div>
+        </div>
+      </div>
+      <nav class="navigation">
+        <div class="ps-container">
+          <div class="navigation__left">
+            <div class="menu--product-categories"></div>
+          </div>
+          <div class="navigation__right">
+            <ul class="menu">
+              <li>
+                <a href="index">Home</a><span class="sub-toggle"></span>
+              </li>
+              <li class="menu-item-has-children has-mega-menu">
+                 <a href="shop">Shop</a
+                ><span class="sub-toggle"></span>
+                <div class="mega-menu">
+                  <div class="mega-menu__column">
+                    <h4>Catalog Pages<span class="sub-toggle"></span></h4>
+                    <ul class="mega-menu__list">
+                      <li><a href="electronics">Electronics</a></li>
+                      <li><a href="home">Home &amp; Kitchen </a></li>
+                      <li><a href="beauty">Health &amp; Beauty</a></li>
+                      <li>
+                        <a href="jewelry">Jewelry &amp; Accessories</a>
+                      </li>
+                      <li><a href="apparel">Apparel &amp; Fashion</a></li>
+                      <li><a href="food">Food</a></li>
+                      <li>
+                        <a href="computers">Gadgets &amp; Computers</a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </li>
+              </li>
+                         <li class="menu-item-has-children has-mega-menu"><a href="#">Pages</a><span class="sub-toggle"></span>
+                            <div class="mega-menu">
+                                <div class="mega-menu__column">
+                                    <h4>Basic Page<span class="sub-toggle"></span></h4>
+                                    <ul class="mega-menu__list">
+                                         <li><a href="about">About Us</a></li>
+                <li><a href="vendor">Become a Vendor </a></li>
+                 <li><a href="sell">Sell Product</a></li>
+                 <li><a href="faqs">FAQ's</a></li>
+                
+                                    </ul>
+                                </div>
+                                
+                            </div>
+                        </li>
+                        <li><a href="contact">Contact Us</a><span class="sub-toggle"></span></li>
+                        <li><a  href="register">Log In / Sign up</a><span class="sub-toggle"></span></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <header class="header header--mobile" data-sticky="true">
+      <div class="header__top">
+        
+      </div>
+      <div class="navigation--mobile">
+        <div class="navigation__left">
+          <a class="ps-logo" href=""
+            ><img src="{% static 'img/logo_light.png' %}" alt=""
+          /></a>
+        </div>
+      </div>
+    </header>
+    <div id="homepage-1">
+      <div class="ps-home-banner ps-home-banner--1">
+        <div class="ps-container">
+          <div class="ps-section__left">
+            <div
+              class="ps-carousel--nav-inside owl-slider"
+              data-owl-auto="true"
+              data-owl-loop="true"
+              data-owl-speed="5000"
+              data-owl-gap="0"
+              data-owl-nav="true"
+              data-owl-dots="true"
+              data-owl-item="1"
+              data-owl-item-xs="1"
+              data-owl-item-sm="1"
+              data-owl-item-md="1"
+              data-owl-item-lg="1"
+              data-owl-duration="1000"
+              data-owl-mousedrag="on"
+              data-owl-animate-in="fadeIn"
+              data-owl-animate-out="fadeOut"
+            >
+             <div class="ps-banner bg--cover" style="background-image: url('{% static "img/slider/home-1/slide1.webp" %}');">
+    <a class="ps-banner__overlay" href="shop"></a>
+</div>
+
+<div class="ps-banner bg--cover" style="background-image: url('{% static "img/slider/home-1/slide2.webp" %}');">
+    <a class="ps-banner__overlay" href="shop"></a>
+</div>
+
+<div class="ps-banner bg--cover" style="background-image: url('{% static "img/slider/home-1/slide3.webp" %}');">
+    <a class="ps-banner__overlay" href="shop"></a>
+</div>
+
+            </div>
+          </div>
+          <div class="ps-section__right">
+            <a class="ps-collection" href="#"
+              ><img
+                src="{% static 'img/slider/home-1/slide4.webp' %}"
+                alt="" /></a
+            ><a class="ps-collection" href="#"
+              ><img src="{% static 'img/slider/home-1/slide5.webp' %}" alt=""
+            /></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="ps-top-categories">
+        <div class="ps-container">
+          <h3>Product Categories</h3>
+          <div class="row">
+            <div class="col-xl-2 col-lg-3 col-md-4 col-sm-4 col-6">
+              <div class="ps-block--category">
+                <a class="ps-block__overlay" href="electronics"></a
+                ><img src="{% static 'img/categories/1.jpg' %}" alt="" />
+                <p>Electronics</p>
+              </div>
+            </div>
+            <div class="col-xl-2 col-lg-3 col-md-4 col-sm-4 col-6">
+              <div class="ps-block--category">
+                <a class="ps-block__overlay" href="apparel"></a
+                ><img src="{% static 'img/categories/2.jpg' %}" alt="" />
+                <p>Apparel &amp; Fashion</p>
+              </div>
+            </div>
+            <div class="col-xl-2 col-lg-3 col-md-4 col-sm-4 col-6">
+              <div class="ps-block--category">
+                <a class="ps-block__overlay" href="computers"></a
+                ><img src="{% static 'img/categories/3.jpg' %}" alt="" />
+                <p>Gadgets &amp; Computers</p>
+              </div>
+            </div>
+            <div class="col-xl-2 col-lg-3 col-md-4 col-sm-4 col-6">
+              <div class="ps-block--category">
+                <a class="ps-block__overlay" href="home"></a
+                ><img src="{% static 'img/categories/4.jpg' %}" alt="" />
+                <p>Home &amp; Kitchen</p>
+              </div>
+            </div>
+            <div class="col-xl-2 col-lg-3 col-md-4 col-sm-4 col-6">
+              <div class="ps-block--category">
+                <a class="ps-block__overlay" href="beauty"></a
+                ><img src="{% static 'img/categories/5.jpg' %}" alt="" />
+                <p>Health &amp; Beauty</p>
+              </div>
+            </div>
+            <div class="col-xl-2 col-lg-3 col-md-4 col-sm-4 col-6">
+              <div class="ps-block--category">
+                <a class="ps-block__overlay" href="jewelry"></a
+                ><img src="{% static 'img/categories/6.jpg' %}" alt="" />
+                <p>Jewelry &amp; Accessories</p>
+              </div>
+            </div>
+            <div class="col-xl-2 col-lg-3 col-md-4 col-sm-4 col-6">
+              <div class="ps-block--category">
+                <a class="ps-block__overlay" href="food"></a
+                ><img src="{% static 'img/categories/9.png' %}" alt="" />
+                <p>Food</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+    <div class="ps-product-list ps-clothings">
+  <div class="ps-container">
+    <!-- Consumer Electronics Section -->
+    <div class="ps-section__header">
+      <h3> Electronics</h3>
+    </div>
+    <div class="ps-section__content">
+      <div
+        class="ps-carousel--nav owl-slider"
+        data-owl-auto="false"
+        data-owl-loop="false"
+        data-owl-speed="10000"
+        data-owl-gap="0"
+        data-owl-nav="true"
+        data-owl-dots="true"
+        data-owl-item="7"
+        data-owl-item-xs="2"
+        data-owl-item-sm="2"
+        data-owl-item-md="3"
+        data-owl-item-lg="4"
+        data-owl-item-xl="6"
+        data-owl-duration="1000"
+        data-owl-mousedrag="on"
+      >
+        <!-- Loop through electronics products -->
+       {% for product in products %}
+  {% if product.product_category == 'electronics' %}
+    <div class="ps-product">
+      <div class="ps-product__thumbnail">
+        <a href="JavaScript:void(0)" onclick="showImage('{{ product.product_image.url }}')">
+          {% if product.product_image %}
+            <img src="{{ product.product_image.url }}" alt="{{ product.product_name }}" />
+          {% else %}
+            <img src="{% static 'img/default-placeholder.png' %}" alt="No image available" />
+          {% endif %}
+        </a>
+         <div class="ps-product__badge">
+    {% if product.is_sold %}
+        SOLD
+    {% else %}
+        &#8358 {{ product.product_price }}
+    {% endif %}
+      </div></div>
+      <div class="ps-product__container">
+        <!-- Display seller's location instead of product category -->
+        <a class="ps-product__vendor" href="JavaScript:void(0)">LOCATION: {{ product.location }}</a>
+        <div class="ps-product__content">
+          <a class="ps-product__title" href="JavaScript:void(0)" style="text-transform: uppercase;">
+    {{ product.product_name }}
+</a>
+
+          <p class="ps-product__contact">
+            <a href="tel:{{ product.phone_number }}">Contact Seller</a>
+          </p><br><br><br>
+        </div>
+      </div>
+    </div>
+  {% endif %}
+{% endfor %}
+
+    </div>
+  </div>
+</div>
+<div id="imageModal" style="display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.8); text-align: center; justify-content: center; align-items: center;">
+  <span onclick="closeImage()" style="position: absolute; top: 140px; right: 40px; color: white; font-size: 60px; font-weight: bold; cursor: pointer;">&times;</span>
+  
+  <div style="display: flex; height: 100%; justify-content: center; align-items: center;">
+    <img id="modalImage" style="max-width: 90%; max-height: 90%; object-fit: contain;" />
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<!-- Home & Kitchen Section -->
+<div class="ps-product-list ps-clothings">
+  <div class="ps-container">
+    <div class="ps-section__header">
+      <h3>Home & Kitchen</h3>
+    </div>
+    <div class="ps-section__content">
+      <div
+        class="ps-carousel--nav owl-slider"
+        data-owl-auto="false"
+        data-owl-loop="false"
+        data-owl-speed="10000"
+        data-owl-gap="0"
+        data-owl-nav="true"
+        data-owl-dots="true"
+        data-owl-item="7"
+        data-owl-item-xs="2"
+        data-owl-item-sm="2"
+        data-owl-item-md="3"
+        data-owl-item-lg="4"
+        data-owl-item-xl="6"
+        data-owl-duration="1000"
+        data-owl-mousedrag="on"
+      >
+      
+        {% for product in products %}
+          {% if product.product_category == 'home_kitchen' %}
+           <div class="ps-product">
+      <div class="ps-product__thumbnail">
+        <a href="JavaScript:void(0)" onclick="showImage('{{ product.product_image.url }}')">
+          {% if product.product_image %}
+            <img src="{{ product.product_image.url }}" alt="{{ product.product_name }}" />
+          {% else %}
+            <img src="{% static 'img/default-placeholder.png' %}" alt="No image available" />
+          {% endif %}
+        </a>
+         <div class="ps-product__badge">
+    {% if product.is_sold %}
+        SOLD
+    {% else %}
+        &#8358 {{ product.product_price }}
+    {% endif %}
+      </div></div>
+      <div class="ps-product__container">
+        <!-- Display seller's location instead of product category -->
+        <a class="ps-product__vendor" href="JavaScript:void(0)">LOCATION: {{ product.location }}</a>
+        <div class="ps-product__content">
+          <a class="ps-product__title" href="JavaScript:void(0)" style="text-transform: uppercase;">
+    {{ product.product_name }}
+</a>
+
+          <p class="ps-product__contact">
+            <a href="tel:{{ product.phone_number }}">Contact Seller</a>
+          </p><br><br><br>
+        </div>
+      </div>
+    </div>
+  {% endif %}
+{% endfor %}
+
+    </div>
+  </div>
+</div>
+<div id="imageModal" style="display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.8); text-align: center; justify-content: center; align-items: center;">
+  <span onclick="closeImage()" style="position: absolute; top: 140px; right: 40px; color: white; font-size: 60px; font-weight: bold; cursor: pointer;">&times;</span>
+  
+  <div style="display: flex; height: 100%; justify-content: center; align-items: center;">
+    <img id="modalImage" style="max-width: 90%; max-height: 90%; object-fit: contain;" />
+  </div>
+</div>
+
+
+
+
+<div class="ps-product-list ps-clothings">
+  <div class="ps-container">
+    <!-- Consumer Electronics Section -->
+    <div class="ps-section__header">
+      <h3>Health & Beauty</h3>
+    </div>
+    <div class="ps-section__content">
+      <div
+        class="ps-carousel--nav owl-slider"
+        data-owl-auto="false"
+        data-owl-loop="false"
+        data-owl-speed="10000"
+        data-owl-gap="0"
+        data-owl-nav="true"
+        data-owl-dots="true"
+        data-owl-item="7"
+        data-owl-item-xs="2"
+        data-owl-item-sm="2"
+        data-owl-item-md="3"
+        data-owl-item-lg="4"
+        data-owl-item-xl="6"
+        data-owl-duration="1000"
+        data-owl-mousedrag="on"
+      >
+        <!-- Loop through electronics products -->
+        {% for product in products %}
+          {% if product.product_category == 'health_beauty' %}
+            <div class="ps-product">
+      <div class="ps-product__thumbnail">
+        <a href="JavaScript:void(0)" onclick="showImage('{{ product.product_image.url }}')">
+          {% if product.product_image %}
+            <img src="{{ product.product_image.url }}" alt="{{ product.product_name }}" />
+          {% else %}
+            <img src="{% static 'img/default-placeholder.png' %}" alt="No image available" />
+          {% endif %}
+        </a>
+         <div class="ps-product__badge">
+    {% if product.is_sold %}
+        SOLD
+    {% else %}
+        &#8358 {{ product.product_price }}
+    {% endif %}
+      </div></div>
+      <div class="ps-product__container">
+        <!-- Display seller's location instead of product category -->
+        <a class="ps-product__vendor" href="JavaScript:void(0)">LOCATION: {{ product.location }}</a>
+        <div class="ps-product__content">
+          <a class="ps-product__title" href="JavaScript:void(0)" style="text-transform: uppercase;">
+    {{ product.product_name }}
+</a>
+
+          <p class="ps-product__contact">
+            <a href="tel:{{ product.phone_number }}">Contact Seller</a>
+          </p><br><br><br>
+        </div>
+      </div>
+    </div>
+  {% endif %}
+{% endfor %}
+
+    </div>
+  </div>
+</div>
+<div id="imageModal" style="display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.8); text-align: center; justify-content: center; align-items: center;">
+  <span onclick="closeImage()" style="position: absolute; top: 140px; right: 40px; color: white; font-size: 60px; font-weight: bold; cursor: pointer;">&times;</span>
+  
+  <div style="display: flex; height: 100%; justify-content: center; align-items: center;">
+    <img id="modalImage" style="max-width: 90%; max-height: 90%; object-fit: contain;" />
+  </div>
+</div>
+
+
+
+
+<!-- Home & Kitchen Section -->
+<div class="ps-product-list ps-clothings">
+  <div class="ps-container">
+    <div class="ps-section__header">
+      <h3>Jewelry & Accessories</h3>
+    </div>
+    <div class="ps-section__content">
+      <div
+        class="ps-carousel--nav owl-slider"
+        data-owl-auto="false"
+        data-owl-loop="false"
+        data-owl-speed="10000"
+        data-owl-gap="0"
+        data-owl-nav="true"
+        data-owl-dots="true"
+        data-owl-item="7"
+        data-owl-item-xs="2"
+        data-owl-item-sm="2"
+        data-owl-item-md="3"
+        data-owl-item-lg="4"
+        data-owl-item-xl="6"
+        data-owl-duration="1000"
+        data-owl-mousedrag="on"
+      >
+      
+        {% for product in products %}
+          {% if product.product_category == 'jewelry_accessories' %}
+            <div class="ps-product">
+      <div class="ps-product__thumbnail">
+        <a href="JavaScript:void(0)" onclick="showImage('{{ product.product_image.url }}')">
+          {% if product.product_image %}
+            <img src="{{ product.product_image.url }}" alt="{{ product.product_name }}" />
+          {% else %}
+            <img src="{% static 'img/default-placeholder.png' %}" alt="No image available" />
+          {% endif %}
+        </a>
+         <div class="ps-product__badge">
+    {% if product.is_sold %}
+        SOLD
+    {% else %}
+        &#8358 {{ product.product_price }}
+    {% endif %}
+      </div></div>
+      <div class="ps-product__container">
+        <!-- Display seller's location instead of product category -->
+        <a class="ps-product__vendor" href="JavaScript:void(0)">LOCATION: {{ product.location }}</a>
+        <div class="ps-product__content">
+          <a class="ps-product__title" href="JavaScript:void(0)" style="text-transform: uppercase;">
+    {{ product.product_name }}
+</a>
+
+          <p class="ps-product__contact">
+            <a href="tel:{{ product.phone_number }}">Contact Seller</a>
+          </p><br><br><br>
+        </div>
+      </div>
+    </div>
+  {% endif %}
+{% endfor %}
+
+    </div>
+  </div>
+</div>
+<div id="imageModal" style="display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.8); text-align: center; justify-content: center; align-items: center;">
+  <span onclick="closeImage()" style="position: absolute; top: 140px; right: 40px; color: white; font-size: 60px; font-weight: bold; cursor: pointer;">&times;</span>
+  
+  <div style="display: flex; height: 100%; justify-content: center; align-items: center;">
+    <img id="modalImage" style="max-width: 90%; max-height: 90%; object-fit: contain;" />
+  </div>
+</div>
+
+
+
+
+     
+        
+
+
+
+<div class="ps-product-list ps-clothings">
+  <div class="ps-container">
+    <!-- Consumer Electronics Section -->
+    <div class="ps-section__header">
+      <h3>Apparel & Fashion</h3>
+    </div>
+    <div class="ps-section__content">
+      <div
+        class="ps-carousel--nav owl-slider"
+        data-owl-auto="false"
+        data-owl-loop="false"
+        data-owl-speed="10000"
+        data-owl-gap="0"
+        data-owl-nav="true"
+        data-owl-dots="true"
+        data-owl-item="7"
+        data-owl-item-xs="2"
+        data-owl-item-sm="2"
+        data-owl-item-md="3"
+        data-owl-item-lg="4"
+        data-owl-item-xl="6"
+        data-owl-duration="1000"
+        data-owl-mousedrag="on"
+      >
+        <!-- Loop through electronics products -->
+        {% for product in products %}
+          {% if product.product_category == 'apparel_fashion' %}
+            <div class="ps-product">
+      <div class="ps-product__thumbnail">
+        <a href="JavaScript:void(0)" onclick="showImage('{{ product.product_image.url }}')">
+          {% if product.product_image %}
+            <img src="{{ product.product_image.url }}" alt="{{ product.product_name }}" />
+          {% else %}
+            <img src="{% static 'img/default-placeholder.png' %}" alt="No image available" />
+          {% endif %}
+        </a>
+         <div class="ps-product__badge">
+    {% if product.is_sold %}
+        SOLD
+    {% else %}
+        &#8358 {{ product.product_price }}
+    {% endif %}
+      </div></div>
+      <div class="ps-product__container">
+        <!-- Display seller's location instead of product category -->
+        <a class="ps-product__vendor" href="JavaScript:void(0)">LOCATION: {{ product.location }}</a>
+        <div class="ps-product__content">
+          <a class="ps-product__title" href="JavaScript:void(0)" style="text-transform: uppercase;">
+    {{ product.product_name }}
+</a>
+
+          <p class="ps-product__contact">
+            <a href="tel:{{ product.phone_number }}">Contact Seller</a>
+          </p><br><br><br>
+        </div>
+      </div>
+    </div>
+  {% endif %}
+{% endfor %}
+
+    </div>
+  </div>
+</div>
+<div id="imageModal" style="display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.8); text-align: center; justify-content: center; align-items: center;">
+  <span onclick="closeImage()" style="position: absolute; top: 140px; right: 40px; color: white; font-size: 60px; font-weight: bold; cursor: pointer;">&times;</span>
+  
+  <div style="display: flex; height: 100%; justify-content: center; align-items: center;">
+    <img id="modalImage" style="max-width: 90%; max-height: 90%; object-fit: contain;" />
+  </div>
+</div>
+
+
+
+
+
+
+
+<div class="ps-product-list ps-clothings">
+  <div class="ps-container">
+    <!-- Consumer Electronics Section -->
+    <div class="ps-section__header">
+      <h3>Gadgets & Computers</h3>
+    </div>
+    <div class="ps-section__content">
+      <div
+        class="ps-carousel--nav owl-slider"
+        data-owl-auto="false"
+        data-owl-loop="false"
+        data-owl-speed="10000"
+        data-owl-gap="0"
+        data-owl-nav="true"
+        data-owl-dots="true"
+        data-owl-item="7"
+        data-owl-item-xs="2"
+        data-owl-item-sm="2"
+        data-owl-item-md="3"
+        data-owl-item-lg="4"
+        data-owl-item-xl="6"
+        data-owl-duration="1000"
+        data-owl-mousedrag="on"
+      >
+        <!-- Loop through electronics products -->
+        {% for product in products %}
+          {% if product.product_category == 'gadgets_computers' %}
+          <div class="ps-product">
+      <div class="ps-product__thumbnail">
+        <a href="JavaScript:void(0)" onclick="showImage('{{ product.product_image.url }}')">
+          {% if product.product_image %}
+            <img src="{{ product.product_image.url }}" alt="{{ product.product_name }}" />
+          {% else %}
+            <img src="{% static 'img/default-placeholder.png' %}" alt="No image available" />
+          {% endif %}
+        </a>
+         <div class="ps-product__badge">
+    {% if product.is_sold %}
+        SOLD
+    {% else %}
+        &#8358 {{ product.product_price }}
+    {% endif %}
+      </div></div>
+      <div class="ps-product__container">
+        <!-- Display seller's location instead of product category -->
+        <a class="ps-product__vendor" href="JavaScript:void(0)">LOCATION: {{ product.location }}</a>
+        <div class="ps-product__content">
+          <a class="ps-product__title" href="JavaScript:void(0)" style="text-transform: uppercase;">
+    {{ product.product_name }}
+</a>
+
+          <p class="ps-product__contact">
+            <a href="tel:{{ product.phone_number }}">Contact Seller</a>
+          </p><br><br><br>
+        </div>
+      </div>
+    </div>
+  {% endif %}
+{% endfor %}
+
+    </div>
+  </div>
+</div>
+<div id="imageModal" style="display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.8); text-align: center; justify-content: center; align-items: center;">
+  <span onclick="closeImage()" style="position: absolute; top: 140px; right: 40px; color: white; font-size: 60px; font-weight: bold; cursor: pointer;">&times;</span>
+  
+  <div style="display: flex; height: 100%; justify-content: center; align-items: center;">
+    <img id="modalImage" style="max-width: 90%; max-height: 90%; object-fit: contain;" />
+  </div>
+</div>
+
+
+
+
+
+
+<!-- Home & Kitchen Section -->
+<div class="ps-product-list ps-clothings">
+  <div class="ps-container">
+    <div class="ps-section__header">
+      <h3>Food</h3>
+    </div>
+    <div class="ps-section__content">
+      <div
+        class="ps-carousel--nav owl-slider"
+        data-owl-auto="false"
+        data-owl-loop="false"
+        data-owl-speed="10000"
+        data-owl-gap="0"
+        data-owl-nav="true"
+        data-owl-dots="true"
+        data-owl-item="7"
+        data-owl-item-xs="2"
+        data-owl-item-sm="2"
+        data-owl-item-md="3"
+        data-owl-item-lg="4"
+        data-owl-item-xl="6"
+        data-owl-duration="1000"
+        data-owl-mousedrag="on"
+      >
+      
+        {% for product in products %}
+          {% if product.product_category == 'food' %}
+            <div class="ps-product">
+      <div class="ps-product__thumbnail">
+        <a href="JavaScript:void(0)" onclick="showImage('{{ product.product_image.url }}')">
+          {% if product.product_image %}
+            <img src="{{ product.product_image.url }}" alt="{{ product.product_name }}" />
+          {% else %}
+            <img src="{% static 'img/default-placeholder.png' %}" alt="No image available" />
+          {% endif %}
+        </a>
+         <div class="ps-product__badge">
+    {% if product.is_sold %}
+        SOLD
+    {% else %}
+        &#8358 {{ product.product_price }}
+    {% endif %}
+      </div></div>
+      <div class="ps-product__container">
+        <!-- Display seller's location instead of product category -->
+        <a class="ps-product__vendor" href="JavaScript:void(0)">LOCATION: {{ product.location }}</a>
+        <div class="ps-product__content">
+          <a class="ps-product__title" href="JavaScript:void(0)" style="text-transform: uppercase;">
+    {{ product.product_name }}
+</a>
+
+          <p class="ps-product__contact">
+            <a href="tel:{{ product.phone_number }}">Contact Seller</a>
+          </p><br><br><br>
+        </div>
+      </div>
+    </div>
+  {% endif %}
+{% endfor %}
+
+    </div>
+  </div>
+</div>
+<div id="imageModal" style="display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.8); text-align: center; justify-content: center; align-items: center;">
+  <span onclick="closeImage()" style="position: absolute; top: 140px; right: 40px; color: white; font-size: 60px; font-weight: bold; cursor: pointer;">&times;</span>
+  
+  <div style="display: flex; height: 100%; justify-content: center; align-items: center;">
+    <img id="modalImage" style="max-width: 90%; max-height: 90%; object-fit: contain;" />
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+<!--       <div class="ps-download-app">
+        <div class="ps-container">
+          <div class="ps-block--download-app">
+            <div class="container">
+              <div class="row">
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                  <div class="ps-block__thumbnail">
+                    <img src="{% static 'img/drip.webp' %}" alt="" />
+                  </div>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                  <div class="ps-block__content">
+                    <h3>DRIPTASY Clothing Brand</h3>
+                    <p>
+                      Discover a world where fashion meets individuality. <br />
+                      At DRIPTASY, we believe in clothing that empowers you to
+                      express your true self. Whether you’re looking for bold
+                      statement pieces, timeless classics, or casual everyday
+                      wear, our collection has something for everyone.
+                    </p>
+                    <div class="ps-form--download-app">
+                      <div class="form-group--nest">
+                        <a
+                          href="https://www.instagram.com/driptasy"
+                          class="ps-btn"
+                          >Visit Our Instagram page</a
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> -->
+   <div class="ps-newsletter">
+      <div class="container">
+    <form id="newsletter-form" class="ps-form--newsletter" action="https://formspree.io/f/myzgazpz" method="post">
+        {% csrf_token %}
+        <div class="row">
+            <div class="col-xl-5 col-lg-12 col-md-12 col-sm-12 col-12">
+                <div class="ps-form__left">
+                    <h3>Newsletter</h3>
+                    <p>Subscribe to get information about products and coupons</p>
+                </div>
+            </div>
+            <div class="col-xl-7 col-lg-12 col-md-12 col-sm-12 col-12">
+                <div class="ps-form__right">
+                    <div class="form-group--nest">
+                        <input
+                            class="form-control"
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="Email address"
+                            required
+                        />
+                        <button type="submit" class="ps-btn">Subscribe</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <!-- Success Message (initially hidden) -->
+    <div id="success-message" style="display: none; margin-top: 20px; color: green;">
+        Thank you for subscribing! You'll receive our newsletter shortly.
+    </div>
+</div>
+</div>
+   
+      <footer class="ps-footer">
+      <div class="ps-container">
+        <div class="ps-footer__widgets">
+          <aside class="widget widget_footer widget_contact-us">
+            <h4 class="widget-title">Contact us</h4>
+            <div class="widget_content">
+              <p>Call us 24/7</p>
+              <h3>+2349134771812</h3>
+              <p>Federal University of Agriculture, Abeokuta <br /></p>
+            </div>
+          </aside>
+          <aside class="widget widget_footer">
+            <h4 class="widget-title">Quick links</h4>
+            <ul class="ps-list--link">
+                <li><a href="about">About Us</a></li>
+                <li><a href="vendor">Become a Vendor </a></li>
+                 <li><a href="sell">Sell Product</a></li>
+                 <li><a href="faqs">FAQ's</a></li>
+            </ul>
+          </aside>
+
+          <aside></aside>
+        </div>
+      </div>
+    </footer>
+
+     
+    <div class="ps-panel--sidebar" id="menu-mobile">
+        <div class="ps-panel__header">
+            <h3>Pages</h3>
+        </div>
+        <div class="ps-panel__content">
+            <ul class="menu--mobile">
+                               
+               <li><a href="about">About Us</a></li>
+                <li><a href="vendor">Become a Vendor </a></li>
+                 <li><a href="sell">Sell Product</a></li>
+                 <li><a href="faqs">FAQ's</a></li>
+                 <li><a href="contact">Contact Us</a></li>
+              
+            </ul>
+        </div>
+    </div>
+
+
+     <div class="ps-panel--sidebar" id="navigation-mobile">
+        <div class="ps-panel__header">
+            <h3>Categories</h3>
+        </div>
+        <div class="ps-panel__content">
+            <div class="menu--product-categories">
+               
+                <div class="menu__toggle">
+                    <ul class="menu--mobile">
+                       <li><a href="electronics">Electronics</a>
+                                        </li>
+                                        <li><a href="home">Home & Kitchen </a>
+                                        </li>
+                                        <li><a href="beauty">Health & Beauty</a>
+                                        </li>
+                                        <li><a href="jewelry">Jewelry & Accessories</a>
+                                        </li>
+                                        <li><a href="apparel">Apparel & Fashion</a>
+                                        </li>
+                                        <li><a href="food">Food</a>
+                                        </li>
+                                        <li><a href="computers">Gadgets & Computers</a>
+                                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+          
+        </div>
+
+      
+
+    </div>
+    <div class="navigation--list">
+        <div class="navigation__content"><a class="navigation__item " href="index"><i class="fas fa-home"></i><span> Home</span></a>
+
+        <a class="navigation__item ps-toggle--sidebar" href="#navigation-mobile"><i class="fas fa-shopping-cart"></i><span>Shop</span></a>
+
+            <a class="navigation__item ps-toggle--sidebar " href="#menu-mobile"><i class="fas fa-info-circle"></i><span> Pages</span></a>
+
+            <a class="navigation__item " href="register"><i class="fas fa-user"></i>
+
+<span> Account</span></a></div>
+
+
+    </div>
+    <script>
+  function showImage(imageSrc) {
+    document.getElementById("modalImage").src = imageSrc;
+    document.getElementById("imageModal").style.display = "flex"; // Using 'flex' to center the image
+  }
+
+  function closeImage() {
+    document.getElementById("imageModal").style.display = "none";
+  }
+</script>
+    <script>
+    document.getElementById('newsletter-form').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent the default form submission
+
+        var form = event.target;
+        var formData = new FormData(form);
+
+        // Send form data using AJAX
+        fetch(form.action, {
+            method: form.method,
+            body: formData,
+            headers: {
+                'Accept': 'application/json'
+            }
+        })
+        .then(function(response) {
+            if (response.ok) {
+                // On success, clear the form and show success message
+                form.reset();
+                document.getElementById('success-message').style.display = 'block';
+            } else {
+                // Handle errors here (you can add some user feedback)
+                alert('There was an issue with your submission. Please try again.');
+            }
+        })
+        .catch(function(error) {
+            // Handle network or other errors
+            console.error('Error:', error);
+            alert('Submission failed. Please check your connection and try again.');
+        });
+    });
+</script>
+    <script
+      data-cfasync="false"
+      src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"
+    ></script>
+    <script src="{% static 'plugins/jquery.min.js' %}"></script>
+    <script src="{% static 'plugins/nouislider/nouislider.min.js' %}"></script>
+    <script src="{% static 'plugins/popper.min.js' %}"></script>
+    <script src="{% static 'plugins/owl-carousel/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'plugins/bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'plugins/imagesloaded.pkgd.min.js' %}"></script>
+    <script src="{% static 'plugins/masonry.pkgd.min.js' %}"></script>
+    <script src="{% static 'plugins/isotope.pkgd.min.js' %}"></script>
+    <script src="{% static 'plugins/jquery.matchHeight-min.js' %}"></script>
+    <script src="{% static 'plugins/slick/slick/slick.min.js' %}"></script>
+    <script src="{% static 'plugins/jquery-bar-rating/dist/jquery.barrating.min.js' %}"></script>
+    <script src="{% static 'plugins/slick-animation.min.js' %}"></script>
+    <script src="{% static 'plugins/lightGallery-master/dist/js/lightgallery-all.min.js' %}"></script>
+    <script src="{% static 'plugins/sticky-sidebar/dist/sticky-sidebar.min.js' %}"></script>
+    <script src="{% static 'plugins/select2/dist/js/select2.full.min.js' %}"></script>
+    <script src="{% static 'plugins/gmap3.min.js' %}"></script>
+    <!-- custom scripts-->
+    <script src="{% static 'js/main.js' %}"></script>
+  </body>
+</html>
