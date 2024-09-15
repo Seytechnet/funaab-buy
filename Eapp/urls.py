@@ -8,7 +8,7 @@ app_name = 'Eapp'
 urlpatterns = [
     path('', views.index, name='index'),
     path('index', views.index, name='index'),
-    
+    path('ping', views.ping, name='ping'),
     path('about', views.about, name='about'),
     path('contact', views.contact, name='contact'),
     path('apparel', views.apparel, name='apparel'),

@@ -84,10 +84,15 @@ WSGI_APPLICATION = 'Eproject.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'funaab',
+        'USER': 'funaab_user',
+        'PASSWORD': 'jd7G0kF9CtKTsjzPCDTCom4sbv4aMqHC',
+        'HOST': 'dpg-crj9ctm8ii6s73fdo9cg-a.oregon-postgres.render.com',
+        'PORT': '5432',
     }
 }
+
 
 
 # Password validation

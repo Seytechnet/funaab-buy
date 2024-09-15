@@ -3,12 +3,14 @@ from django.contrib.auth import authenticate, login as auth_login
 from django.contrib.auth.models import User
 from django.contrib import messages
 from .forms import CustomRegistrationForm, ProductForm
-
+from django.http import HttpResponse
 from .models import Product
 from django.contrib.auth.decorators import login_required
 
 
 
+def ping(request):
+    return HttpResponse("Pong")
 
 def about(request):
     return render(request, 'about.html')
