@@ -122,7 +122,8 @@
                             </div>
                         </li>
                         <li><a href="contact">Contact Us</a><span class="sub-toggle"></span></li>
-                        <li><a  href="register">Log In / Sign up</a><span class="sub-toggle"></span></li>
+                         <li><a  href="login">Log In </a><span class="sub-toggle"></span></li>
+                        <li><a  href="register"> Sign up</a><span class="sub-toggle"></span></li>
             </ul>
           </div>
         </div>
@@ -178,7 +179,7 @@
     {% if product.is_sold %}
         SOLD
     {% else %}
-        &#8358 {{ product.product_price }}
+      &#8358 {{ product.formatted_price }}
     {% endif %}
       </div></div>
       <div class="ps-product__container">
@@ -189,9 +190,9 @@
     {{ product.product_name }}
 </a>
 
-          <p class="ps-product__contact">
-            <a href="tel:{{ product.phone_number }}">Contact Seller</a>
-          </p><br><br><br>
+            <p class="ps-product__contact">
+    <a href="https://wa.me/{{ product.phone_number}}?text={{ 'Hello%2C%20I%E2%80%99m%20interested%20in%20the%20product%20you%20posted%20on%20Funaab%20Buy' }}" target="_blank">Chat Seller</a>
+</p><br><br><br>
         </div>
       </div>
     </div>
