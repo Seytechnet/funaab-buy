@@ -8,5 +8,5 @@ class Custom404Middleware:
         response = self.get_response(request)
         # Check if response is a 404 error
         if response.status_code == 404:
-            return render(request, 'error.html', status=404)
+            return render(request, 'index.html', status=404)
         return response
