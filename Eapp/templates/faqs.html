@@ -59,6 +59,151 @@
       href="{% static 'plugins/select2/dist/css/select2.min.css' %}"
     />
     <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+
+
+<style>
+/* Modal container */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  padding-top: 100px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color:rgba(0, 0, 0, 0.2);
+  animation: fadeIn 0.5s; /* Smooth fade-in effect */
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Modal content box */
+.modal-content {
+  background-color: rgba(0, 0, 0, 0.2);
+  margin: auto;
+  padding: 20px;
+  border-radius: 12px; /* Rounded corners */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Soft shadow */
+  width: 80%; /* Adjust width for larger screens */
+  max-width: 400px; /* Set maximum width */
+  text-align: center;
+  animation: slideIn 0.5s; /* Smooth sliding effect */
+  transform: translateY(50%); /* Center the modal vertically */
+}
+
+@keyframes slideIn {
+  from { transform: translateY(-50px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/* Brand logo */
+.brand-logo {
+  width: 120px; /* Adjust size as needed */
+  margin-bottom: 15px;
+}
+
+/* Modal header */
+.modal-header h2 {
+  margin: 0;
+  font-size: 20px;
+  color: #333;
+}
+
+/* Modal body */
+.modal-body {
+  margin-top: 10px;
+}
+
+.modal-body p {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+/* Social buttons styling */
+.social-buttons {
+  display: flex;
+  justify-content: center;
+}
+
+.social-btn {
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: white;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+  background-color: #25d366d1; /* WhatsApp green */
+  margin-bottom: 10px;
+}
+
+.social-btn i {
+  margin-right: 8px;
+}
+
+.social-btn:hover {
+  background-color: #1ac14b; /* Darker green on hover */
+}
+
+/* Close button styling */
+.close {
+  color: white;
+  float: right;
+  font-size: 40px;
+  font-weight: bold;
+  position: absolute;
+  top: 5px;
+  right: 15px;
+  cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .modal-content {
+    width: 90%; /* Full width for smaller screens */
+    padding: 15px;
+  }
+
+  .modal-header h2 {
+    font-size: 18px;
+  }
+
+  .modal-body p {
+    font-size: 13px;
+  }
+
+  .social-btn {
+    font-size: 13px;
+    padding: 10px 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .modal-content {
+    width: 95%; /* Full width for mobile */
+  }
+
+  .social-btn {
+    padding: 8px 10px;
+  }
+}
+</style>
+
+
   </head>
 
   <body>
@@ -129,10 +274,40 @@
         </div>
       </nav>
     </header>
+
+
+
+
+<div id="shareModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <div class="modal-header" style="text-align: center;">
+      <img src="{% static 'img/logo_light.png' %}" alt="Marketplace Logo" style="max-width: 100%; height: auto;"> <!-- Logo styling -->
+      <!-- <h2 style="margin-top: 10px; color: #333;">Share Our Marketplace!</h2>     -->
+  </div>
+    <div class="modal-body">
+      <p style="color: white;">📢 Help us spread the word! <br>Share with friends so they don’t miss out on our Marketplace!</p>
+      <div class="social-buttons" style="text-align: center;">
+       <a href="https://wa.me/?text=Hey%20Funaabites!%0A%0AYour%20one-stop%20shop%20for%20everything%20is%20live%20at%20Funaab%20Marketplace!%0A%0ADiscover%20awesome%20products%20and%20exclusive%20deals%20from%20fellow%20students!%0A%0ADon%E2%80%99t%20miss%20out%20%E2%80%94%20click%20now%3A%20www.funaab-buy.onrender.com" target="_blank" class="social-btn whatsapp" 
+           style="display: inline-block; background-color:#25d366d1; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; font-weight: bold;">
+          <i class="fab fa-whatsapp"></i> Share on WhatsApp
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+       
+
+
+
+
+
     <header class="header header--mobile" data-sticky="true">
       <div class="header__top">
         <div class="header__left">
-          <p>Welcome to Martfury Online Shopping Store !</p>
+          <p>Welcome to Funaab Buy!</p>
         </div>
       </div>
       <div class="navigation--mobile">
@@ -401,6 +576,66 @@
         });
     });
 </script>
+
+  <script>
+  // Get the modal
+  var modal = document.getElementById("shareModal");
+
+  // Show the modal when the page loads if it has not been shared or 24 hours have passed
+  window.onload = function () {
+    // Get the current timestamp
+    const now = Date.now();
+    
+    // Check if the user has shared and get the timestamp from localStorage
+    const sharedTimestamp = localStorage.getItem('sharedTimestamp');
+    
+    if (sharedTimestamp) {
+      // Check if 24 hours (86400000 milliseconds) have passed
+      if (now - sharedTimestamp >= 86400000) {
+        // Show the modal after 10 seconds
+        setTimeout(function () {
+          modal.style.display = "block";
+        }, 10000);
+      }
+    } else {
+      // If not shared, show the modal after 10 seconds
+      setTimeout(function () {
+        modal.style.display = "block"; // Show modal after 10 seconds
+      }, 10000);
+    }
+  };
+
+  // Get the <span> element that closes the modal
+  var closeModal = document.getElementsByClassName("close")[0];
+
+  // When the user clicks on <span> (x), close the modal
+  closeModal.onclick = function () {
+    modal.style.display = "none";
+  };
+
+  // Close the modal if the user clicks anywhere outside of it
+  window.onclick = function (event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  };
+
+  // Function to handle sharing and set localStorage
+  function shareOnWhatsApp() {
+    // URL-encoded WhatsApp share link with emojis
+    const whatsappLink = "https://wa.me/?text=Hey%20Funaabites!%0A%0AYour%20one-stop%20shop%20for%20everything%20is%20live%20at%20Funaab%20Marketplace!%0A%0ADiscover%20awesome%20products%20and%20exclusive%20deals%20from%20fellow%20students!%0A%0ADon%E2%80%99t%20miss%20out%20%E2%80%94%20click%20now%3A%20www.funaab-buy.onrender.com";
+    
+    // Open the WhatsApp share link
+    window.open(whatsappLink, "_blank");
+
+    // Set the localStorage item to indicate the user has shared and store the current timestamp
+    localStorage.setItem('sharedTimestamp', Date.now().toString());
+
+    // Close the modal after sharing
+    modal.style.display = "none";
+  }
+</script>
+
 
     <script
       data-cfasync="false"

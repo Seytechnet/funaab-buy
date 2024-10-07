@@ -26,6 +26,9 @@
       rel="stylesheet"
       href="{% static 'plugins/bootstrap/css/bootstrap.min.css' %}"
     />
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+
+
     <link
       rel="stylesheet"
       href="{% static 'plugins/owl-carousel/assets/owl.carousel.min.css' %}"
@@ -59,6 +62,154 @@
       href="{% static 'plugins/select2/dist/css/select2.min.css' %}"
     />
     <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+
+
+<style>
+ .modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  padding-top: 100px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color:rgba(0, 0, 0, 0.2);
+  animation: fadeIn 0.5s; /* Smooth fade-in effect */
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+  body.modal-active {
+    overflow: hidden; /* Prevent scrolling */
+    pointer-events: none; /* Disable all interactions */
+  }
+
+  .modal-content {
+  background-color:#0000005c;
+  margin: auto;
+  padding: 20px;
+  border-radius: 12px; /* Rounded corners */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Soft shadow */
+  width: 80%; /* Adjust width for larger screens */
+  max-width: 400px; /* Set maximum width */
+  text-align: center;
+  animation: slideIn 0.5s; /* Smooth sliding effect */
+  transform: translateY(50%); /* Center the modal vertically */
+}
+
+@keyframes slideIn {
+  from { transform: translateY(-50px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/* Brand logo */
+.brand-logo {
+  width: 120px; /* Adjust size as needed */
+  margin-bottom: 15px;
+}
+
+/* Modal header */
+.modal-header h2 {
+  margin: 0;
+  font-size: 20px;
+  color: #333;
+}
+
+/* Modal body */
+.modal-body {
+  margin-top: 10px;
+}
+
+.modal-body p {
+  font-size: 14px;
+  color: white;
+  margin-bottom: 20px;
+}
+
+/* Social buttons styling */
+.social-buttons {
+  display: flex;
+  justify-content: center;
+}
+
+.social-btn {
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: white;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+  background-color:#25d366d1; /* WhatsApp green */
+  margin-bottom: 10px;
+}
+
+.social-btn i {
+  margin-right: 8px;
+}
+
+.social-btn:hover {
+  background-color: #1ac14b; /* Darker green on hover */
+}
+
+/* Close button styling */
+.close {
+  color: white;
+  float: right;
+  font-size: 40px;
+  font-weight: bold;
+  position: absolute;
+  top: 5px;
+  right: 15px;
+  cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .modal-content {
+    width: 90%; /* Full width for smaller screens */
+    padding: 15px;
+  }
+
+  .modal-header h2 {
+    font-size: 18px;
+  }
+
+  .modal-body p {
+    font-size: 13px;
+  }
+
+  .social-btn {
+    font-size: 13px;
+    padding: 10px 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .modal-content {
+    width: 95%; /* Full width for mobile */
+  }
+
+  .social-btn {
+    padding: 8px 10px;
+  }
+}
+</style>
+
+
   </head>
 
   <body>
@@ -129,6 +280,30 @@
         </div>
       </nav>
     </header>
+
+
+
+
+<div id="shareModal" class="modal" style="display: none;">
+  <div class="modal-content">
+    <div class="modal-header" style="text-align: center;">
+      <img src="{% static 'img/logo_light.png' %}" alt="Marketplace Logo" style="max-width: 100%; height: auto;">
+      
+    </div>
+    <div class="modal-body">
+      <p>Help us spread the word about our amazing marketplace!<br> Share your new product on WhatsApp so more people can discover it!</p>
+      <div class="social-buttons" style="text-align: center;">
+        <a href="https://wa.me/?text=Hey%20Funaabites!%20%F0%9F%8C%9F%20Your%20one-stop%20shop%20for%20everything%20is%20live%20at%20Funaab%20Marketplace!%20%F0%9F%9B%8D%EF%B8%8F%20Discover%20awesome%20products%20and%20exclusive%20deals%20from%20fellow%20students!%20Don%E2%80%99t%20miss%20out%20%E2%80%94%20click%20now%3A%20www.funaab-buy.onrender.com%20%F0%9F%8E%89" target="_blank" class="social-btn whatsapp" 
+           style="display: inline-block; background-color:#25d366d1; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; font-weight: bold;">
+          <i class="fab fa-whatsapp"></i> Share on WhatsApp
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
     <header class="header header--mobile" data-sticky="true">
       <div class="header__top">
         
@@ -362,6 +537,63 @@
     document.getElementById("imageModal").style.display = "none";
   }
 </script>
+
+
+
+
+
+
+
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var showModal = "{{ show_share_modal }}";  // Get the server-side variable
+    var lastSharedTime = localStorage.getItem('lastSharedTime');
+    var now = new Date();
+
+    // Check if the modal should be shown based on session and localStorage
+    if (showModal === 'True' && (!lastSharedTime || (new Date(lastSharedTime) < now.setHours(now.getHours() - 24)))) {
+        var modal = document.getElementById('shareModal');
+        modal.style.display = 'block';
+
+        // Prevent navigating elsewhere by disabling user interaction
+        document.body.classList.add('modal-active');
+
+        // WhatsApp share button
+        var shareBtn = document.querySelector('.whatsapp');
+        shareBtn.addEventListener('click', function () {
+            // Set localStorage flag to remember the user shared
+            localStorage.setItem('lastSharedTime', new Date().toISOString());
+
+            // Hide the modal after sharing
+            modal.style.display = 'none';
+            document.body.classList.remove('modal-active');
+
+            // Optionally make a request to update session data in Django
+            fetch('/update_share_status/', {
+                method: 'POST',
+                headers: {
+                    'X-CSRFToken': '{{ csrf_token }}',  // Include CSRF token for security
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ shared: true })
+            }).then(response => {
+                if (response.ok) {
+                    console.log('Share status updated');
+                }
+            });
+        });
+    }
+});
+
+</script>
+
+
+
+
+
+
     <script>
     document.getElementById('newsletter-form').addEventListener('submit', function(event) {
         event.preventDefault(); // Prevent the default form submission

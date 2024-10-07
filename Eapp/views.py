@@ -7,6 +7,10 @@ from django.http import HttpResponse
 from .models import Product
 from django.contrib.auth.decorators import login_required
 
+from django.utils import timezone
+from datetime import timedelta
+from django.http import JsonResponse
+
 
 
 def ping(request):
@@ -20,30 +24,130 @@ def contact(request):
 
 def home(request):
     products = Product.objects.filter(product_category='home_kitchen').order_by('-created_at')
-    return render(request, 'home.html', {'products': products})
+    # Check if the modal should be shown based on session and last shared time
+    show_share_modal = request.session.get('show_share_modal', False)
+    last_shared_time = request.session.get('last_shared_time')
+
+    # If the last shared time is within 24 hours, don't show the modal
+    if last_shared_time and (timezone.now() - last_shared_time) < timedelta(hours=24):
+        show_share_modal = False
+
+    context = {
+        'products': products,
+        'show_share_modal': show_share_modal
+    }
+
+    # Remove the session flag after rendering, but only if the user shared on WhatsApp (handled by JS)
+    if show_share_modal:
+        request.session['show_share_modal'] = True  # Persist modal until user shares
+    return render(request, 'home.html', context)
 
 def apparel(request):
     products = Product.objects.filter(product_category='apparel_fashion').order_by('-created_at')
-    return render(request, 'apparel.html', {'products': products})
+    # Check if the modal should be shown based on session and last shared time
+    show_share_modal = request.session.get('show_share_modal', False)
+    last_shared_time = request.session.get('last_shared_time')
+
+    # If the last shared time is within 24 hours, don't show the modal
+    if last_shared_time and (timezone.now() - last_shared_time) < timedelta(hours=24):
+        show_share_modal = False
+
+    context = {
+        'products': products,
+        'show_share_modal': show_share_modal
+    }
+
+    # Remove the session flag after rendering, but only if the user shared on WhatsApp (handled by JS)
+    if show_share_modal:
+        request.session['show_share_modal'] = True  # Persist modal until user shares
+    return render(request, 'apparel.html', context)
 
 def beauty(request):
     products = Product.objects.filter(product_category='health_beauty').order_by('-created_at')
-    return render(request, 'beauty.html', {'products': products})
+    # Check if the modal should be shown based on session and last shared time
+    show_share_modal = request.session.get('show_share_modal', False)
+    last_shared_time = request.session.get('last_shared_time')
+
+    # If the last shared time is within 24 hours, don't show the modal
+    if last_shared_time and (timezone.now() - last_shared_time) < timedelta(hours=24):
+        show_share_modal = False
+
+    context = {
+        'products': products,
+        'show_share_modal': show_share_modal
+    }
+
+    # Remove the session flag after rendering, but only if the user shared on WhatsApp (handled by JS)
+    if show_share_modal:
+        request.session['show_share_modal'] = True  # Persist modal until user shares
+    return render(request, 'beauty.html', context)
+
 
 def computers(request):
     products = Product.objects.filter(product_category='gadgets_computers').order_by('-created_at')
-    return render(request, 'computers.html', {'products': products})
+
+    # Check if the modal should be shown based on session and last shared time
+    show_share_modal = request.session.get('show_share_modal', False)
+    last_shared_time = request.session.get('last_shared_time')
+
+    # If the last shared time is within 24 hours, don't show the modal
+    if last_shared_time and (timezone.now() - last_shared_time) < timedelta(hours=24):
+        show_share_modal = False
+
+    context = {
+        'products': products,
+        'show_share_modal': show_share_modal
+    }
+
+    # Remove the session flag after rendering, but only if the user shared on WhatsApp (handled by JS)
+    if show_share_modal:
+        request.session['show_share_modal'] = True  # Persist modal until user shares
+
+    return render(request, 'computers.html', context)
+
 
 def faqs(request):
     return render(request, 'faqs.html')
 
 def food(request):
     products = Product.objects.filter(product_category='food').order_by('-created_at')
-    return render(request, 'food.html', {'products': products})
+    # Check if the modal should be shown based on session and last shared time
+    show_share_modal = request.session.get('show_share_modal', False)
+    last_shared_time = request.session.get('last_shared_time')
+
+    # If the last shared time is within 24 hours, don't show the modal
+    if last_shared_time and (timezone.now() - last_shared_time) < timedelta(hours=24):
+        show_share_modal = False
+
+    context = {
+        'products': products,
+        'show_share_modal': show_share_modal
+    }
+
+    # Remove the session flag after rendering, but only if the user shared on WhatsApp (handled by JS)
+    if show_share_modal:
+        request.session['show_share_modal'] = True  # Persist modal until user shares
+    return render(request, 'food.html',context)
 
 def jewelry(request):
     products = Product.objects.filter(product_category='jewelry_accessories').order_by('-created_at')
-    return render(request, 'jewelry.html', {'products': products})
+    # Check if the modal should be shown based on session and last shared time
+    show_share_modal = request.session.get('show_share_modal', False)
+    last_shared_time = request.session.get('last_shared_time')
+
+    # If the last shared time is within 24 hours, don't show the modal
+    if last_shared_time and (timezone.now() - last_shared_time) < timedelta(hours=24):
+        show_share_modal = False
+
+    context = {
+        'products': products,
+        'show_share_modal': show_share_modal
+    }
+
+    # Remove the session flag after rendering, but only if the user shared on WhatsApp (handled by JS)
+    if show_share_modal:
+        request.session['show_share_modal'] = True  # Persist modal until user shares
+    return render(request, 'jewelry.html', context)
 
 
 def error(request):
@@ -105,7 +209,7 @@ def user_login(request):
 
         if user is not None:
             auth_login(request, user)  # Use Django's built-in login function
-            return redirect('Eapp:index')  # Redirect to home page after successful login
+            return redirect('Eapp:sell')  # Redirect to home page after successful login
         else:
             messages.error(request, "Invalid email or password.")
     
@@ -138,21 +242,47 @@ def sell(request):
             # Get the URL slug from the mapping
             category_slug = CATEGORY_URL_MAPPING.get(category, 'Eapp:shop')  # Default to 'shop' if category not found
 
-            messages.success(request, 'Product uploaded successfully! Redirecting in 5 seconds.')
+            messages.success(request, 'Product uploaded successfully! Redirecting in 3 seconds.')
 
-            # Render the same form page, but include the success message and delay redirect
-            return render(request, 'sell.html', {'form': form, 'redirect_url': f'/{category_slug}'})
-    
+            # Set session flag to show the modal
+            request.session['show_share_modal'] = True
+
+            return redirect(f'/{category_slug}')  # Redirect to the category page
     else:
         form = ProductForm()
 
     return render(request, 'sell.html', {'form': form})
 
+
 def electronics(request):
     products = Product.objects.filter(product_category='electronics').order_by('-created_at')
-    return render(request, 'electronics.html', {'products': products})
+    # Check if the modal should be shown based on session and last shared time
+    show_share_modal = request.session.get('show_share_modal', False)
+    last_shared_time = request.session.get('last_shared_time')
+
+    # If the last shared time is within 24 hours, don't show the modal
+    if last_shared_time and (timezone.now() - last_shared_time) < timedelta(hours=24):
+        show_share_modal = False
+
+    context = {
+        'products': products,
+        'show_share_modal': show_share_modal
+    }
+
+    # Remove the session flag after rendering, but only if the user shared on WhatsApp (handled by JS)
+    if show_share_modal:
+        request.session['show_share_modal'] = True  # Persist modal until user shares
+    return render(request, 'electronics.html', context)
 
 def shop(request):
     # Get all products
     products = Product.objects.all().order_by('-created_at')  # Fetch all products from the database
     return render(request, 'shop.html', {'products': products})
+
+@login_required
+def update_share_status(request):
+    if request.method == 'POST':
+        # Update session to mark that the user shared the product
+        request.session['last_shared_time'] = timezone.now()
+        return JsonResponse({'status': 'success'})
+    return JsonResponse({'status': 'failed'}, status=400)
