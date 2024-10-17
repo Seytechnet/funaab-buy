@@ -86,11 +86,13 @@ WSGI_APPLICATION = 'Eproject.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'fb_societyfor',  # The name of your database
-        'USER': 'fb_societyfor', 
-        'PASSWORD': '01eafad702be0db47eee1accd42ecd0df5553bb3',
-        'HOST': '2yxno.h.filess.io',
-        'PORT': '5433',
+        'NAME': 'defaultdb',
+        'USER': 'avnadmin',
+        'PASSWORD': 'AVNS_XM80rUTI1A96C569XYl',
+        'HOST': 'pg-1318a66-akinfenwaobaseyi03-b760.k.aivencloud.com',
+        'PORT': '22655',
+        'OPTIONS': {
+            'sslmode': 'require', 
     }
 }
 
