@@ -87,10 +87,10 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'funaab',
-        'USER': 'funaab_user',
-        'PASSWORD': 'jd7G0kF9CtKTsjzPCDTCom4sbv4aMqHC',
-        'HOST': 'dpg-crj9ctm8ii6s73fdo9cg-a.oregon-postgres.render.com',
-        'PORT': '5432',
+        'USER': 'fb_societyfor',
+        'PASSWORD': '01eafad702be0db47eee1accd42ecd0df5553bb3',
+        'HOST': '2yxno.h.filess.io',
+        'PORT': '5433',
     }
 }
 
