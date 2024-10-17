@@ -93,7 +93,7 @@ DATABASES = {
         'PORT': '22655',
         'OPTIONS': {
             'sslmode': 'require', 
-    }
+    }}
 }
 
 
