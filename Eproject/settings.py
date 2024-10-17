@@ -86,7 +86,8 @@ WSGI_APPLICATION = 'Eproject.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'USER': 'fb_societyfor',
+        'NAME': 'fb_societyfor',  # The name of your database
+        'USER': 'fb_societyfor', 
         'PASSWORD': '01eafad702be0db47eee1accd42ecd0df5553bb3',
         'HOST': '2yxno.h.filess.io',
         'PORT': '5433',
