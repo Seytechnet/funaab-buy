@@ -28,7 +28,7 @@ class Product(models.Model):
 
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
     product_name = models.CharField(max_length=255, blank=True, null=True)
-    product_image = models.URLField(max_length=500, blank=True, null=True)  # Updated to store ImgBB URL
+    product_image_url = models.URLField(max_length=500, blank=True, null=True)  # Updated to store ImgBB URL
     product_category = models.CharField(max_length=50, choices=CATEGORY_CHOICES, blank=True)
     product_price = models.DecimalField(max_digits=10, decimal_places=0, null=True, blank=True)  
     phone_number = models.CharField(max_length=15, blank=True, null=True)
