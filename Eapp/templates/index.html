@@ -512,21 +512,28 @@
        {% for product in products %}
   {% if product.product_category == 'electronics' %}
     <div class="ps-product">
-      <div class="ps-product__thumbnail">
-        <a href="JavaScript:void(0)" onclick="showImage('{{ product.product_image.url }}')">
-          {% if product.product_image %}
-            <img src="{{ product.product_image.url }}" alt="{{ product.product_name }}" />
-          {% else %}
-            <img src="{% static 'img/default-placeholder.png' %}" alt="No image available" />
-          {% endif %}
-        </a>
-         <div class="ps-product__badge">
-    {% if product.is_sold %}
-        SOLD
-    {% else %}
-        &#8358 {{ product.formatted_price }}
-    {% endif %}
+
+
+
+
+       <div class="ps-product__thumbnail">
+                    <a href="JavaScript:void(0)" onclick="showImage('{{ product.product_image_url }}')">
+                        {% if product.product_image_url %}
+                            <img src="{{ product.product_image_url }}" alt="{{ product.product_name }}" />
+                        {% else %}
+                            <img src="{% static 'img/default-placeholder.png' %}" alt="No image available" />
+                        {% endif %}
+                    </a>
+                    <div class="ps-product__badge">
+                        {% if product.is_sold %}
+                            SOLD
+                        {% else %}
+                            &#8358 {{ product.formatted_price }}
+                        {% endif %}
       </div></div>
+
+      
+      
       <div class="ps-product__container">
         <!-- Display seller's location instead of product category -->
         <a class="ps-product__vendor" href="JavaScript:void(0)">LOCATION: {{ product.location }}</a>
@@ -594,21 +601,23 @@
         {% for product in products %}
           {% if product.product_category == 'home_kitchen' %}
            <div class="ps-product">
-      <div class="ps-product__thumbnail">
-        <a href="JavaScript:void(0)" onclick="showImage('{{ product.product_image.url }}')">
-          {% if product.product_image %}
-            <img src="{{ product.product_image.url }}" alt="{{ product.product_name }}" />
-          {% else %}
-            <img src="{% static 'img/default-placeholder.png' %}" alt="No image available" />
-          {% endif %}
-        </a>
-         <div class="ps-product__badge">
-    {% if product.is_sold %}
-        SOLD
-    {% else %}
-        &#8358 {{ product.formatted_price }}
-    {% endif %}
+      
+       <div class="ps-product__thumbnail">
+                    <a href="JavaScript:void(0)" onclick="showImage('{{ product.product_image_url }}')">
+                        {% if product.product_image_url %}
+                            <img src="{{ product.product_image_url }}" alt="{{ product.product_name }}" />
+                        {% else %}
+                            <img src="{% static 'img/default-placeholder.png' %}" alt="No image available" />
+                        {% endif %}
+                    </a>
+                    <div class="ps-product__badge">
+                        {% if product.is_sold %}
+                            SOLD
+                        {% else %}
+                            &#8358 {{ product.formatted_price }}
+                        {% endif %}
       </div></div>
+
       <div class="ps-product__container">
         <!-- Display seller's location instead of product category -->
         <a class="ps-product__vendor" href="JavaScript:void(0)">LOCATION: {{ product.location }}</a>
@@ -671,21 +680,23 @@
         {% for product in products %}
           {% if product.product_category == 'health_beauty' %}
             <div class="ps-product">
-      <div class="ps-product__thumbnail">
-        <a href="JavaScript:void(0)" onclick="showImage('{{ product.product_image.url }}')">
-          {% if product.product_image %}
-            <img src="{{ product.product_image.url }}" alt="{{ product.product_name }}" />
-          {% else %}
-            <img src="{% static 'img/default-placeholder.png' %}" alt="No image available" />
-          {% endif %}
-        </a>
-         <div class="ps-product__badge">
-    {% if product.is_sold %}
-        SOLD
-    {% else %}
-        &#8358 {{ product.formatted_price }}
-    {% endif %}
+      
+       <div class="ps-product__thumbnail">
+                    <a href="JavaScript:void(0)" onclick="showImage('{{ product.product_image_url }}')">
+                        {% if product.product_image_url %}
+                            <img src="{{ product.product_image_url }}" alt="{{ product.product_name }}" />
+                        {% else %}
+                            <img src="{% static 'img/default-placeholder.png' %}" alt="No image available" />
+                        {% endif %}
+                    </a>
+                    <div class="ps-product__badge">
+                        {% if product.is_sold %}
+                            SOLD
+                        {% else %}
+                            &#8358 {{ product.formatted_price }}
+                        {% endif %}
       </div></div>
+
       <div class="ps-product__container">
         <!-- Display seller's location instead of product category -->
         <a class="ps-product__vendor" href="JavaScript:void(0)">LOCATION: {{ product.location }}</a>
@@ -747,21 +758,23 @@
         {% for product in products %}
           {% if product.product_category == 'jewelry_accessories' %}
             <div class="ps-product">
-      <div class="ps-product__thumbnail">
-        <a href="JavaScript:void(0)" onclick="showImage('{{ product.product_image.url }}')">
-          {% if product.product_image %}
-            <img src="{{ product.product_image.url }}" alt="{{ product.product_name }}" />
-          {% else %}
-            <img src="{% static 'img/default-placeholder.png' %}" alt="No image available" />
-          {% endif %}
-        </a>
-         <div class="ps-product__badge">
-    {% if product.is_sold %}
-        SOLD
-    {% else %}
-        &#8358 {{ product.formatted_price }}
-    {% endif %}
+      
+       <div class="ps-product__thumbnail">
+                    <a href="JavaScript:void(0)" onclick="showImage('{{ product.product_image_url }}')">
+                        {% if product.product_image_url %}
+                            <img src="{{ product.product_image_url }}" alt="{{ product.product_name }}" />
+                        {% else %}
+                            <img src="{% static 'img/default-placeholder.png' %}" alt="No image available" />
+                        {% endif %}
+                    </a>
+                    <div class="ps-product__badge">
+                        {% if product.is_sold %}
+                            SOLD
+                        {% else %}
+                            &#8358 {{ product.formatted_price }}
+                        {% endif %}
       </div></div>
+
       <div class="ps-product__container">
         <!-- Display seller's location instead of product category -->
         <a class="ps-product__vendor" href="JavaScript:void(0)">LOCATION: {{ product.location }}</a>
@@ -830,21 +843,23 @@
         {% for product in products %}
           {% if product.product_category == 'apparel_fashion' %}
             <div class="ps-product">
-      <div class="ps-product__thumbnail">
-        <a href="JavaScript:void(0)" onclick="showImage('{{ product.product_image.url }}')">
-          {% if product.product_image %}
-            <img src="{{ product.product_image.url }}" alt="{{ product.product_name }}" />
-          {% else %}
-            <img src="{% static 'img/default-placeholder.png' %}" alt="No image available" />
-          {% endif %}
-        </a>
-         <div class="ps-product__badge">
-    {% if product.is_sold %}
-        SOLD
-    {% else %}
-        &#8358 {{ product.formatted_price }}
-    {% endif %}
+      
+       <div class="ps-product__thumbnail">
+                    <a href="JavaScript:void(0)" onclick="showImage('{{ product.product_image_url }}')">
+                        {% if product.product_image_url %}
+                            <img src="{{ product.product_image_url }}" alt="{{ product.product_name }}" />
+                        {% else %}
+                            <img src="{% static 'img/default-placeholder.png' %}" alt="No image available" />
+                        {% endif %}
+                    </a>
+                    <div class="ps-product__badge">
+                        {% if product.is_sold %}
+                            SOLD
+                        {% else %}
+                            &#8358 {{ product.formatted_price }}
+                        {% endif %}
       </div></div>
+
       <div class="ps-product__container">
         <!-- Display seller's location instead of product category -->
         <a class="ps-product__vendor" href="JavaScript:void(0)">LOCATION: {{ product.location }}</a>
@@ -908,21 +923,23 @@
         {% for product in products %}
           {% if product.product_category == 'gadgets_computers' %}
           <div class="ps-product">
-      <div class="ps-product__thumbnail">
-        <a href="JavaScript:void(0)" onclick="showImage('{{ product.product_image.url }}')">
-          {% if product.product_image %}
-            <img src="{{ product.product_image.url }}" alt="{{ product.product_name }}" />
-          {% else %}
-            <img src="{% static 'img/default-placeholder.png' %}" alt="No image available" />
-          {% endif %}
-        </a>
-         <div class="ps-product__badge">
-    {% if product.is_sold %}
-        SOLD
-    {% else %}
-        &#8358 {{ product.formatted_price }}
-    {% endif %}
+      
+       <div class="ps-product__thumbnail">
+                    <a href="JavaScript:void(0)" onclick="showImage('{{ product.product_image_url }}')">
+                        {% if product.product_image_url %}
+                            <img src="{{ product.product_image_url }}" alt="{{ product.product_name }}" />
+                        {% else %}
+                            <img src="{% static 'img/default-placeholder.png' %}" alt="No image available" />
+                        {% endif %}
+                    </a>
+                    <div class="ps-product__badge">
+                        {% if product.is_sold %}
+                            SOLD
+                        {% else %}
+                            &#8358 {{ product.formatted_price }}
+                        {% endif %}
       </div></div>
+
       <div class="ps-product__container">
         <!-- Display seller's location instead of product category -->
         <a class="ps-product__vendor" href="JavaScript:void(0)">LOCATION: {{ product.location }}</a>
@@ -985,21 +1002,23 @@
         {% for product in products %}
           {% if product.product_category == 'food' %}
             <div class="ps-product">
-      <div class="ps-product__thumbnail">
-        <a href="JavaScript:void(0)" onclick="showImage('{{ product.product_image.url }}')">
-          {% if product.product_image %}
-            <img src="{{ product.product_image.url }}" alt="{{ product.product_name }}" />
-          {% else %}
-            <img src="{% static 'img/default-placeholder.png' %}" alt="No image available" />
-          {% endif %}
-        </a>
-         <div class="ps-product__badge">
-    {% if product.is_sold %}
-        SOLD
-    {% else %}
-        &#8358 {{ product.formatted_price }}
-    {% endif %}
+      
+       <div class="ps-product__thumbnail">
+                    <a href="JavaScript:void(0)" onclick="showImage('{{ product.product_image_url }}')">
+                        {% if product.product_image_url %}
+                            <img src="{{ product.product_image_url }}" alt="{{ product.product_name }}" />
+                        {% else %}
+                            <img src="{% static 'img/default-placeholder.png' %}" alt="No image available" />
+                        {% endif %}
+                    </a>
+                    <div class="ps-product__badge">
+                        {% if product.is_sold %}
+                            SOLD
+                        {% else %}
+                            &#8358 {{ product.formatted_price }}
+                        {% endif %}
       </div></div>
+
       <div class="ps-product__container">
         <!-- Display seller's location instead of product category -->
         <a class="ps-product__vendor" href="JavaScript:void(0)">LOCATION: {{ product.location }}</a>

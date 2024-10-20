@@ -11,6 +11,7 @@ from django.utils import timezone
 from datetime import timedelta
 from django.http import JsonResponse
 
+from .utils import upload_image_to_imgbb  # Assuming the above function is in utils.py
 
 
 def ping(request):
@@ -236,7 +237,19 @@ def sell(request):
         if form.is_valid():
             product = form.save(commit=False)
             product.user = request.user  # Set the logged-in user
-            product.save()
+
+            # Get the uploaded image from the form
+            product_image = request.FILES.get('product_image')
+
+            if product_image:
+                # Upload the image to ImgBB and get the URL
+                image_url = upload_image_to_imgbb(product_image)
+
+                if image_url:
+                    # Save the ImgBB image URL in the product
+                    product.product_image_url = image_url
+
+            product.save()  # Save the product after updating the image URL
             category = product.product_category  # Get the product category
 
             # Get the URL slug from the mapping
@@ -252,7 +265,6 @@ def sell(request):
         form = ProductForm()
 
     return render(request, 'sell.html', {'form': form})
-
 
 def electronics(request):
     products = Product.objects.filter(product_category='electronics').order_by('-created_at')

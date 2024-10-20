@@ -343,19 +343,19 @@
         <div class="col-xl-3 col-lg-4 col-md-4 col-sm-6 col-6">
           <div class="ps-product">
       <div class="ps-product__thumbnail">
-        <a href="JavaScript:void(0)" onclick="showImage('{{ product.product_image.url }}')">
-          {% if product.product_image %}
-            <img src="{{ product.product_image.url }}" alt="{{ product.product_name }}" />
-          {% else %}
-            <img src="{% static 'img/default-placeholder.png' %}" alt="No image available" />
-          {% endif %}
-        </a>
-         <div class="ps-product__badge">
-    {% if product.is_sold %}
-        SOLD
-    {% else %}
-      &#8358 {{ product.formatted_price }}
-    {% endif %}
+                    <a href="JavaScript:void(0)" onclick="showImage('{{ product.product_image_url }}')">
+                        {% if product.product_image_url %}
+                            <img src="{{ product.product_image_url }}" alt="{{ product.product_name }}" />
+                        {% else %}
+                            <img src="{% static 'img/default-placeholder.png' %}" alt="No image available" />
+                        {% endif %}
+                    </a>
+                    <div class="ps-product__badge">
+                        {% if product.is_sold %}
+                            SOLD
+                        {% else %}
+                            &#8358 {{ product.formatted_price }}
+                        {% endif %}
       </div></div>
       <div class="ps-product__container">
         <!-- Display seller's location instead of product category -->

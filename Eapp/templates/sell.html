@@ -175,51 +175,59 @@
 
     <!-- Product Upload Form -->
     <form method="POST" enctype="multipart/form-data" style="padding: 20px; border: 1px solid #ddd; border-radius: 10px; background-color: #f9f9f9;">
-        {% csrf_token %}
-        <div style="margin-bottom: 15px;">
-            <label for="product_name" style="font-weight: bold; display: block; margin-bottom: 5px;">Product Name</label>
-            <input type="text" id="product_name" name="product_name" style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;" required>
-        </div>
-
-        <div style="margin-bottom: 15px;">
-            <label for="product_image" style="font-weight: bold; display: block; margin-bottom: 5px;">Product Image</label>
-            <input type="file" id="product_image" name="product_image" style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;" required>
-        </div>
-
-        <div style="margin-bottom: 15px;">
-            <label for="product_category" style="font-weight: bold; display: block; margin-bottom: 5px;">Product Category</label>
-            <select id="product_category" name="product_category" style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;" required>
-                {% for value, name in form.product_category.field.choices %}
-                    <option value="{{ value }}">{{ name }}</option>
-                {% endfor %}
-            </select>
-        </div>
-
-        <div style="margin-bottom: 15px;">
-            <label for="product_price" style="font-weight: bold; display: block; margin-bottom: 5px;">Product Price</label>
-            <input type="number" id="product_price" name="product_price" style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;" required>
-        </div>
-
-       <div style="margin-bottom: 15px;">
-    <label for="phone_number" style="font-weight: bold; display: block; margin-bottom: 5px;">Phone Number</label>
-    <div style="display: flex;">
-        <input type="text" id="phone_prefix" value="+234" style="width: 60px; padding: 10px; border-radius: 5px 0 0 5px; border: 1px solid #ccc; background-color: #eee;" readonly>
-        <input type="text" id="phone_number" name="phone_number" placeholder="WhatsApp number (required)" style="width: calc(100% - 60px); padding: 10px; border-radius: 0 5px 5px 0; border: 1px solid #ccc;" required>
+    {% csrf_token %}
+    
+    <!-- Product Name -->
+    <div style="margin-bottom: 15px;">
+        <label for="product_name" style="font-weight: bold; display: block; margin-bottom: 5px;">Product Name</label>
+        <input type="text" id="product_name" name="product_name" style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;" required>
     </div>
-</div>
 
+    <!-- Product Image -->
+    <div style="margin-bottom: 15px;">
+        <label for="product_image" style="font-weight: bold; display: block; margin-bottom: 5px;">Product Image</label>
+        <input type="file" id="product_image" name="product_image" style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;" required>
+    </div>
 
-        <div style="margin-bottom: 20px;">
-            <label for="location" style="font-weight: bold; display: block; margin-bottom: 5px;">Location</label>
-            <select id="location" name="location" style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;" required>
-                {% for value, name in form.location.field.choices %}
-                    <option value="{{ value }}">{{ name }}</option>
-                {% endfor %}
-            </select>
+    <!-- Product Category -->
+    <div style="margin-bottom: 15px;">
+        <label for="product_category" style="font-weight: bold; display: block; margin-bottom: 5px;">Product Category</label>
+        <select id="product_category" name="product_category" style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;" required>
+            {% for value, name in form.product_category.field.choices %}
+                <option value="{{ value }}">{{ name }}</option>
+            {% endfor %}
+        </select>
+    </div>
+
+    <!-- Product Price -->
+    <div style="margin-bottom: 15px;">
+        <label for="product_price" style="font-weight: bold; display: block; margin-bottom: 5px;">Product Price</label>
+        <input type="number" id="product_price" name="product_price" style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;" required>
+    </div>
+
+    <!-- Phone Number (with +234 pre-filled) -->
+    <div style="margin-bottom: 15px;">
+        <label for="phone_number" style="font-weight: bold; display: block; margin-bottom: 5px;">Phone Number</label>
+        <div style="display: flex;">
+            <input type="text" id="phone_prefix" value="+234" style="width: 60px; padding: 10px; border-radius: 5px 0 0 5px; border: 1px solid #ccc; background-color: #eee;" readonly>
+            <input type="text" id="phone_number" name="phone_number" placeholder="WhatsApp number (required)" style="width: calc(100% - 60px); padding: 10px; border-radius: 0 5px 5px 0; border: 1px solid #ccc;" required>
         </div>
+    </div>
 
-        <button type="submit" style="width: 100%; padding: 10px; background: linear-gradient(135deg, #11998e, #38ef7d); color: white; border: none; border-radius: 5px;">Upload Product</button>
-    </form>
+    <!-- Location -->
+    <div style="margin-bottom: 20px;">
+        <label for="location" style="font-weight: bold; display: block; margin-bottom: 5px;">Location</label>
+        <select id="location" name="location" style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;" required>
+            {% for value, name in form.location.field.choices %}
+                <option value="{{ value }}">{{ name }}</option>
+            {% endfor %}
+        </select>
+    </div>
+
+    <!-- Submit Button -->
+    <button type="submit" style="width: 100%; padding: 10px; background: linear-gradient(135deg, #11998e, #38ef7d); color: white; border: none; border-radius: 5px;">Upload Product</button>
+</form>
+
 </div>
 
 
@@ -388,7 +396,7 @@
         });
     });
 </script>
-    
+    <script async src="https://imgbb.com/upload.js"></script>
     <script
       data-cfasync="false"
       src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"

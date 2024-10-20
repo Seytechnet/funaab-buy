@@ -44,29 +44,28 @@ class CustomRegistrationForm(forms.ModelForm):
 class ProductForm(forms.ModelForm):
     class Meta:
         model = Product
-        fields = ['product_name', 'product_image', 'product_category', 'product_price', 'phone_number', 'location']
+        fields = ['product_name', 'product_category', 'product_price', 'phone_number', 'location']  # Removed product_image_url
         widgets = {
             'product_name': forms.TextInput(attrs={'class': 'form-control', 'required': 'required'}),
-            'product_image': forms.FileInput(attrs={'class': 'form-control', 'required': 'required'}),
             'product_category': forms.Select(attrs={'class': 'form-select', 'required': 'required'}),
             'product_price': forms.NumberInput(attrs={'class': 'form-control', 'required': 'required'}),
             'phone_number': forms.TextInput(attrs={
                 'class': 'form-control', 
                 'required': 'required', 
-                'value': '+234',  # Pre-fill with +234
-                'readonly': 'readonly',  # Make +234 uneditable
-                'pattern': r'\+234\d{10}',  # Ensure it matches Nigerian phone numbers
-                'placeholder': '+234'  # Show +234 in the field as a placeholder
+                'value': '+234',  
+                'readonly': 'readonly',  
+                'pattern': r'\+234\d{10}',  
+                'placeholder': '+234'  
             }),
             'location': forms.Select(attrs={'class': 'form-select', 'required': 'required'}),
         }
 
     def clean_phone_number(self):
         phone_number = self.cleaned_data.get('phone_number')
-
-    # Ensure the entered phone number is exactly 10 digits
+    
+        # Ensure the entered phone number is exactly 10 digits
         if not phone_number.isdigit() or len(phone_number) != 10:
             raise ValidationError('Phone number must be 10 digits long.')
     
-    # Prepend +234 to the phone number
+        # Prepend +234 to the phone number
         return f'+234{phone_number}'
