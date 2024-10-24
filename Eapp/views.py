@@ -261,6 +261,9 @@ def sell(request):
             request.session['show_share_modal'] = True
 
             return redirect(f'/{category_slug}')  # Redirect to the category page
+        else:
+            # If the form is invalid, display an error message
+            messages.error(request, 'There was an error with your submission. Please check the details and try again.')
     else:
         form = ProductForm()
 

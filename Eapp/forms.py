@@ -44,7 +44,7 @@ class CustomRegistrationForm(forms.ModelForm):
 class ProductForm(forms.ModelForm):
     class Meta:
         model = Product
-        fields = ['product_name', 'product_category', 'product_price', 'phone_number', 'location']  # Removed product_image_url
+        fields = ['product_name', 'product_category', 'product_price', 'phone_number', 'location']
         widgets = {
             'product_name': forms.TextInput(attrs={'class': 'form-control', 'required': 'required'}),
             'product_category': forms.Select(attrs={'class': 'form-select', 'required': 'required'}),
@@ -62,10 +62,18 @@ class ProductForm(forms.ModelForm):
 
     def clean_phone_number(self):
         phone_number = self.cleaned_data.get('phone_number')
-    
-        # Ensure the entered phone number is exactly 10 digits
+
+        # Remove leading +234 if entered
+        if phone_number.startswith('+234'):
+            phone_number = phone_number[4:]
+
+        # Remove leading 0 if present
+        if phone_number.startswith('0'):
+            phone_number = phone_number[1:]
+
+        # Ensure the remaining number is 10 digits
         if not phone_number.isdigit() or len(phone_number) != 10:
-            raise ValidationError('Phone number must be 10 digits long.')
-    
-        # Prepend +234 to the phone number
+            raise ValidationError('Phone number must be 10 digits long (excluding +234).')
+
+        # Prepend +234 to the cleaned phone number
         return f'+234{phone_number}'
