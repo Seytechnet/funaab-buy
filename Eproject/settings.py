@@ -35,6 +35,7 @@ ALLOWED_HOSTS = [
     'funaab-buy.onrender.com',
     'www.funaabbuy.com.ng',
     'funaab-buy-6nuq.onrender.com',
+    'sync-protocol.com',
 ]
 
 
