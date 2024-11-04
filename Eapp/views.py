@@ -242,6 +242,11 @@ def sell(request):
             product_image = request.FILES.get('product_image')
 
             if product_image:
+                # Validate that the file is an image
+                if product_image.content_type not in ['image/jpeg', 'image/png', 'image/gif']:
+                    messages.error(request, 'Only image files are allowed (JPEG, PNG, GIF).')
+                    return render(request, 'sell.html', {'form': form})
+
                 # Upload the image to ImgBB and get the URL
                 image_url = upload_image_to_imgbb(product_image)
 
