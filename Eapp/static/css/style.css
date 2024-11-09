@@ -12833,7 +12833,7 @@ background: linear-gradient(135deg, #11998e, #38ef7d); /* Green to Light Yellow 
   }
   .ps-shopping-product .ps-product .ps-product__badge {
     top: 5px;
-    right: 5px;
+    right: 15px;
   }
 }
 
