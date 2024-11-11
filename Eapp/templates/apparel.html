@@ -184,30 +184,31 @@
 }
 
 /* Responsive design */
+/* For mobile screens */
 @media (max-width: 768px) {
   .modal-content {
-    width: 90%; /* Full width for smaller screens */
+    width: 90%;
     padding: 15px;
-  }
-
-  .modal-header h2 {
-    font-size: 18px;
-  }
-
-  .modal-body p {
-    font-size: 13px;
-  }
-
-  .social-btn {
-    font-size: 13px;
-    padding: 10px 15px;
+    top: -10%; /* Moves modal up on smaller screens */
   }
 }
 
-@media (max-width: 480px) {
+/* For tablets and small laptops */
+@media (min-width: 769px) and (max-width: 1024px) {
   .modal-content {
-    width: 95%; /* Full width for mobile */
+    width: 70%;
+    top: 5%; /* Slightly higher positioning */
   }
+}
+
+/* For larger screens (laptops and desktops) */
+@media (min-width: 1025px) {
+  .modal-content {
+    width: 50%;
+    top: -50%; /* Adjust this value to move it higher */
+  }
+}
+
 
   .social-btn {
     padding: 8px 10px;
@@ -293,19 +294,27 @@
   <div class="modal-content">
     <div class="modal-header" style="text-align: center;">
       <img src="{% static 'img/logo_light.png' %}" alt="Marketplace Logo" style="max-width: 100%; height: auto;">
-      
     </div>
     <div class="modal-body">
-      <p>Help us spread the word about our amazing marketplace!<br> Share your new product on WhatsApp so more people can discover it!</p>
+      <p>Help us spread the word about our amazing marketplace!<br>
+         Share your new product on WhatsApp so more people can discover it!</p>
       <div class="social-buttons" style="text-align: center;">
-        <a href="https://api.whatsapp.com/send?text=Hey%20Funaabites!%20🎉%0A%0AYour%20one-stop%20shop%20for%20everything%20is%20live%20at%20Funaab%20Marketplace!%20🛍%0A%0ADiscover%20awesome%20products%20and%20exclusive%20deals%20from%20fellow%20students!%20💼%0A%0ADon%E2%80%99t%20miss%20out%20%E2%80%94%20click%20now%3A%20https://funaabbuy.com.ng%20🚀" target="_blank" class="social-btn whatsapp" 
+        <a href="https://api.whatsapp.com/send?text=Hey%20Funaabites!%20🎉%0A%0AVisit%20our%20marketplace%20at%20https://funaabbuy.com.ng%20🚀" 
+           target="_blank" class="social-btn whatsapp"
            style="display: inline-block; background-color:#25d366d1; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; font-weight: bold;">
           <i class="fab fa-whatsapp"></i> Share on WhatsApp
         </a>
       </div>
+      <div id="confirmationMessage" style="display: none; margin-top: 20px; text-align: center;">
+        <p>Did you share it on WhatsApp? 🚀 Sharing helps new users discover our marketplace and brings more buyers to your products📈👀</p>
+        <button id="confirmShareBtn" class="ps-btn ps-btn--fullwidth" style="background-color: #28a745; color: white;">Yes, I shared!</button>
+      </div>
     </div>
   </div>
 </div>
+
+
+
 
 
 
@@ -537,7 +546,60 @@
 
 
     </div>
-      <script>
+     
+
+    <script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const showModal = "{{ show_share_modal }}"; // Server-side variable
+    const lastSharedTime = localStorage.getItem('lastSharedTime');
+    const now = new Date();
+    const modal = document.getElementById('shareModal');
+    const confirmationMessage = document.getElementById('confirmationMessage');
+    const confirmShareBtn = document.getElementById('confirmShareBtn');
+
+    // Check if the modal should be shown based on session and localStorage
+    if (showModal === 'True' && (!lastSharedTime || (new Date(lastSharedTime) < now.setHours(now.getHours() - 24)))) {
+        modal.style.display = 'block';
+
+        // WhatsApp share button
+        const shareBtn = document.querySelector('.whatsapp');
+        shareBtn.addEventListener('click', function () {
+            // Keep the modal open and show the confirmation message
+            confirmationMessage.style.display = 'block';
+        });
+
+        // Confirm share button
+        confirmShareBtn.addEventListener('click', function () {
+            // Set localStorage flag to remember the user shared
+            localStorage.setItem('lastSharedTime', new Date().toISOString());
+
+            // Hide the modal and update the session status
+            modal.style.display = 'none';
+
+            // Optionally update the session data in Django
+            fetch('/update_share_status/', {
+                method: 'POST',
+                headers: {
+                    'X-CSRFToken': '{{ csrf_token }}',  // Include CSRF token for security
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ shared: true })
+            }).then(response => {
+                if (response.ok) {
+                    console.log('Share status updated successfully.');
+                }
+            });
+        });
+    }
+  });
+</script>
+
+
+
+
+
+
+     <script>
   function showImage(imageSrc) {
     document.getElementById("modalImage").src = imageSrc;
     document.getElementById("imageModal").style.display = "flex"; // Using 'flex' to center the image
@@ -556,48 +618,6 @@
 
 
 
-<script>
-  document.addEventListener('DOMContentLoaded', function () {
-    var showModal = "{{ show_share_modal }}";  // Get the server-side variable
-    var lastSharedTime = localStorage.getItem('lastSharedTime');
-    var now = new Date();
-
-    // Check if the modal should be shown based on session and localStorage
-    if (showModal === 'True' && (!lastSharedTime || (new Date(lastSharedTime) < now.setHours(now.getHours() - 24)))) {
-        var modal = document.getElementById('shareModal');
-        modal.style.display = 'block';
-
-        // Prevent navigating elsewhere by disabling user interaction
-        document.body.classList.add('modal-active');
-
-        // WhatsApp share button
-        var shareBtn = document.querySelector('.whatsapp');
-        shareBtn.addEventListener('click', function () {
-            // Set localStorage flag to remember the user shared
-            localStorage.setItem('lastSharedTime', new Date().toISOString());
-
-            // Hide the modal after sharing
-            modal.style.display = 'none';
-            document.body.classList.remove('modal-active');
-
-            // Optionally make a request to update session data in Django
-            fetch('/update_share_status/', {
-                method: 'POST',
-                headers: {
-                    'X-CSRFToken': '{{ csrf_token }}',  // Include CSRF token for security
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ shared: true })
-            }).then(response => {
-                if (response.ok) {
-                    console.log('Share status updated');
-                }
-            });
-        });
-    }
-});
-
-</script>
 
 
 

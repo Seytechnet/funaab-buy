@@ -302,7 +302,9 @@ def shop(request):
 @login_required
 def update_share_status(request):
     if request.method == 'POST':
-        # Update session to mark that the user shared the product
-        request.session['last_shared_time'] = timezone.now()
+        shared = request.POST.get('shared') == 'true'
+        if shared:
+            request.session['last_shared_time'] = timezone.now()
+            request.session['show_share_modal'] = False
         return JsonResponse({'status': 'success'})
-    return JsonResponse({'status': 'failed'}, status=400)
+    return JsonResponse({'status': 'error'}, status=400)
