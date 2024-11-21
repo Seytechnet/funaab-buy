@@ -6,6 +6,7 @@ from .forms import CustomRegistrationForm, ProductForm
 from django.http import HttpResponse
 from .models import Product
 from django.contrib.auth.decorators import login_required
+from django.utils.timezone import now, timedelta
 
 from django.utils import timezone
 from datetime import timedelta
@@ -233,6 +234,21 @@ CATEGORY_URL_MAPPING = {
 @login_required(login_url='Eapp:login')
 def sell(request):
     if request.method == 'POST':
+        # Get today's date range
+        today_start = now().replace(hour=0, minute=0, second=0, microsecond=0)
+        today_end = today_start + timedelta(days=1)
+
+        # Count the user's products uploaded today
+        user_products_today = Product.objects.filter(
+            user=request.user, created_at__range=(today_start, today_end)
+        ).count()
+
+        # Enforce daily upload limit
+        if user_products_today >= 3:
+            messages.error(request, "You can only upload a maximum of 3 products per day.")
+            return redirect('Eapp:index')  # Redirect back to the sell page
+
+        # Process form submission
         form = ProductForm(request.POST, request.FILES)
         if form.is_valid():
             product = form.save(commit=False)

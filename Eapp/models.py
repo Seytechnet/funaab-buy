@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils.formats import number_format
+from django.utils.timezone import now
 
 class Product(models.Model):
     CATEGORY_CHOICES = [
