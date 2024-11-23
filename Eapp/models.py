@@ -6,10 +6,13 @@ from django.utils.timezone import now
 class Product(models.Model):
     CATEGORY_CHOICES = [
         ('electronics', 'Electronics'),
-        ('home_kitchen', 'Home & Kitchen'),
+        ('home', 'Home'),
         ('health_beauty', 'Health & Beauty'),
         ('jewelry_accessories', 'Jewelry & Accessories'),
-        ('apparel_fashion', 'Apparel & Fashion'),
+        ('apparel', 'Apparel'),
+        ('bags', 'Bags'),
+        ('Footwear', 'Footwear'),
+        ('headgear', 'Headgear'),
         ('food', 'Food'),
         ('gadgets_computers', 'Gadgets & Computers'),
     ]

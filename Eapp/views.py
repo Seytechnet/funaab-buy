@@ -24,8 +24,13 @@ def about(request):
 def contact(request):
     return render(request, 'contact.html')
 
+
+
+
+
+
 def home(request):
-    products = Product.objects.filter(product_category='home_kitchen').order_by('-created_at')
+    products = Product.objects.filter(product_category='home').order_by('-created_at')
     # Check if the modal should be shown based on session and last shared time
     show_share_modal = request.session.get('show_share_modal', False)
     last_shared_time = request.session.get('last_shared_time')
@@ -44,8 +49,75 @@ def home(request):
         request.session['show_share_modal'] = True  # Persist modal until user shares
     return render(request, 'home.html', context)
 
+def headgear(request):
+    products = Product.objects.filter(product_category='headgear').order_by('-created_at')
+    # Check if the modal should be shown based on session and last shared time
+    show_share_modal = request.session.get('show_share_modal', False)
+    last_shared_time = request.session.get('last_shared_time')
+
+    # If the last shared time is within 24 hours, don't show the modal
+    if last_shared_time and (timezone.now() - last_shared_time) < timedelta(hours=24):
+        show_share_modal = False
+
+    context = {
+        'products': products,
+        'show_share_modal': show_share_modal
+    }
+
+    # Remove the session flag after rendering, but only if the user shared on WhatsApp (handled by JS)
+    if show_share_modal:
+        request.session['show_share_modal'] = True  # Persist modal until user shares
+    return render(request, 'headgear.html', context)
+
+
+def footwear(request):
+    products = Product.objects.filter(product_category='footwear').order_by('-created_at')
+    # Check if the modal should be shown based on session and last shared time
+    show_share_modal = request.session.get('show_share_modal', False)
+    last_shared_time = request.session.get('last_shared_time')
+
+    # If the last shared time is within 24 hours, don't show the modal
+    if last_shared_time and (timezone.now() - last_shared_time) < timedelta(hours=24):
+        show_share_modal = False
+
+    context = {
+        'products': products,
+        'show_share_modal': show_share_modal
+    }
+
+    # Remove the session flag after rendering, but only if the user shared on WhatsApp (handled by JS)
+    if show_share_modal:
+        request.session['show_share_modal'] = True  # Persist modal until user shares
+    return render(request, 'footwear.html', context)
+
+
+
+
+def bags(request):
+    products = Product.objects.filter(product_category='bags').order_by('-created_at')
+    # Check if the modal should be shown based on session and last shared time
+    show_share_modal = request.session.get('show_share_modal', False)
+    last_shared_time = request.session.get('last_shared_time')
+
+    # If the last shared time is within 24 hours, don't show the modal
+    if last_shared_time and (timezone.now() - last_shared_time) < timedelta(hours=24):
+        show_share_modal = False
+
+    context = {
+        'products': products,
+        'show_share_modal': show_share_modal
+    }
+
+    # Remove the session flag after rendering, but only if the user shared on WhatsApp (handled by JS)
+    if show_share_modal:
+        request.session['show_share_modal'] = True  # Persist modal until user shares
+    return render(request, 'bags.html', context)
+
+
+
+
 def apparel(request):
-    products = Product.objects.filter(product_category='apparel_fashion').order_by('-created_at')
+    products = Product.objects.filter(product_category='apparel').order_by('-created_at')
     # Check if the modal should be shown based on session and last shared time
     show_share_modal = request.session.get('show_share_modal', False)
     last_shared_time = request.session.get('last_shared_time')
@@ -63,6 +135,10 @@ def apparel(request):
     if show_share_modal:
         request.session['show_share_modal'] = True  # Persist modal until user shares
     return render(request, 'apparel.html', context)
+
+
+
+
 
 def beauty(request):
     products = Product.objects.filter(product_category='health_beauty').order_by('-created_at')
@@ -224,7 +300,7 @@ def index(request):
 
 CATEGORY_URL_MAPPING = {
     'electronics': 'electronics',
-    'home_kitchen': 'home',
+    'home': 'home',
     'health_beauty': 'beauty',
     'jewelry_accessories': 'jewelry',
     'apparel_fashion': 'apparel',
