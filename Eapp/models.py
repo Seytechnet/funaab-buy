@@ -11,7 +11,7 @@ class Product(models.Model):
         ('jewelry_accessories', 'Jewelry & Accessories'),
         ('apparel', 'Apparel'),
         ('bags', 'Bags'),
-        ('Footwear', 'Footwear'),
+        ('footwear', 'Footwear'),
         ('headgear', 'Headgear'),
         ('food', 'Food'),
         ('gadgets_computers', 'Gadgets & Computers'),

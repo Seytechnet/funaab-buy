@@ -303,7 +303,10 @@ CATEGORY_URL_MAPPING = {
     'home': 'home',
     'health_beauty': 'beauty',
     'jewelry_accessories': 'jewelry',
-    'apparel_fashion': 'apparel',
+    'apparel': 'apparel',
+    'bags': 'bags',
+    'footwear': 'footwear',
+    'headgear': 'headgear',
     'food': 'food',
     'gadgets_computers': 'computers',
 }
