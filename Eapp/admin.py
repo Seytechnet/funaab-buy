@@ -3,7 +3,7 @@ from .models import Product
 
 class ProductAdmin(admin.ModelAdmin):
     # Display fields
-    list_display = ('product_name', 'product_category', 'product_price', 'user', 'created_at')
+    list_display = ('product_name', 'product_image_url')
 
     # Add filter options
     list_filter = ('product_category', 'user', 'created_at')
@@ -18,6 +18,6 @@ class ProductAdmin(admin.ModelAdmin):
     list_display_links = ('product_name',)
 
     # Fields editable directly in the list view
-    list_editable = ('product_price',)
+    list_editable = ('product_image_url',)  # This is valid now because 'product_image_url' is in list_display
 
 admin.site.register(Product, ProductAdmin)
