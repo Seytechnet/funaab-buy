@@ -29,4 +29,5 @@ urlpatterns = [
     path('login', views.user_login, name='login'),
     path('register', views.register, name='register'),
     path('logout', auth_views.LogoutView.as_view(next_page='Eapp:login'), name='logout'),
+    path('convert-images', views.convert_images_to_webp, name='convert_images'),
 ]
