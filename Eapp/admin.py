@@ -10,6 +10,7 @@ class ProductAdmin(admin.ModelAdmin):
         'formatted_price',
         'location',
         'product_image_url',
+        'created_at',
        
         
     )
@@ -37,7 +38,7 @@ class ProductAdmin(admin.ModelAdmin):
     list_display_links = ('product_name',)
 
     # Fields editable directly in the list view
-    list_editable = ('product_image_url',)
+    list_editable = ('product_image_url', 'created_at',)
 
     # Add a date hierarchy for easier navigation
     date_hierarchy = 'created_at'

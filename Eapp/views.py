@@ -338,7 +338,7 @@ def sell(request):
 
             if product_image:
                 # Validate file type to ignore non-image uploads
-                if product_image.content_type not in ['image/jpeg', 'image/png', 'image/gif']:
+                if product_image.content_type not in ['image/jpeg', 'image/png', 'image/gif', 'image/pjpeg']:
                     messages.error(request, 'Only image files are allowed (JPEG, PNG, GIF).')
                     return render(request, 'sell.html', {'form': form})
 
@@ -348,7 +348,7 @@ def sell(request):
                     if image_url:
                         product.product_image_url = image_url
                     else:
-                        messages.error(request, 'Failed to upload the image to ImgBB. Please try again.')
+                        messages.error(request, 'Failed to upload the image. Please try again.')
                         return render(request, 'sell.html', {'form': form})
 
                 except Exception as e:

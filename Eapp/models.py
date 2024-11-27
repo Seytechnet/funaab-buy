@@ -37,7 +37,8 @@ class Product(models.Model):
     product_price = models.DecimalField(max_digits=10, decimal_places=0, null=True, blank=True)  
     phone_number = models.CharField(max_length=15, blank=True, null=True)
     location = models.CharField(max_length=50, choices=LOCATION_CHOICES, blank=True)
-    created_at = models.DateTimeField(auto_now_add=True)
+    created_at = models.DateTimeField(default=now, blank=True)
+
     updated_at = models.DateTimeField(auto_now=True)
     is_sold = models.BooleanField(default=False)
 
