@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'Eapp',
     'tracking',
+    'compressor',
 ]
 
 MIDDLEWARE = [
@@ -61,6 +62,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'Eapp.middleware.Custom404Middleware',
+   
     'tracking.middleware.VisitorTrackingMiddleware',
 ]
 
@@ -140,6 +142,8 @@ USE_TZ = True
 # URL to access static files
 STATIC_URL = '/static/'
 
+
+
 # This is where Django will collect all static files for production
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
@@ -148,6 +152,12 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'Eapp/static'),
 ]
 
+
+STATICFILES_FINDERS = [
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'compressor.finders.CompressorFinder',
+]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
@@ -161,3 +171,15 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MESSAGE_LEVEL = message_constants.DEBUG
 
 LOGIN_REDIRECT_URL = 'index'
+
+
+COMPRESS_ENABLED = True
+COMPRESS_OFFLINE = True
+
+# Security settings for production
+SECURE_HSTS_SECONDS = 3600  # Adjust after HTTPS confirmation
+SECURE_SSL_REDIRECT = True
+SECURE_BROWSER_XSS_FILTER = True
+SECURE_CONTENT_TYPE_NOSNIFF = True
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True

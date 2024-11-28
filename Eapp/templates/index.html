@@ -101,8 +101,12 @@
       rel="stylesheet"
       href="{% static 'plugins/select2/dist/css/select2.min.css' %}"
     />
-    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
 
+    {% load compress %}
+{% compress css %}
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    {% endcompress %}
     <style>
 /* Modal container */
 .modal {
@@ -243,6 +247,34 @@
     padding: 8px 10px;
   }
 }
+
+
+ 
+ /* Style for the 'Next' button */
+ .btn-next-category {
+     display: inline-block;
+     background:;
+     background:linear-gradient(135deg, #11998e, #38ef7d);
+     color: #fff;
+     padding: 12px 20px;
+     border-radius: 5px;
+     text-decoration: none;
+     font-weight: bold;
+     text-align: center;
+     margin-top: 60px;
+     margin-left: 20px;
+     transition: background-color 0.3s;
+ }
+
+ .btn-next-category:hover {
+     background-color: #0056b3;
+ }
+
+ .btn-next-category:focus {
+     outline: none;
+ }
+
+
 </style>
 
   </head>
@@ -254,7 +286,7 @@
           <div class="header__left">
             <div class="menu--product-categories"></div>
             <a class="ps-logo" href=""
-              ><img src="{% static 'img/logo_light.png' %}" alt=""
+              ><img src="{% static 'img/logo_light.png' %}" alt="" 
             /></a>
           </div>
           <div class="header__center"></div>
@@ -524,9 +556,9 @@
                 <div class="ps-product__thumbnail">
                     <a href="JavaScript:void(0)" onclick="showImage('{{ product.product_image_url }}')">
                         {% if product.product_image_url %}
-                            <img src="{{ product.product_image_url }}" alt="{{ product.product_name }}" />
+                            <img src="{{ product.product_image_url }}" alt="{{ product.product_name }}"  loading="lazy" />
                         {% else %}
-                            <img src="{% static 'img/default-placeholder.png' %}" alt="No image available" />
+                            <img src="{% static 'img/default-placeholder.png' %}" alt="No image available"  loading="lazy"  />
                         {% endif %}
                     </a>
                     <div class="ps-product__badge">
@@ -637,9 +669,9 @@
                   <div class="ps-product__thumbnail">
                       <a href="JavaScript:void(0)" onclick="showImage('{{ product.product_image_url }}')">
                           {% if product.product_image_url %}
-                              <img src="{{ product.product_image_url }}" alt="{{ product.product_name }}" />
+                              <img src="{{ product.product_image_url }}" alt="{{ product.product_name }}"  loading="lazy"/>
                           {% else %}
-                              <img src="{% static 'img/default-placeholder.png' %}" alt="No image available" />
+                              <img src="{% static 'img/default-placeholder.png' %}" alt="No image available"  loading="lazy"  />
                           {% endif %}
                       </a>
                       <div class="ps-product__badge">
@@ -674,32 +706,6 @@
 </div>
   
 
-<style>
- 
-  /* Style for the 'Next' button */
-  .btn-next-category {
-      display: inline-block;
-      background:;
-      background:linear-gradient(135deg, #11998e, #38ef7d);
-      color: #fff;
-      padding: 12px 20px;
-      border-radius: 5px;
-      text-decoration: none;
-      font-weight: bold;
-      text-align: center;
-      margin-top: 60px;
-      margin-left: 20px;
-      transition: background-color 0.3s;
-  }
-
-  .btn-next-category:hover {
-      background-color: #0056b3;
-  }
-
-  .btn-next-category:focus {
-      outline: none;
-  }
-</style>
 
 
   <div id="imageModal" style="display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.8); text-align: center; justify-content: center; align-items: center;">
@@ -742,9 +748,9 @@
                   <div class="ps-product__thumbnail">
                       <a href="JavaScript:void(0)" onclick="showImage('{{ product.product_image_url }}')">
                           {% if product.product_image_url %}
-                              <img src="{{ product.product_image_url }}" alt="{{ product.product_name }}" />
+                              <img src="{{ product.product_image_url }}" alt="{{ product.product_name }}"  loading="lazy"/>
                           {% else %}
-                              <img src="{% static 'img/default-placeholder.png' %}" alt="No image available" />
+                              <img src="{% static 'img/default-placeholder.png' %}" alt="No image available"  loading="lazy"  />
                           {% endif %}
                       </a>
                       <div class="ps-product__badge">
@@ -777,34 +783,7 @@
     </div>
   </div>
     
-  
-  <style>
-   
-    /* Style for the 'Next' button */
-    .btn-next-category {
-        display: inline-block;
-        background:;
-        background:linear-gradient(135deg, #11998e, #38ef7d);
-        color: #fff;
-        padding: 12px 20px;
-        border-radius: 5px;
-        text-decoration: none;
-        font-weight: bold;
-        text-align: center;
-        margin-top: 60px;
-        margin-left: 20px;
-        transition: background-color 0.3s;
-    }
-  
-    .btn-next-category:hover {
-        background-color: #0056b3;
-    }
-  
-    .btn-next-category:focus {
-        outline: none;
-    }
-  </style>
-  
+ 
   
   <div id="imageModal" style="display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.8); text-align: center; justify-content: center; align-items: center;">
     <span onclick="closeImage()" style="position: absolute; top: 140px; right: 40px; color: white; font-size: 60px; font-weight: bold; cursor: pointer;">&times;</span>
@@ -846,9 +825,9 @@
                   <div class="ps-product__thumbnail">
                       <a href="JavaScript:void(0)" onclick="showImage('{{ product.product_image_url }}')">
                           {% if product.product_image_url %}
-                              <img src="{{ product.product_image_url }}" alt="{{ product.product_name }}" />
+                              <img src="{{ product.product_image_url }}" alt="{{ product.product_name }}"  loading="lazy"/>
                           {% else %}
-                              <img src="{% static 'img/default-placeholder.png' %}" alt="No image available" />
+                              <img src="{% static 'img/default-placeholder.png' %}" alt="No image available"  loading="lazy"  />
                           {% endif %}
                       </a>
                       <div class="ps-product__badge">
@@ -882,32 +861,7 @@
   </div>
     
   
-  <style>
-   
-    /* Style for the 'Next' button */
-    .btn-next-category {
-        display: inline-block;
-        background:;
-        background:linear-gradient(135deg, #11998e, #38ef7d);
-        color: #fff;
-        padding: 12px 20px;
-        border-radius: 5px;
-        text-decoration: none;
-        font-weight: bold;
-        text-align: center;
-        margin-top: 60px;
-        margin-left: 20px;
-        transition: background-color 0.3s;
-    }
   
-    .btn-next-category:hover {
-        background-color: #0056b3;
-    }
-  
-    .btn-next-category:focus {
-        outline: none;
-    }
-  </style>
   
   
   <div id="imageModal" style="display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.8); text-align: center; justify-content: center; align-items: center;">
@@ -954,9 +908,9 @@
                   <div class="ps-product__thumbnail">
                       <a href="JavaScript:void(0)" onclick="showImage('{{ product.product_image_url }}')">
                           {% if product.product_image_url %}
-                              <img src="{{ product.product_image_url }}" alt="{{ product.product_name }}" />
+                              <img src="{{ product.product_image_url }}" alt="{{ product.product_name }}"  loading="lazy"/>
                           {% else %}
-                              <img src="{% static 'img/default-placeholder.png' %}" alt="No image available" />
+                              <img src="{% static 'img/default-placeholder.png' %}" alt="No image available"  loading="lazy"  />
                           {% endif %}
                       </a>
                       <div class="ps-product__badge">
@@ -990,32 +944,6 @@
   </div>
     
   
-  <style>
-   
-    /* Style for the 'Next' button */
-    .btn-next-category {
-        display: inline-block;
-        background:;
-        background:linear-gradient(135deg, #11998e, #38ef7d);
-        color: #fff;
-        padding: 12px 20px;
-        border-radius: 5px;
-        text-decoration: none;
-        font-weight: bold;
-        text-align: center;
-        margin-top: 60px;
-        margin-left: 20px;
-        transition: background-color 0.3s;
-    }
-  
-    .btn-next-category:hover {
-        background-color: #0056b3;
-    }
-  
-    .btn-next-category:focus {
-        outline: none;
-    }
-  </style>
   
   
   <div id="imageModal" style="display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.8); text-align: center; justify-content: center; align-items: center;">
@@ -1060,9 +988,9 @@
                   <div class="ps-product__thumbnail">
                       <a href="JavaScript:void(0)" onclick="showImage('{{ product.product_image_url }}')">
                           {% if product.product_image_url %}
-                              <img src="{{ product.product_image_url }}" alt="{{ product.product_name }}" />
+                              <img src="{{ product.product_image_url }}" alt="{{ product.product_name }}"  loading="lazy"/>
                           {% else %}
-                              <img src="{% static 'img/default-placeholder.png' %}" alt="No image available" />
+                              <img src="{% static 'img/default-placeholder.png' %}" alt="No image available"  loading="lazy"  />
                           {% endif %}
                       </a>
                       <div class="ps-product__badge">
@@ -1095,33 +1023,6 @@
     </div>
   </div>
     
-  
-  <style>
-   
-    /* Style for the 'Next' button */
-    .btn-next-category {
-        display: inline-block;
-        background:;
-        background:linear-gradient(135deg, #11998e, #38ef7d);
-        color: #fff;
-        padding: 12px 20px;
-        border-radius: 5px;
-        text-decoration: none;
-        font-weight: bold;
-        text-align: center;
-        margin-top: 60px;
-        margin-left: 20px;
-        transition: background-color 0.3s;
-    }
-  
-    .btn-next-category:hover {
-        background-color: #0056b3;
-    }
-  
-    .btn-next-category:focus {
-        outline: none;
-    }
-  </style>
   
   
   
@@ -1177,9 +1078,9 @@
                   <div class="ps-product__thumbnail">
                       <a href="JavaScript:void(0)" onclick="showImage('{{ product.product_image_url }}')">
                           {% if product.product_image_url %}
-                              <img src="{{ product.product_image_url }}" alt="{{ product.product_name }}" />
+                              <img src="{{ product.product_image_url }}" alt="{{ product.product_name }}"  loading="lazy"/>
                           {% else %}
-                              <img src="{% static 'img/default-placeholder.png' %}" alt="No image available" />
+                              <img src="{% static 'img/default-placeholder.png' %}" alt="No image available"  loading="lazy"  />
                           {% endif %}
                       </a>
                       <div class="ps-product__badge">
@@ -1213,35 +1114,7 @@
   </div>
     
   
-  <style>
-   
-    /* Style for the 'Next' button */
-    .btn-next-category {
-        display: inline-block;
-        background:;
-        background:linear-gradient(135deg, #11998e, #38ef7d);
-        color: #fff;
-        padding: 12px 20px;
-        border-radius: 5px;
-        text-decoration: none;
-        font-weight: bold;
-        text-align: center;
-        margin-top: 60px;
-        margin-left: 20px;
-        transition: background-color 0.3s;
-    }
-  
-    .btn-next-category:hover {
-        background-color: #0056b3;
-    }
-  
-    .btn-next-category:focus {
-        outline: none;
-    }
-  </style>
-  
-  
-  
+ 
   <div id="imageModal" style="display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.8); text-align: center; justify-content: center; align-items: center;">
     <span onclick="closeImage()" style="position: absolute; top: 140px; right: 40px; color: white; font-size: 60px; font-weight: bold; cursor: pointer;">&times;</span>
     
@@ -1291,9 +1164,9 @@
                   <div class="ps-product__thumbnail">
                       <a href="JavaScript:void(0)" onclick="showImage('{{ product.product_image_url }}')">
                           {% if product.product_image_url %}
-                              <img src="{{ product.product_image_url }}" alt="{{ product.product_name }}" />
+                              <img src="{{ product.product_image_url }}" alt="{{ product.product_name }}"  loading="lazy"/>
                           {% else %}
-                              <img src="{% static 'img/default-placeholder.png' %}" alt="No image available" />
+                              <img src="{% static 'img/default-placeholder.png' %}" alt="No image available"  loading="lazy"  />
                           {% endif %}
                       </a>
                       <div class="ps-product__badge">
@@ -1327,32 +1200,6 @@
   </div>
     
   
-  <style>
-   
-    /* Style for the 'Next' button */
-    .btn-next-category {
-        display: inline-block;
-        background:;
-        background:linear-gradient(135deg, #11998e, #38ef7d);
-        color: #fff;
-        padding: 12px 20px;
-        border-radius: 5px;
-        text-decoration: none;
-        font-weight: bold;
-        text-align: center;
-        margin-top: 60px;
-        margin-left: 20px;
-        transition: background-color 0.3s;
-    }
-  
-    .btn-next-category:hover {
-        background-color: #0056b3;
-    }
-  
-    .btn-next-category:focus {
-        outline: none;
-    }
-  </style>
   
   
   
@@ -1396,9 +1243,9 @@
                   <div class="ps-product__thumbnail">
                       <a href="JavaScript:void(0)" onclick="showImage('{{ product.product_image_url }}')">
                           {% if product.product_image_url %}
-                              <img src="{{ product.product_image_url }}" alt="{{ product.product_name }}" />
+                              <img src="{{ product.product_image_url }}" alt="{{ product.product_name }}"  loading="lazy"/>
                           {% else %}
-                              <img src="{% static 'img/default-placeholder.png' %}" alt="No image available" />
+                              <img src="{% static 'img/default-placeholder.png' %}" alt="No image available"  loading="lazy"  />
                           {% endif %}
                       </a>
                       <div class="ps-product__badge">
@@ -1432,32 +1279,6 @@
   </div>
     
   
-  <style>
-   
-    /* Style for the 'Next' button */
-    .btn-next-category {
-        display: inline-block;
-        background:;
-        background:linear-gradient(135deg, #11998e, #38ef7d);
-        color: #fff;
-        padding: 12px 20px;
-        border-radius: 5px;
-        text-decoration: none;
-        font-weight: bold;
-        text-align: center;
-        margin-top: 60px;
-        margin-left: 20px;
-        transition: background-color 0.3s;
-    }
-  
-    .btn-next-category:hover {
-        background-color: #0056b3;
-    }
-  
-    .btn-next-category:focus {
-        outline: none;
-    }
-  </style>
   
   
   
@@ -1784,6 +1605,6 @@
     <script src="{% static 'plugins/select2/dist/js/select2.full.min.js' %}"></script>
     <script src="{% static 'plugins/gmap3.min.js' %}"></script>
     <!-- custom scripts-->
-    <script src="{% static 'js/main.js' %}"></script>
+    {% compress js %} <script src="{% static 'js/main.js' %}"></script>{% endcompress %}
   </body>
 </html>
