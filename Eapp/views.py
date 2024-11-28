@@ -13,7 +13,7 @@ from datetime import timedelta
 from django.http import JsonResponse
 from PIL import Image
 import io
-
+from django.db.models import Q
 from .utils import upload_image_to_imgbb  # Assuming the above function is in utils.py
 
 
@@ -298,10 +298,39 @@ def user_login(request):
     return render(request, 'login.html')
 
 def index(request):
-    products = Product.objects.all().order_by('-created_at')
-    return render(request, 'index.html', {'products': products})
+    # Get up to 5 products for each category
+    electronics = Product.objects.filter(product_category='electronics').order_by('-created_at')[:4]
+    home = Product.objects.filter(product_category='home').order_by('-created_at')[:4]
+    health_beauty = Product.objects.filter(product_category='health_beauty').order_by('-created_at')[:4]  # Corrected filter
+    jewelry_accessories = Product.objects.filter(product_category='jewelry_accessories').order_by('-created_at')[:4]
+    apparel = Product.objects.filter(product_category='apparel').order_by('-created_at')[:4]
+    bags = Product.objects.filter(product_category='bags').order_by('-created_at')[:4]
+    footwear = Product.objects.filter(product_category='footwear').order_by('-created_at')[:4]
+    headgear = Product.objects.filter(product_category='headgear').order_by('-created_at')[:4]
+    gadgets_computers = Product.objects.filter(product_category='gadgets_computers').order_by('-created_at')[:4]
+    food = Product.objects.filter(product_category='food').order_by('-created_at')[:4]
+    
+    return render(request, 'index.html', {
+        'electronics': electronics,
+        'home': home,
+        'health_beauty': health_beauty,  # Updated variable name
+        'jewelry_accessories': jewelry_accessories,
+        'apparel': apparel,
+        'bags': bags,
+        'footwear': footwear,
+        'headgear': headgear,
+        'food': food,
+        'gadgets_computers': gadgets_computers,
+    })
 
-
+    
+    
+    
+    
+    
+    
+    
+    
 CATEGORY_URL_MAPPING = {
     'electronics': 'electronics',
     'home': 'home',
