@@ -50,7 +50,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'Eapp',
     'tracking',
-    'compressor',
+   
 ]
 
 MIDDLEWARE = [
@@ -153,12 +153,6 @@ STATICFILES_DIRS = [
 ]
 
 
-STATICFILES_FINDERS = [
-    'django.contrib.staticfiles.finders.FileSystemFinder',
-    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-    'compressor.finders.CompressorFinder',
-]
-
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
@@ -173,8 +167,7 @@ MESSAGE_LEVEL = message_constants.DEBUG
 LOGIN_REDIRECT_URL = 'index'
 
 
-COMPRESS_ENABLED = True
-COMPRESS_OFFLINE = True
+
 
 # # Security settings for production
 # SECURE_HSTS_SECONDS = 3600  # Adjust after HTTPS confirmation

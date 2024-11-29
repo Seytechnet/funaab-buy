@@ -102,11 +102,9 @@
       href="{% static 'plugins/select2/dist/css/select2.min.css' %}"
     />
 
-    {% load compress %}
-{% compress css %}
-
+   
     <link rel="stylesheet" href="{% static 'css/style.css' %}" />
-    {% endcompress %}
+  
     <style>
 /* Modal container */
 .modal {
@@ -1605,6 +1603,6 @@
     <script src="{% static 'plugins/select2/dist/js/select2.full.min.js' %}"></script>
     <script src="{% static 'plugins/gmap3.min.js' %}"></script>
     <!-- custom scripts-->
-    {% compress js %} <script src="{% static 'js/main.js' %}"></script>{% endcompress %}
+    <script src="{% static 'js/main.js' %}"></script>
   </body>
 </html>
