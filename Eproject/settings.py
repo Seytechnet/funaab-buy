@@ -166,6 +166,17 @@ MESSAGE_LEVEL = message_constants.DEBUG
 
 LOGIN_REDIRECT_URL = 'index'
 
+CACHES = {
+    'default': {
+        'BACKEND': 'django_redis.cache.RedisCache',
+        'LOCATION': 'redis://red-ct4o71l6l47c73fa8ne0:6379',
+        'OPTIONS': {
+            'CLIENT_CLASS': 'django_redis.client.DefaultClient',
+        }
+    }
+}
+
+
 
 
 
