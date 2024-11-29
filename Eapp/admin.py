@@ -6,11 +6,13 @@ class ProductAdmin(admin.ModelAdmin):
     list_display = (
         'product_name',
         'user',
+        'phone_number',
         'product_category',
         'formatted_price',
         'location',
         'product_image_url',
         'created_at',
+        
        
         
     )

@@ -305,58 +305,15 @@ def user_login(request):
     return render(request, 'login.html')
 
 
-
-# Async function to handle the database fetching
-@sync_to_async
-def get_products_from_db():
-    # Fetch products from database and process them
-    products = Product.objects.filter(product_category__in=[
-        'electronics', 'home', 'health_beauty', 'jewelry_accessories',
-        'apparel', 'bags', 'footwear', 'headgear', 'gadgets_computers', 'food'
-    ]).order_by('product_category', '-created_at')
-
-    # Group products by category and limit to 4 per category
-    grouped_products = defaultdict(list)
-    for product in products:
-        if len(grouped_products[product.product_category]) < 4:
-            grouped_products[product.product_category].append(product)
-
-    return grouped_products
-
-async def index(request):
-    # Try to fetch from cache
-    cache_key = 'homepage_products'
-    data = cache.get(cache_key)
-
-    if not data:
-        # Fetch products in the background (async)
-        data = await get_products_from_db()
-
-        # Save the grouped data to cache
-        cache.set(cache_key, data, timeout=60 * 5)  # Cache for 5 minutes
-
-    # Render the template with the data (data will either be cached or freshly fetched)
-    return render(request, 'index.html', {
-        'electronics': data.get('electronics', []),
-        'home': data.get('home', []),
-        'health_beauty': data.get('health_beauty', []),
-        'jewelry_accessories': data.get('jewelry_accessories', []),
-        'apparel': data.get('apparel', []),
-        'bags': data.get('bags', []),
-        'footwear': data.get('footwear', []),
-        'headgear': data.get('headgear', []),
-        'gadgets_computers': data.get('gadgets_computers', []),
-        'food': data.get('food', []),
-    })
-
+def index(request):
+    return render(request, 'index.html')
     
     
     
     
     
     
-    
-    
+
 CATEGORY_URL_MAPPING = {
     'electronics': 'electronics',
     'home': 'home',

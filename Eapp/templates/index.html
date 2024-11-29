@@ -482,39 +482,134 @@
         data-owl-mousedrag="on"
     >
         <!-- Loop through electronics products -->
-        {% for product in electronics %}
+       
+
+
+
+
+
+
+
+        <div class="ps-product">
+          <div class="ps-product__thumbnail">
+              <a href="JavaScript:void(0)" onclick="showImage('https://i.ibb.co/ZzFXHGM/69df938a2014.webp')">
+                
+                      <img src="https://i.ibb.co/ZzFXHGM/69df938a2014.webp" alt="No image available"     />
+                  
+              </a>
+              <div class="ps-product__badge">
+                
+                      &#8358 10,000
+              </div>
+          </div>
+          <div class="ps-product__container">
+              <a class="ps-product__vendor" href="JavaScript:void(0)">LOCATION: Isolu</a>
+              <div class="ps-product__content">
+                  <a class="ps-product__title" href="JavaScript:void(0)" style="text-transform: uppercase;">
+                      SELFIE RING LIGHT WITH PHONE HOLDER
+                  </a>
+                  <p class="ps-product__contact">
+                      <a href="https://wa.me/+2348189843730?text=Hello%2C%20I%E2%80%99m%20interested%20in%20the%20Product%20you%20posted%20on%20Funaab%20Buy"
+                         target="_blank">Chat Seller</a>
+                  </p>
+                  <br><br><br>
+              </div>
+          </div>
+      </div>
+
+
+
+
+
+
+
+
+
+      <div class="ps-product">
+        <div class="ps-product__thumbnail">
+            <a href="JavaScript:void(0)" onclick="showImage('https://i.ibb.co/FBnCs7B/accddc6ce122.webp')">
+               
+                    <img src="https://i.ibb.co/FBnCs7B/accddc6ce122.webp" alt="No image available"     />
+               
+            </a>
+            <div class="ps-product__badge">
+              
+                    &#8358  10,500
+            </div>
+        </div>
+        <div class="ps-product__container">
+            <a class="ps-product__vendor" href="JavaScript:void(0)">LOCATION: Isolu</a>
+            <div class="ps-product__content">
+                <a class="ps-product__title" href="JavaScript:void(0)" style="text-transform: uppercase;">
+                    10 INCHES RING LIGHT
+                </a>
+                <p class="ps-product__contact">
+                    <a href="https://wa.me/+2348189843730?text=Hello%2C%20I%E2%80%99m%20interested%20in%20the%20Product%20you%20posted%20on%20Funaab%20Buy"
+                       target="_blank">Chat Seller</a>
+                </p>
+                <br><br><br>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+    <div class="ps-product">
+      <div class="ps-product__thumbnail">
+          <a href="JavaScript:void(0)" onclick="showImage('https://i.ibb.co/Xbgyvq3/979a1a8bcfc2.webp')">
+            
+                  <img src="https://i.ibb.co/Xbgyvq3/979a1a8bcfc2.webp" alt="No image available"     />
+              
+          </a>
+          <div class="ps-product__badge">
+            
+                  &#8358 15,000
+          </div>
+      </div>
+      <div class="ps-product__container">
+          <a class="ps-product__vendor" href="JavaScript:void(0)">LOCATION: Isolu</a>
+          <div class="ps-product__content">
+              <a class="ps-product__title" href="JavaScript:void(0)" style="text-transform: uppercase;">
+                 12 INCHES RINGLIGHT
+              </a>
+              <p class="ps-product__contact">
+                  <a href="https://wa.me/+2348189843730?text=Hello%2C%20I%E2%80%99m%20interested%20in%20the%20product%20you%20posted%20on%20Funaab%20Buy"
+                     target="_blank">Chat Seller</a>
+              </p>
+              <br><br><br>
+          </div>
+      </div>
+  </div>
             <div class="ps-product">
                 <div class="ps-product__thumbnail">
-                    <a href="JavaScript:void(0)" onclick="showImage('{{ product.product_image_url }}')">
-                        {% if product.product_image_url %}
-                            <img src="{{ product.product_image_url }}" alt="{{ product.product_name }}"    />
-                        {% else %}
-                            <img src="{% static 'img/default-placeholder.png' %}" alt="No image available"     />
-                        {% endif %}
+                    <a href="JavaScript:void(0)" onclick="showImage('https://i.ibb.co/PCYs3HB/db218b0f71ea.webp')">
+                        
+                            <img src="https://i.ibb.co/PCYs3HB/db218b0f71ea.webp" alt="No image available"     />
+                      
                     </a>
                     <div class="ps-product__badge">
-                        {% if product.is_sold %}
-                            SOLD
-                        {% else %}
-                            &#8358 {{ product.formatted_price }}
-                        {% endif %}
+                      
+                            &#8358 750,000
                     </div>
                 </div>
                 <div class="ps-product__container">
-                    <a class="ps-product__vendor" href="JavaScript:void(0)">LOCATION: {{ product.location }}</a>
+                    <a class="ps-product__vendor" href="JavaScript:void(0)">LOCATION: Gate</a>
                     <div class="ps-product__content">
                         <a class="ps-product__title" href="JavaScript:void(0)" style="text-transform: uppercase;">
-                            {{ product.product_name }}
+                           2 in 1 bass/lead duet squier guitar
                         </a>
                         <p class="ps-product__contact">
-                            <a href="https://wa.me/{{ product.phone_number }}?text=Hello%2C%20I%E2%80%99m%20interested%20in%20the%20{{ product.product_name|urlencode }}%20you%20posted%20on%20Funaab%20Buy"
+                            <a href="https://wa.me/+2348181010186?text=Hello%2C%20I%E2%80%99m%20interested%20in%20the%20product%20you%20posted%20on%20Funaab%20Buy"
                                target="_blank">Chat Seller</a>
                         </p>
                         <br><br><br>
                     </div>
                 </div>
             </div>
-        {% endfor %}
+
         <a href="electronics" class="btn-next-category">View All</a> 
       </div>
 
@@ -568,39 +663,127 @@
           data-owl-mousedrag="on"
       >
           <!-- Loop through electronics products -->
-          {% for product in home %}
+      
+
+
+
+          <div class="ps-product">
+            <div class="ps-product__thumbnail">
+                <a href="JavaScript:void(0)" onclick="showImage('https://i.ibb.co/MBW9D7z/17013b50759d.webp')">
+                                           <img src="https://i.ibb.co/MBW9D7z/17013b50759d.webp" alt="No image available"     />
+                </a>
+                <div class="ps-product__badge">
+                  
+                        &#8358 7,000
+                </div>
+            </div>
+            <div class="ps-product__container">
+                <a class="ps-product__vendor" href="JavaScript:void(0)">LOCATION: Accord</a>
+                <div class="ps-product__content">
+                    <a class="ps-product__title" href="JavaScript:void(0)" style="text-transform: uppercase;">
+                        Mini fans
+                    </a>
+                    <p class="ps-product__contact">
+                        <a href="https://wa.me/+2349034784675?text=Hello%2C%20I%E2%80%99m%20interested%20in%20the%20Laptop%20you%20posted%20on%20Funaab%20Buy"
+                           target="_blank">Chat Seller</a>
+                    </p>
+                    <br><br><br>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="ps-product">
+          <div class="ps-product__thumbnail">
+              <a href="JavaScript:void(0)" onclick="showImage('https://i.ibb.co/fqtVRPw/image.webp')">
+                   <img src="https://i.ibb.co/fqtVRPw/image.webp" alt="No image available"     />
+              </a>
+              <div class="ps-product__badge">
+                
+                      &#8358 9000
+              </div>
+          </div>
+          <div class="ps-product__container">
+              <a class="ps-product__vendor" href="JavaScript:void(0)">LOCATION: Gate</a>
+              <div class="ps-product__content">
+                  <a class="ps-product__title" href="JavaScript:void(0)" style="text-transform: uppercase;">
+                      Laptop
+                  </a>
+                  <p class="ps-product__contact">
+                      <a href="https://wa.me/2348118190597?text=Hello%2C%20I%E2%80%99m%20interested%20in%20the%20Laptop%20you%20posted%20on%20Funaab%20Buy"
+                         target="_blank">Chat Seller</a>
+                  </p>
+                  <br><br><br>
+              </div>
+          </div>
+      </div>
+
+
+
+
+
+      <div class="ps-product">
+        <div class="ps-product__thumbnail">
+            <a href="JavaScript:void(0)" onclick="showImage('https://i.ibb.co/fqtVRPw/image.webp')">
+                {% if product.product_image_url %}
+                    <img src="https://i.ibb.co/fqtVRPw/image.webp" alt="Laptop"    />
+                {% else %}
+                    <img src="https://i.ibb.co/fqtVRPw/image.webp" alt="No image available"     />
+                {% endif %}
+            </a>
+            <div class="ps-product__badge">
+              
+                    &#8358 9000
+            </div>
+        </div>
+        <div class="ps-product__container">
+            <a class="ps-product__vendor" href="JavaScript:void(0)">LOCATION: Gate</a>
+            <div class="ps-product__content">
+                <a class="ps-product__title" href="JavaScript:void(0)" style="text-transform: uppercase;">
+                    Laptop
+                </a>
+                <p class="ps-product__contact">
+                    <a href="https://wa.me/2348118190597?text=Hello%2C%20I%E2%80%99m%20interested%20in%20the%20Laptop%20you%20posted%20on%20Funaab%20Buy"
+                       target="_blank">Chat Seller</a>
+                </p>
+                <br><br><br>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
               <div class="ps-product">
                   <div class="ps-product__thumbnail">
-                      <a href="JavaScript:void(0)" onclick="showImage('{{ product.product_image_url }}')">
-                          {% if product.product_image_url %}
-                              <img src="{{ product.product_image_url }}" alt="{{ product.product_name }}"   />
-                          {% else %}
-                              <img src="{% static 'img/default-placeholder.png' %}" alt="No image available"     />
-                          {% endif %}
+                      <a href="JavaScript:void(0)" onclick="showImage('https://i.ibb.co/fqtVRPw/image.webp')">
+                       
+                              <img src="https://i.ibb.co/fqtVRPw/image.webp" alt="No image available"     />
+                        
                       </a>
                       <div class="ps-product__badge">
-                          {% if product.is_sold %}
-                              SOLD
-                          {% else %}
-                              &#8358 {{ product.formatted_price }}
-                          {% endif %}
+                          &#8358 8,000
                       </div>
                   </div>
                   <div class="ps-product__container">
-                      <a class="ps-product__vendor" href="JavaScript:void(0)">LOCATION: {{ product.location }}</a>
+                      <a class="ps-product__vendor" href="JavaScript:void(0)">LOCATION: Gate</a>
                       <div class="ps-product__content">
                           <a class="ps-product__title" href="JavaScript:void(0)" style="text-transform: uppercase;">
-                              {{ product.product_name }}
+                              Laptop
                           </a>
                           <p class="ps-product__contact">
-                              <a href="https://wa.me/{{ product.phone_number }}?text=Hello%2C%20I%E2%80%99m%20interested%20in%20the%20{{ product.product_name|urlencode }}%20you%20posted%20on%20Funaab%20Buy"
+                              <a href="https://wa.me/2348118190597?text=Hello%2C%20I%E2%80%99m%20interested%20in%20the%20Laptop%20you%20posted%20on%20Funaab%20Buy"
                                  target="_blank">Chat Seller</a>
                           </p>
                           <br><br><br>
                       </div>
                   </div>
               </div>
-          {% endfor %}
+       
 
           <a href="home" class="btn-next-category">View All</a> 
       </div>
@@ -647,39 +830,146 @@
           data-owl-mousedrag="on"
       >
           <!-- Loop through electronics products -->
-          {% for product in health_beauty %}
+
+
+
+
+
+
+
+          <div class="ps-product">
+            <div class="ps-product__thumbnail">
+                <a href="JavaScript:void(0)" onclick="showImage('https://i.ibb.co/fqtVRPw/image.webp')">
+                                           <img src="https://i.ibb.co/fqtVRPw/image.webp" alt="No image available"     />
+                </a>
+                <div class="ps-product__badge">
+                  
+                        &#8358 9000
+                </div>
+            </div>
+            <div class="ps-product__container">
+                <a class="ps-product__vendor" href="JavaScript:void(0)">LOCATION: Gate</a>
+                <div class="ps-product__content">
+                    <a class="ps-product__title" href="JavaScript:void(0)" style="text-transform: uppercase;">
+                        Laptop
+                    </a>
+                    <p class="ps-product__contact">
+                        <a href="https://wa.me/2348118190597?text=Hello%2C%20I%E2%80%99m%20interested%20in%20the%20Laptop%20you%20posted%20on%20Funaab%20Buy"
+                           target="_blank">Chat Seller</a>
+                    </p>
+                    <br><br><br>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+        <div class="ps-product">
+          <div class="ps-product__thumbnail">
+              <a href="JavaScript:void(0)" onclick="showImage('https://i.ibb.co/fqtVRPw/image.webp')">
+                   <img src="https://i.ibb.co/fqtVRPw/image.webp" alt="No image available"     />
+              </a>
+              <div class="ps-product__badge">
+                
+                      &#8358 9000
+              </div>
+          </div>
+          <div class="ps-product__container">
+              <a class="ps-product__vendor" href="JavaScript:void(0)">LOCATION: Gate</a>
+              <div class="ps-product__content">
+                  <a class="ps-product__title" href="JavaScript:void(0)" style="text-transform: uppercase;">
+                      Laptop
+                  </a>
+                  <p class="ps-product__contact">
+                      <a href="https://wa.me/2348118190597?text=Hello%2C%20I%E2%80%99m%20interested%20in%20the%20Laptop%20you%20posted%20on%20Funaab%20Buy"
+                         target="_blank">Chat Seller</a>
+                  </p>
+                  <br><br><br>
+              </div>
+          </div>
+      </div>
+
+
+
+
+
+
+
+
+
+
+      <div class="ps-product">
+        <div class="ps-product__thumbnail">
+            <a href="JavaScript:void(0)" onclick="showImage('https://i.ibb.co/fqtVRPw/image.webp')">
+                {% if product.product_image_url %}
+                    <img src="https://i.ibb.co/fqtVRPw/image.webp" alt="Laptop"    />
+                {% else %}
+                    <img src="https://i.ibb.co/fqtVRPw/image.webp" alt="No image available"     />
+                {% endif %}
+            </a>
+            <div class="ps-product__badge">
+              
+                    &#8358 9000
+            </div>
+        </div>
+        <div class="ps-product__container">
+            <a class="ps-product__vendor" href="JavaScript:void(0)">LOCATION: Gate</a>
+            <div class="ps-product__content">
+                <a class="ps-product__title" href="JavaScript:void(0)" style="text-transform: uppercase;">
+                    Laptop
+                </a>
+                <p class="ps-product__contact">
+                    <a href="https://wa.me/2348118190597?text=Hello%2C%20I%E2%80%99m%20interested%20in%20the%20Laptop%20you%20posted%20on%20Funaab%20Buy"
+                       target="_blank">Chat Seller</a>
+                </p>
+                <br><br><br>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
               <div class="ps-product">
                   <div class="ps-product__thumbnail">
-                      <a href="JavaScript:void(0)" onclick="showImage('{{ product.product_image_url }}')">
-                          {% if product.product_image_url %}
-                              <img src="{{ product.product_image_url }}" alt="{{ product.product_name }}"   />
-                          {% else %}
-                              <img src="{% static 'img/default-placeholder.png' %}" alt="No image available"     />
-                          {% endif %}
+                      <a href="JavaScript:void(0)" onclick="showImage('https://i.ibb.co/fqtVRPw/image.webp')">
+                          
+                              <img src="https://i.ibb.co/fqtVRPw/image.webp" alt="No image available"     />
+                        
                       </a>
                       <div class="ps-product__badge">
-                          {% if product.is_sold %}
-                              SOLD
-                          {% else %}
-                              &#8358 {{ product.formatted_price }}
-                          {% endif %}
+                          &#8358 8,000
                       </div>
                   </div>
                   <div class="ps-product__container">
-                      <a class="ps-product__vendor" href="JavaScript:void(0)">LOCATION: {{ product.location }}</a>
+                      <a class="ps-product__vendor" href="JavaScript:void(0)">LOCATION: Gate</a>
                       <div class="ps-product__content">
                           <a class="ps-product__title" href="JavaScript:void(0)" style="text-transform: uppercase;">
-                              {{ product.product_name }}
+                              Laptop
                           </a>
                           <p class="ps-product__contact">
-                              <a href="https://wa.me/{{ product.phone_number }}?text=Hello%2C%20I%E2%80%99m%20interested%20in%20the%20{{ product.product_name|urlencode }}%20you%20posted%20on%20Funaab%20Buy"
+                              <a href="https://wa.me/2348118190597?text=Hello%2C%20I%E2%80%99m%20interested%20in%20the%20Laptop%20you%20posted%20on%20Funaab%20Buy"
                                  target="_blank">Chat Seller</a>
                           </p>
                           <br><br><br>
                       </div>
                   </div>
               </div>
-          {% endfor %}
+          
           <a href="beauty" class="btn-next-category">View All</a> 
         </div>
   
@@ -724,39 +1014,141 @@
           data-owl-mousedrag="on"
       >
           <!-- Loop through electronics products -->
-          {% for product in jewelry_accessories %}
+         <div class="ps-product">
+                <div class="ps-product__thumbnail">
+                    <a href="JavaScript:void(0)" onclick="showImage('https://i.ibb.co/fqtVRPw/image.webp')">
+                        {% if product.product_image_url %}
+                            <img src="https://i.ibb.co/fqtVRPw/image.webp" alt="Laptop"    />
+                        {% else %}
+                            <img src="https://i.ibb.co/fqtVRPw/image.webp" alt="No image available"     />
+                        {% endif %}
+                    </a>
+                    <div class="ps-product__badge">
+                      
+                            &#8358 9000
+                    </div>
+                </div>
+                <div class="ps-product__container">
+                    <a class="ps-product__vendor" href="JavaScript:void(0)">LOCATION: Gate</a>
+                    <div class="ps-product__content">
+                        <a class="ps-product__title" href="JavaScript:void(0)" style="text-transform: uppercase;">
+                            Laptop
+                        </a>
+                        <p class="ps-product__contact">
+                            <a href="https://wa.me/2348118190597?text=Hello%2C%20I%E2%80%99m%20interested%20in%20the%20Laptop%20you%20posted%20on%20Funaab%20Buy"
+                               target="_blank">Chat Seller</a>
+                        </p>
+                        <br><br><br>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+            <div class="ps-product">
+              <div class="ps-product__thumbnail">
+                  <a href="JavaScript:void(0)" onclick="showImage('https://i.ibb.co/fqtVRPw/image.webp')">
+                      {% if product.product_image_url %}
+                          <img src="https://i.ibb.co/fqtVRPw/image.webp" alt="Laptop"    />
+                      {% else %}
+                          <img src="https://i.ibb.co/fqtVRPw/image.webp" alt="No image available"     />
+                      {% endif %}
+                  </a>
+                  <div class="ps-product__badge">
+                    
+                          &#8358 9000
+                  </div>
+              </div>
+              <div class="ps-product__container">
+                  <a class="ps-product__vendor" href="JavaScript:void(0)">LOCATION: Gate</a>
+                  <div class="ps-product__content">
+                      <a class="ps-product__title" href="JavaScript:void(0)" style="text-transform: uppercase;">
+                          Laptop
+                      </a>
+                      <p class="ps-product__contact">
+                          <a href="https://wa.me/2348118190597?text=Hello%2C%20I%E2%80%99m%20interested%20in%20the%20Laptop%20you%20posted%20on%20Funaab%20Buy"
+                             target="_blank">Chat Seller</a>
+                      </p>
+                      <br><br><br>
+                  </div>
+              </div>
+          </div>
+
+
+
+
+
+
+
+
+
+          <div class="ps-product">
+            <div class="ps-product__thumbnail">
+                <a href="JavaScript:void(0)" onclick="showImage('https://i.ibb.co/fqtVRPw/image.webp')">
+                                           <img src="https://i.ibb.co/fqtVRPw/image.webp" alt="No image available"     />
+                </a>
+                <div class="ps-product__badge">
+                  
+                        &#8358 9000
+                </div>
+            </div>
+            <div class="ps-product__container">
+                <a class="ps-product__vendor" href="JavaScript:void(0)">LOCATION: Gate</a>
+                <div class="ps-product__content">
+                    <a class="ps-product__title" href="JavaScript:void(0)" style="text-transform: uppercase;">
+                        Laptop
+                    </a>
+                    <p class="ps-product__contact">
+                        <a href="https://wa.me/2348118190597?text=Hello%2C%20I%E2%80%99m%20interested%20in%20the%20Laptop%20you%20posted%20on%20Funaab%20Buy"
+                           target="_blank">Chat Seller</a>
+                    </p>
+                    <br><br><br>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
               <div class="ps-product">
                   <div class="ps-product__thumbnail">
-                      <a href="JavaScript:void(0)" onclick="showImage('{{ product.product_image_url }}')">
-                          {% if product.product_image_url %}
-                              <img src="{{ product.product_image_url }}" alt="{{ product.product_name }}"   />
-                          {% else %}
-                              <img src="{% static 'img/default-placeholder.png' %}" alt="No image available"     />
-                          {% endif %}
+                      <a href="JavaScript:void(0)" onclick="showImage('https://i.ibb.co/fqtVRPw/image.webp')">
+                         
+                              <img src="https://i.ibb.co/fqtVRPw/image.webp" alt="No image available"     />
+                         
                       </a>
                       <div class="ps-product__badge">
-                          {% if product.is_sold %}
-                              SOLD
-                          {% else %}
-                              &#8358 {{ product.formatted_price }}
-                          {% endif %}
+                          &#8358 8,000
                       </div>
                   </div>
                   <div class="ps-product__container">
-                      <a class="ps-product__vendor" href="JavaScript:void(0)">LOCATION: {{ product.location }}</a>
+                      <a class="ps-product__vendor" href="JavaScript:void(0)">LOCATION: Gate</a>
                       <div class="ps-product__content">
                           <a class="ps-product__title" href="JavaScript:void(0)" style="text-transform: uppercase;">
-                              {{ product.product_name }}
+                              Laptop
                           </a>
                           <p class="ps-product__contact">
-                              <a href="https://wa.me/{{ product.phone_number }}?text=Hello%2C%20I%E2%80%99m%20interested%20in%20the%20{{ product.product_name|urlencode }}%20you%20posted%20on%20Funaab%20Buy"
+                              <a href="https://wa.me/2348118190597?text=Hello%2C%20I%E2%80%99m%20interested%20in%20the%20Laptop%20you%20posted%20on%20Funaab%20Buy"
                                  target="_blank">Chat Seller</a>
                           </p>
                           <br><br><br>
                       </div>
                   </div>
               </div>
-          {% endfor %}
+     
           <a href="jewelry" class="btn-next-category">View All</a> 
         </div>
   
@@ -807,39 +1199,145 @@
           data-owl-mousedrag="on"
       >
           <!-- Loop through electronics products -->
-          {% for product in apparel %}
+        
+
+
+
+
+
+          <div class="ps-product">
+            <div class="ps-product__thumbnail">
+                <a href="JavaScript:void(0)" onclick="showImage('https://i.ibb.co/fqtVRPw/image.webp')">
+                                           <img src="https://i.ibb.co/fqtVRPw/image.webp" alt="No image available"     />
+                </a>
+                <div class="ps-product__badge">
+                  
+                        &#8358 9000
+                </div>
+            </div>
+            <div class="ps-product__container">
+                <a class="ps-product__vendor" href="JavaScript:void(0)">LOCATION: Gate</a>
+                <div class="ps-product__content">
+                    <a class="ps-product__title" href="JavaScript:void(0)" style="text-transform: uppercase;">
+                        Laptop
+                    </a>
+                    <p class="ps-product__contact">
+                        <a href="https://wa.me/2348118190597?text=Hello%2C%20I%E2%80%99m%20interested%20in%20the%20Laptop%20you%20posted%20on%20Funaab%20Buy"
+                           target="_blank">Chat Seller</a>
+                    </p>
+                    <br><br><br>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+        <div class="ps-product">
+          <div class="ps-product__thumbnail">
+              <a href="JavaScript:void(0)" onclick="showImage('https://i.ibb.co/fqtVRPw/image.webp')">
+                   <img src="https://i.ibb.co/fqtVRPw/image.webp" alt="No image available"     />
+              </a>
+              <div class="ps-product__badge">
+                
+                      &#8358 9000
+              </div>
+          </div>
+          <div class="ps-product__container">
+              <a class="ps-product__vendor" href="JavaScript:void(0)">LOCATION: Gate</a>
+              <div class="ps-product__content">
+                  <a class="ps-product__title" href="JavaScript:void(0)" style="text-transform: uppercase;">
+                      Laptop
+                  </a>
+                  <p class="ps-product__contact">
+                      <a href="https://wa.me/2348118190597?text=Hello%2C%20I%E2%80%99m%20interested%20in%20the%20Laptop%20you%20posted%20on%20Funaab%20Buy"
+                         target="_blank">Chat Seller</a>
+                  </p>
+                  <br><br><br>
+              </div>
+          </div>
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+      <div class="ps-product">
+        <div class="ps-product__thumbnail">
+            <a href="JavaScript:void(0)" onclick="showImage('https://i.ibb.co/fqtVRPw/image.webp')">
+                {% if product.product_image_url %}
+                    <img src="https://i.ibb.co/fqtVRPw/image.webp" alt="Laptop"    />
+                {% else %}
+                    <img src="https://i.ibb.co/fqtVRPw/image.webp" alt="No image available"     />
+                {% endif %}
+            </a>
+            <div class="ps-product__badge">
+              
+                    &#8358 9000
+            </div>
+        </div>
+        <div class="ps-product__container">
+            <a class="ps-product__vendor" href="JavaScript:void(0)">LOCATION: Gate</a>
+            <div class="ps-product__content">
+                <a class="ps-product__title" href="JavaScript:void(0)" style="text-transform: uppercase;">
+                    Laptop
+                </a>
+                <p class="ps-product__contact">
+                    <a href="https://wa.me/2348118190597?text=Hello%2C%20I%E2%80%99m%20interested%20in%20the%20Laptop%20you%20posted%20on%20Funaab%20Buy"
+                       target="_blank">Chat Seller</a>
+                </p>
+                <br><br><br>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
               <div class="ps-product">
                   <div class="ps-product__thumbnail">
-                      <a href="JavaScript:void(0)" onclick="showImage('{{ product.product_image_url }}')">
-                          {% if product.product_image_url %}
-                              <img src="{{ product.product_image_url }}" alt="{{ product.product_name }}"   />
-                          {% else %}
-                              <img src="{% static 'img/default-placeholder.png' %}" alt="No image available"     />
-                          {% endif %}
+                      <a href="JavaScript:void(0)" onclick="showImage('https://i.ibb.co/fqtVRPw/image.webp')">
+                         
+                              <img src="https://i.ibb.co/fqtVRPw/image.webp" alt="Laptop"   />
+                         
                       </a>
                       <div class="ps-product__badge">
-                          {% if product.is_sold %}
-                              SOLD
-                          {% else %}
-                              &#8358 {{ product.formatted_price }}
-                          {% endif %}
+                          &#8358 8,000
                       </div>
                   </div>
                   <div class="ps-product__container">
-                      <a class="ps-product__vendor" href="JavaScript:void(0)">LOCATION: {{ product.location }}</a>
+                      <a class="ps-product__vendor" href="JavaScript:void(0)">LOCATION: Gate</a>
                       <div class="ps-product__content">
                           <a class="ps-product__title" href="JavaScript:void(0)" style="text-transform: uppercase;">
-                              {{ product.product_name }}
+                              Laptop
                           </a>
                           <p class="ps-product__contact">
-                              <a href="https://wa.me/{{ product.phone_number }}?text=Hello%2C%20I%E2%80%99m%20interested%20in%20the%20{{ product.product_name|urlencode }}%20you%20posted%20on%20Funaab%20Buy"
+                              <a href="https://wa.me/2348118190597?text=Hello%2C%20I%E2%80%99m%20interested%20in%20the%20Laptop%20you%20posted%20on%20Funaab%20Buy"
                                  target="_blank">Chat Seller</a>
                           </p>
                           <br><br><br>
                       </div>
                   </div>
               </div>
-          {% endfor %}
+          
           <a href="apparel" class="btn-next-category">View All</a> 
         </div>
   
@@ -887,39 +1385,139 @@
           data-owl-mousedrag="on"
       >
           <!-- Loop through electronics products -->
-          {% for product in footwear %}
+   
+
+
+
+
+          <div class="ps-product">
+            <div class="ps-product__thumbnail">
+                <a href="JavaScript:void(0)" onclick="showImage('https://i.ibb.co/fqtVRPw/image.webp')">
+                                           <img src="https://i.ibb.co/fqtVRPw/image.webp" alt="No image available"     />
+                </a>
+                <div class="ps-product__badge">
+                  
+                        &#8358 9000
+                </div>
+            </div>
+            <div class="ps-product__container">
+                <a class="ps-product__vendor" href="JavaScript:void(0)">LOCATION: Gate</a>
+                <div class="ps-product__content">
+                    <a class="ps-product__title" href="JavaScript:void(0)" style="text-transform: uppercase;">
+                        Laptop
+                    </a>
+                    <p class="ps-product__contact">
+                        <a href="https://wa.me/2348118190597?text=Hello%2C%20I%E2%80%99m%20interested%20in%20the%20Laptop%20you%20posted%20on%20Funaab%20Buy"
+                           target="_blank">Chat Seller</a>
+                    </p>
+                    <br><br><br>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+
+        <div class="ps-product">
+          <div class="ps-product__thumbnail">
+              <a href="JavaScript:void(0)" onclick="showImage('https://i.ibb.co/fqtVRPw/image.webp')">
+                   <img src="https://i.ibb.co/fqtVRPw/image.webp" alt="No image available"     />
+              </a>
+              <div class="ps-product__badge">
+                
+                      &#8358 9000
+              </div>
+          </div>
+          <div class="ps-product__container">
+              <a class="ps-product__vendor" href="JavaScript:void(0)">LOCATION: Gate</a>
+              <div class="ps-product__content">
+                  <a class="ps-product__title" href="JavaScript:void(0)" style="text-transform: uppercase;">
+                      Laptop
+                  </a>
+                  <p class="ps-product__contact">
+                      <a href="https://wa.me/2348118190597?text=Hello%2C%20I%E2%80%99m%20interested%20in%20the%20Laptop%20you%20posted%20on%20Funaab%20Buy"
+                         target="_blank">Chat Seller</a>
+                  </p>
+                  <br><br><br>
+              </div>
+          </div>
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+      <div class="ps-product">
+        <div class="ps-product__thumbnail">
+            <a href="JavaScript:void(0)" onclick="showImage('https://i.ibb.co/fqtVRPw/image.webp')">
+                {% if product.product_image_url %}
+                    <img src="https://i.ibb.co/fqtVRPw/image.webp" alt="Laptop"    />
+                {% else %}
+                    <img src="https://i.ibb.co/fqtVRPw/image.webp" alt="No image available"     />
+                {% endif %}
+            </a>
+            <div class="ps-product__badge">
+              
+                    &#8358 9000
+            </div>
+        </div>
+        <div class="ps-product__container">
+            <a class="ps-product__vendor" href="JavaScript:void(0)">LOCATION: Gate</a>
+            <div class="ps-product__content">
+                <a class="ps-product__title" href="JavaScript:void(0)" style="text-transform: uppercase;">
+                    Laptop
+                </a>
+                <p class="ps-product__contact">
+                    <a href="https://wa.me/2348118190597?text=Hello%2C%20I%E2%80%99m%20interested%20in%20the%20Laptop%20you%20posted%20on%20Funaab%20Buy"
+                       target="_blank">Chat Seller</a>
+                </p>
+                <br><br><br>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
               <div class="ps-product">
                   <div class="ps-product__thumbnail">
-                      <a href="JavaScript:void(0)" onclick="showImage('{{ product.product_image_url }}')">
-                          {% if product.product_image_url %}
-                              <img src="{{ product.product_image_url }}" alt="{{ product.product_name }}"   />
-                          {% else %}
-                              <img src="{% static 'img/default-placeholder.png' %}" alt="No image available"     />
-                          {% endif %}
+                      <a href="JavaScript:void(0)" onclick="showImage('https://i.ibb.co/fqtVRPw/image.webp')">
+                         
+                              <img src="https://i.ibb.co/fqtVRPw/image.webp" alt="No image available"     />
+                      
                       </a>
                       <div class="ps-product__badge">
-                          {% if product.is_sold %}
-                              SOLD
-                          {% else %}
-                              &#8358 {{ product.formatted_price }}
-                          {% endif %}
+                          &#8358 8,000
                       </div>
                   </div>
                   <div class="ps-product__container">
-                      <a class="ps-product__vendor" href="JavaScript:void(0)">LOCATION: {{ product.location }}</a>
+                      <a class="ps-product__vendor" href="JavaScript:void(0)">LOCATION: Gate</a>
                       <div class="ps-product__content">
                           <a class="ps-product__title" href="JavaScript:void(0)" style="text-transform: uppercase;">
-                              {{ product.product_name }}
+                              Laptop
                           </a>
                           <p class="ps-product__contact">
-                              <a href="https://wa.me/{{ product.phone_number }}?text=Hello%2C%20I%E2%80%99m%20interested%20in%20the%20{{ product.product_name|urlencode }}%20you%20posted%20on%20Funaab%20Buy"
+                              <a href="https://wa.me/2348118190597?text=Hello%2C%20I%E2%80%99m%20interested%20in%20the%20Laptop%20you%20posted%20on%20Funaab%20Buy"
                                  target="_blank">Chat Seller</a>
                           </p>
                           <br><br><br>
                       </div>
                   </div>
               </div>
-          {% endfor %}
+        
           <a href="footwear" class="btn-next-category">View All</a> 
         </div>
   
@@ -977,39 +1575,153 @@
           data-owl-mousedrag="on"
       >
           <!-- Loop through electronics products -->
-          {% for product in headgear %}
+        <div class="ps-product">
+                <div class="ps-product__thumbnail">
+                    <a href="JavaScript:void(0)" onclick="showImage('https://i.ibb.co/fqtVRPw/image.webp')">
+                        {% if product.product_image_url %}
+                            <img src="https://i.ibb.co/fqtVRPw/image.webp" alt="Laptop"    />
+                        {% else %}
+                            <img src="https://i.ibb.co/fqtVRPw/image.webp" alt="No image available"     />
+                        {% endif %}
+                    </a>
+                    <div class="ps-product__badge">
+                      
+                            &#8358 9000
+                    </div>
+                </div>
+                <div class="ps-product__container">
+                    <a class="ps-product__vendor" href="JavaScript:void(0)">LOCATION: Gate</a>
+                    <div class="ps-product__content">
+                        <a class="ps-product__title" href="JavaScript:void(0)" style="text-transform: uppercase;">
+                            Laptop
+                        </a>
+                        <p class="ps-product__contact">
+                            <a href="https://wa.me/2348118190597?text=Hello%2C%20I%E2%80%99m%20interested%20in%20the%20Laptop%20you%20posted%20on%20Funaab%20Buy"
+                               target="_blank">Chat Seller</a>
+                        </p>
+                        <br><br><br>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+
+
+            <div class="ps-product">
+              <div class="ps-product__thumbnail">
+                  <a href="JavaScript:void(0)" onclick="showImage('https://i.ibb.co/fqtVRPw/image.webp')">
+                      {% if product.product_image_url %}
+                          <img src="https://i.ibb.co/fqtVRPw/image.webp" alt="Laptop"    />
+                      {% else %}
+                          <img src="https://i.ibb.co/fqtVRPw/image.webp" alt="No image available"     />
+                      {% endif %}
+                  </a>
+                  <div class="ps-product__badge">
+                    
+                          &#8358 9000
+                  </div>
+              </div>
+              <div class="ps-product__container">
+                  <a class="ps-product__vendor" href="JavaScript:void(0)">LOCATION: Gate</a>
+                  <div class="ps-product__content">
+                      <a class="ps-product__title" href="JavaScript:void(0)" style="text-transform: uppercase;">
+                          Laptop
+                      </a>
+                      <p class="ps-product__contact">
+                          <a href="https://wa.me/2348118190597?text=Hello%2C%20I%E2%80%99m%20interested%20in%20the%20Laptop%20you%20posted%20on%20Funaab%20Buy"
+                             target="_blank">Chat Seller</a>
+                      </p>
+                      <br><br><br>
+                  </div>
+              </div>
+          </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          <div class="ps-product">
+            <div class="ps-product__thumbnail">
+                <a href="JavaScript:void(0)" onclick="showImage('https://i.ibb.co/fqtVRPw/image.webp')">
+                                           <img src="https://i.ibb.co/fqtVRPw/image.webp" alt="No image available"     />
+                </a>
+                <div class="ps-product__badge">
+                  
+                        &#8358 9000
+                </div>
+            </div>
+            <div class="ps-product__container">
+                <a class="ps-product__vendor" href="JavaScript:void(0)">LOCATION: Gate</a>
+                <div class="ps-product__content">
+                    <a class="ps-product__title" href="JavaScript:void(0)" style="text-transform: uppercase;">
+                        Laptop
+                    </a>
+                    <p class="ps-product__contact">
+                        <a href="https://wa.me/2348118190597?text=Hello%2C%20I%E2%80%99m%20interested%20in%20the%20Laptop%20you%20posted%20on%20Funaab%20Buy"
+                           target="_blank">Chat Seller</a>
+                    </p>
+                    <br><br><br>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
               <div class="ps-product">
                   <div class="ps-product__thumbnail">
-                      <a href="JavaScript:void(0)" onclick="showImage('{{ product.product_image_url }}')">
-                          {% if product.product_image_url %}
-                              <img src="{{ product.product_image_url }}" alt="{{ product.product_name }}"   />
-                          {% else %}
-                              <img src="{% static 'img/default-placeholder.png' %}" alt="No image available"     />
-                          {% endif %}
+                      <a href="JavaScript:void(0)" onclick="showImage('https://i.ibb.co/fqtVRPw/image.webp')">
+                        
+                              <img src="https://i.ibb.co/fqtVRPw/image.webp" alt="No image available"     />
+                        
                       </a>
                       <div class="ps-product__badge">
-                          {% if product.is_sold %}
-                              SOLD
-                          {% else %}
-                              &#8358 {{ product.formatted_price }}
-                          {% endif %}
+                          &#8358 8,000
                       </div>
                   </div>
                   <div class="ps-product__container">
-                      <a class="ps-product__vendor" href="JavaScript:void(0)">LOCATION: {{ product.location }}</a>
+                      <a class="ps-product__vendor" href="JavaScript:void(0)">LOCATION: Gate</a>
                       <div class="ps-product__content">
                           <a class="ps-product__title" href="JavaScript:void(0)" style="text-transform: uppercase;">
-                              {{ product.product_name }}
+                              Laptop
                           </a>
                           <p class="ps-product__contact">
-                              <a href="https://wa.me/{{ product.phone_number }}?text=Hello%2C%20I%E2%80%99m%20interested%20in%20the%20{{ product.product_name|urlencode }}%20you%20posted%20on%20Funaab%20Buy"
+                              <a href="https://wa.me/2348118190597?text=Hello%2C%20I%E2%80%99m%20interested%20in%20the%20Laptop%20you%20posted%20on%20Funaab%20Buy"
                                  target="_blank">Chat Seller</a>
                           </p>
                           <br><br><br>
                       </div>
                   </div>
               </div>
-          {% endfor %}
+     
           <a href="headgear" class="btn-next-category">View All</a> 
         </div>
   
@@ -1063,39 +1775,147 @@
           data-owl-mousedrag="on"
       >
           <!-- Loop through electronics products -->
-          {% for product in gadgets_computers %}
+         <div class="ps-product">
+                <div class="ps-product__thumbnail">
+                    <a href="JavaScript:void(0)" onclick="showImage('https://i.ibb.co/fqtVRPw/image.webp')">
+                        {% if product.product_image_url %}
+                            <img src="https://i.ibb.co/fqtVRPw/image.webp" alt="Laptop"    />
+                        {% else %}
+                            <img src="https://i.ibb.co/fqtVRPw/image.webp" alt="No image available"     />
+                        {% endif %}
+                    </a>
+                    <div class="ps-product__badge">
+                      
+                            &#8358 9000
+                    </div>
+                </div>
+                <div class="ps-product__container">
+                    <a class="ps-product__vendor" href="JavaScript:void(0)">LOCATION: Gate</a>
+                    <div class="ps-product__content">
+                        <a class="ps-product__title" href="JavaScript:void(0)" style="text-transform: uppercase;">
+                            Laptop
+                        </a>
+                        <p class="ps-product__contact">
+                            <a href="https://wa.me/2348118190597?text=Hello%2C%20I%E2%80%99m%20interested%20in%20the%20Laptop%20you%20posted%20on%20Funaab%20Buy"
+                               target="_blank">Chat Seller</a>
+                        </p>
+                        <br><br><br>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+
+
+            <div class="ps-product">
+              <div class="ps-product__thumbnail">
+                  <a href="JavaScript:void(0)" onclick="showImage('https://i.ibb.co/fqtVRPw/image.webp')">
+                      {% if product.product_image_url %}
+                          <img src="https://i.ibb.co/fqtVRPw/image.webp" alt="Laptop"    />
+                      {% else %}
+                          <img src="https://i.ibb.co/fqtVRPw/image.webp" alt="No image available"     />
+                      {% endif %}
+                  </a>
+                  <div class="ps-product__badge">
+                    
+                          &#8358 9000
+                  </div>
+              </div>
+              <div class="ps-product__container">
+                  <a class="ps-product__vendor" href="JavaScript:void(0)">LOCATION: Gate</a>
+                  <div class="ps-product__content">
+                      <a class="ps-product__title" href="JavaScript:void(0)" style="text-transform: uppercase;">
+                          Laptop
+                      </a>
+                      <p class="ps-product__contact">
+                          <a href="https://wa.me/2348118190597?text=Hello%2C%20I%E2%80%99m%20interested%20in%20the%20Laptop%20you%20posted%20on%20Funaab%20Buy"
+                             target="_blank">Chat Seller</a>
+                      </p>
+                      <br><br><br>
+                  </div>
+              </div>
+          </div>
+
+
+
+
+
+
+
+
+
+
+
+
+          <div class="ps-product">
+            <div class="ps-product__thumbnail">
+                <a href="JavaScript:void(0)" onclick="showImage('https://i.ibb.co/fqtVRPw/image.webp')">
+                                           <img src="https://i.ibb.co/fqtVRPw/image.webp" alt="No image available"     />
+                </a>
+                <div class="ps-product__badge">
+                  
+                        &#8358 9000
+                </div>
+            </div>
+            <div class="ps-product__container">
+                <a class="ps-product__vendor" href="JavaScript:void(0)">LOCATION: Gate</a>
+                <div class="ps-product__content">
+                    <a class="ps-product__title" href="JavaScript:void(0)" style="text-transform: uppercase;">
+                        Laptop
+                    </a>
+                    <p class="ps-product__contact">
+                        <a href="https://wa.me/2348118190597?text=Hello%2C%20I%E2%80%99m%20interested%20in%20the%20Laptop%20you%20posted%20on%20Funaab%20Buy"
+                           target="_blank">Chat Seller</a>
+                    </p>
+                    <br><br><br>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
               <div class="ps-product">
                   <div class="ps-product__thumbnail">
-                      <a href="JavaScript:void(0)" onclick="showImage('{{ product.product_image_url }}')">
-                          {% if product.product_image_url %}
-                              <img src="{{ product.product_image_url }}" alt="{{ product.product_name }}"   />
-                          {% else %}
-                              <img src="{% static 'img/default-placeholder.png' %}" alt="No image available"     />
-                          {% endif %}
+                      <a href="JavaScript:void(0)" onclick="showImage('https://i.ibb.co/fqtVRPw/image.webp')">
+                         
+                              <img src="https://i.ibb.co/fqtVRPw/image.webp" alt="No image available"     />
+                    
                       </a>
                       <div class="ps-product__badge">
-                          {% if product.is_sold %}
-                              SOLD
-                          {% else %}
-                              &#8358 {{ product.formatted_price }}
-                          {% endif %}
+                          &#8358 8,000
                       </div>
                   </div>
                   <div class="ps-product__container">
-                      <a class="ps-product__vendor" href="JavaScript:void(0)">LOCATION: {{ product.location }}</a>
+                      <a class="ps-product__vendor" href="JavaScript:void(0)">LOCATION: Gate</a>
                       <div class="ps-product__content">
                           <a class="ps-product__title" href="JavaScript:void(0)" style="text-transform: uppercase;">
-                              {{ product.product_name }}
+                              Laptop
                           </a>
                           <p class="ps-product__contact">
-                              <a href="https://wa.me/{{ product.phone_number }}?text=Hello%2C%20I%E2%80%99m%20interested%20in%20the%20{{ product.product_name|urlencode }}%20you%20posted%20on%20Funaab%20Buy"
+                              <a href="https://wa.me/2348118190597?text=Hello%2C%20I%E2%80%99m%20interested%20in%20the%20Laptop%20you%20posted%20on%20Funaab%20Buy"
                                  target="_blank">Chat Seller</a>
                           </p>
                           <br><br><br>
                       </div>
                   </div>
               </div>
-          {% endfor %}
+        
           <a href="computers" class="btn-next-category">View All</a> 
         </div>
   
@@ -1141,40 +1961,148 @@
           data-owl-duration="1000"
           data-owl-mousedrag="on"
       >
-          <!-- Loop through electronics products -->
-          {% for product in food %}
+    
+
+
+
+
+
+
+      <div class="ps-product">
+        <div class="ps-product__thumbnail">
+            <a href="JavaScript:void(0)" onclick="showImage('https://i.ibb.co/fqtVRPw/image.webp')">
+                {% if product.product_image_url %}
+                    <img src="https://i.ibb.co/fqtVRPw/image.webp" alt="Laptop"    />
+                {% else %}
+                    <img src="https://i.ibb.co/fqtVRPw/image.webp" alt="No image available"     />
+                {% endif %}
+            </a>
+            <div class="ps-product__badge">
+              
+                    &#8358 9000
+            </div>
+        </div>
+        <div class="ps-product__container">
+            <a class="ps-product__vendor" href="JavaScript:void(0)">LOCATION: Gate</a>
+            <div class="ps-product__content">
+                <a class="ps-product__title" href="JavaScript:void(0)" style="text-transform: uppercase;">
+                    Laptop
+                </a>
+                <p class="ps-product__contact">
+                    <a href="https://wa.me/2348118190597?text=Hello%2C%20I%E2%80%99m%20interested%20in%20the%20Laptop%20you%20posted%20on%20Funaab%20Buy"
+                       target="_blank">Chat Seller</a>
+                </p>
+                <br><br><br>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+    <div class="ps-product">
+      <div class="ps-product__thumbnail">
+          <a href="JavaScript:void(0)" onclick="showImage('https://i.ibb.co/fqtVRPw/image.webp')">
+              {% if product.product_image_url %}
+                  <img src="https://i.ibb.co/fqtVRPw/image.webp" alt="Laptop"    />
+              {% else %}
+                  <img src="https://i.ibb.co/fqtVRPw/image.webp" alt="No image available"     />
+              {% endif %}
+          </a>
+          <div class="ps-product__badge">
+            
+                  &#8358 9000
+          </div>
+      </div>
+      <div class="ps-product__container">
+          <a class="ps-product__vendor" href="JavaScript:void(0)">LOCATION: Gate</a>
+          <div class="ps-product__content">
+              <a class="ps-product__title" href="JavaScript:void(0)" style="text-transform: uppercase;">
+                  Laptop
+              </a>
+              <p class="ps-product__contact">
+                  <a href="https://wa.me/2348118190597?text=Hello%2C%20I%E2%80%99m%20interested%20in%20the%20Laptop%20you%20posted%20on%20Funaab%20Buy"
+                     target="_blank">Chat Seller</a>
+              </p>
+              <br><br><br>
+          </div>
+      </div>
+  </div>
+
+
+
+
+
+
+
+
+  <div class="ps-product">
+    <div class="ps-product__thumbnail">
+        <a href="JavaScript:void(0)" onclick="showImage('https://i.ibb.co/fqtVRPw/image.webp')">
+            {% if product.product_image_url %}
+                <img src="https://i.ibb.co/fqtVRPw/image.webp" alt="Laptop"    />
+            {% else %}
+                <img src="https://i.ibb.co/fqtVRPw/image.webp" alt="No image available"     />
+            {% endif %}
+        </a>
+        <div class="ps-product__badge">
+          
+                &#8358 9000
+        </div>
+    </div>
+    <div class="ps-product__container">
+        <a class="ps-product__vendor" href="JavaScript:void(0)">LOCATION: Gate</a>
+        <div class="ps-product__content">
+            <a class="ps-product__title" href="JavaScript:void(0)" style="text-transform: uppercase;">
+                Laptop
+            </a>
+            <p class="ps-product__contact">
+                <a href="https://wa.me/2348118190597?text=Hello%2C%20I%E2%80%99m%20interested%20in%20the%20Laptop%20you%20posted%20on%20Funaab%20Buy"
+                   target="_blank">Chat Seller</a>
+            </p>
+            <br><br><br>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
               <div class="ps-product">
                   <div class="ps-product__thumbnail">
-                      <a href="JavaScript:void(0)" onclick="showImage('{{ product.product_image_url }}')">
-                          {% if product.product_image_url %}
-                              <img src="{{ product.product_image_url }}" alt="{{ product.product_name }}"   />
-                          {% else %}
-                              <img src="{% static 'img/default-placeholder.png' %}" alt="No image available"     />
-                          {% endif %}
+                      <a href="JavaScript:void(0)" onclick="showImage('https://i.ibb.co/fqtVRPw/image.webp')">
+                        
+                              <img src="https://i.ibb.co/fqtVRPw/image.webp" alt="No image available"     />
+                    
                       </a>
                       <div class="ps-product__badge">
-                          {% if product.is_sold %}
-                              SOLD
-                          {% else %}
-                              &#8358 {{ product.formatted_price }}
-                          {% endif %}
+                          &#8358 8,000
                       </div>
                   </div>
                   <div class="ps-product__container">
-                      <a class="ps-product__vendor" href="JavaScript:void(0)">LOCATION: {{ product.location }}</a>
+                      <a class="ps-product__vendor" href="JavaScript:void(0)">LOCATION: Gate</a>
                       <div class="ps-product__content">
                           <a class="ps-product__title" href="JavaScript:void(0)" style="text-transform: uppercase;">
-                              {{ product.product_name }}
+                              Laptop
                           </a>
                           <p class="ps-product__contact">
-                              <a href="https://wa.me/{{ product.phone_number }}?text=Hello%2C%20I%E2%80%99m%20interested%20in%20the%20{{ product.product_name|urlencode }}%20you%20posted%20on%20Funaab%20Buy"
+                              <a href="https://wa.me/2348118190597?text=Hello%2C%20I%E2%80%99m%20interested%20in%20the%20Laptop%20you%20posted%20on%20Funaab%20Buy"
                                  target="_blank">Chat Seller</a>
                           </p>
                           <br><br><br>
                       </div>
                   </div>
               </div>
-          {% endfor %}
+         
           <a href="food" class="btn-next-category">View All</a> 
         </div>
   
