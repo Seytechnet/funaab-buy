@@ -20,6 +20,10 @@ from collections import defaultdict
 from django.core.cache import cache
 
 
+from django.db.models import QuerySet
+
+from asgiref.sync import sync_to_async
+
 
 
 def ping(request):
@@ -302,42 +306,48 @@ def user_login(request):
 
 
 
-def index(request):
-    # Cache key for storing the products
+# Async function to handle the database fetching
+@sync_to_async
+def get_products_from_db():
+    # Fetch products from database and process them
+    products = Product.objects.filter(product_category__in=[
+        'electronics', 'home', 'health_beauty', 'jewelry_accessories',
+        'apparel', 'bags', 'footwear', 'headgear', 'gadgets_computers', 'food'
+    ]).order_by('product_category', '-created_at')
+
+    # Group products by category and limit to 4 per category
+    grouped_products = defaultdict(list)
+    for product in products:
+        if len(grouped_products[product.product_category]) < 4:
+            grouped_products[product.product_category].append(product)
+
+    return grouped_products
+
+async def index(request):
+    # Try to fetch from cache
     cache_key = 'homepage_products'
     data = cache.get(cache_key)
 
     if not data:
-        # Fetch all required products at once
-        products = Product.objects.filter(product_category__in=[
-            'electronics', 'home', 'health_beauty', 'jewelry_accessories',
-            'apparel', 'bags', 'footwear', 'headgear', 'gadgets_computers', 'food'
-        ]).order_by('product_category', '-created_at')
+        # Fetch products in the background (async)
+        data = await get_products_from_db()
 
-        # Group products by category and limit to 4 per category
-        grouped_products = defaultdict(list)
-        for product in products:
-            if len(grouped_products[product.product_category]) < 4:
-                grouped_products[product.product_category].append(product)
-
-        # Save grouped data to cache
-        data = grouped_products
+        # Save the grouped data to cache
         cache.set(cache_key, data, timeout=60 * 5)  # Cache for 5 minutes
 
-    # Render the template with cached or fetched data
+    # Render the template with the data (data will either be cached or freshly fetched)
     return render(request, 'index.html', {
-        'electronics': data['electronics'],
-        'home': data['home'],
-        'health_beauty': data['health_beauty'],
-        'jewelry_accessories': data['jewelry_accessories'],
-        'apparel': data['apparel'],
-        'bags': data['bags'],
-        'footwear': data['footwear'],
-        'headgear': data['headgear'],
-        'gadgets_computers': data['gadgets_computers'],
-        'food': data['food'],
+        'electronics': data.get('electronics', []),
+        'home': data.get('home', []),
+        'health_beauty': data.get('health_beauty', []),
+        'jewelry_accessories': data.get('jewelry_accessories', []),
+        'apparel': data.get('apparel', []),
+        'bags': data.get('bags', []),
+        'footwear': data.get('footwear', []),
+        'headgear': data.get('headgear', []),
+        'gadgets_computers': data.get('gadgets_computers', []),
+        'food': data.get('food', []),
     })
-
 
     
     
