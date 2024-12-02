@@ -13,9 +13,16 @@ from datetime import timedelta
 from django.http import JsonResponse
 from PIL import Image
 import io
-
+from django.db.models import Q
 from .utils import upload_image_to_imgbb  # Assuming the above function is in utils.py
 
+from collections import defaultdict
+from django.core.cache import cache
+
+
+from django.db.models import QuerySet
+
+from asgiref.sync import sync_to_async
 
 
 
@@ -297,10 +304,15 @@ def user_login(request):
     
     return render(request, 'login.html')
 
-def index(request):
-    products = Product.objects.all().order_by('-created_at')
-    return render(request, 'index.html', {'products': products})
 
+def index(request):
+    return render(request, 'index.html')
+    
+    
+    
+    
+    
+    
 
 CATEGORY_URL_MAPPING = {
     'electronics': 'electronics',
@@ -315,73 +327,55 @@ CATEGORY_URL_MAPPING = {
     'gadgets_computers': 'computers',
 }
 @login_required(login_url='Eapp:login')
-
-
 def sell(request):
     if request.method == 'POST':
-        # Get today's date range
+        # Set up today's date range
         today_start = now().replace(hour=0, minute=0, second=0, microsecond=0)
         today_end = today_start + timedelta(days=1)
 
-        # Count the user's products uploaded today
+        # Check the user's daily upload limit
         user_products_today = Product.objects.filter(
             user=request.user, created_at__range=(today_start, today_end)
         ).count()
-
-        # Enforce daily upload limit
         if user_products_today >= 3:
             messages.error(request, "You can only upload a maximum of 3 products per day.")
-            return redirect('Eapp:index')  # Redirect back to the sell page
+            return redirect('Eapp:index')
 
-        # Process form submission
         form = ProductForm(request.POST, request.FILES)
         if form.is_valid():
             product = form.save(commit=False)
-            product.user = request.user  # Set the logged-in user
+            product.user = request.user
 
-            # Get the uploaded image from the form
             product_image = request.FILES.get('product_image')
 
             if product_image:
-                # Validate that the file is an image
-                if product_image.content_type not in ['image/jpeg', 'image/png', 'image/gif']:
+                # Validate file type to ignore non-image uploads
+                if product_image.content_type not in ['image/jpeg', 'image/png', 'image/gif', 'image/pjpeg']:
                     messages.error(request, 'Only image files are allowed (JPEG, PNG, GIF).')
                     return render(request, 'sell.html', {'form': form})
 
-                # Convert the image to WebP format using Pillow
                 try:
-                    image = Image.open(product_image)
-                    image = image.convert('RGB')  # Convert to RGB to ensure compatibility
-                    webp_image_io = io.BytesIO()
-                    image.save(webp_image_io, format='WEBP')
-                    webp_image_io.seek(0)
-
-                    # Upload the WebP image to ImgBB and get the URL
-                    image_url = upload_image_to_imgbb(webp_image_io)
-
+                    # Upload to ImgBB
+                    image_url = upload_image_to_imgbb(product_image)
                     if image_url:
-                        # Save the ImgBB image URL in the product
                         product.product_image_url = image_url
+                    else:
+                        messages.error(request, 'Failed to upload the image. Please try again.')
+                        return render(request, 'sell.html', {'form': form})
 
                 except Exception as e:
-                    messages.error(request, f'Error converting image: {str(e)}')
+                    messages.error(request, f'Error processing image: {str(e)}')
                     return render(request, 'sell.html', {'form': form})
 
-            product.save()  # Save the product after updating the image URL
-            category = product.product_category  # Get the product category
-
-            # Get the URL slug from the mapping
-            category_slug = CATEGORY_URL_MAPPING.get(category, 'Eapp:shop')  # Default to 'shop' if category not found
+            product.save()
+            category_slug = CATEGORY_URL_MAPPING.get(product.product_category, 'Eapp:shop')
 
             messages.success(request, 'Product uploaded successfully! Redirecting in 3 seconds.')
-
-            # Set session flag to show the modal
             request.session['show_share_modal'] = True
 
-            return redirect(f'/{category_slug}')  # Redirect to the category page
+            return redirect(f'/{category_slug}')
         else:
-            # If the form is invalid, display an error message
-            messages.error(request, 'There was an error with your submission. Please check the details and try again.')
+            messages.error(request, 'Invalid submission. Please check your details and try again.')
     else:
         form = ProductForm()
 

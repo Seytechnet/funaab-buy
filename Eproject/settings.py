@@ -49,6 +49,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'Eapp',
+    'tracking',
+   
 ]
 
 MIDDLEWARE = [
@@ -60,6 +62,8 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'Eapp.middleware.Custom404Middleware',
+   
+    'tracking.middleware.VisitorTrackingMiddleware',
 ]
 
 ROOT_URLCONF = 'Eproject.urls'
@@ -138,6 +142,8 @@ USE_TZ = True
 # URL to access static files
 STATIC_URL = '/static/'
 
+
+
 # This is where Django will collect all static files for production
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
@@ -156,6 +162,28 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
-MESSAGE_LEVEL = message_constants.DEBUG
+
 
 LOGIN_REDIRECT_URL = 'index'
+
+# CACHES = {
+#     'default': {
+#         'BACKEND': 'django_redis.cache.RedisCache',
+#         'LOCATION': 'redis://red-ct4o71l6l47c73fa8ne0:6379',
+#         'OPTIONS': {
+#             'CLIENT_CLASS': 'django_redis.client.DefaultClient',
+#         }
+#     }
+# }
+
+
+
+
+
+# # Security settings for production
+# SECURE_HSTS_SECONDS = 3600  # Adjust after HTTPS confirmation
+# SECURE_SSL_REDIRECT = True
+# SECURE_BROWSER_XSS_FILTER = True
+# SECURE_CONTENT_TYPE_NOSNIFF = True
+# SESSION_COOKIE_SECURE = True
+# CSRF_COOKIE_SECURE = True
