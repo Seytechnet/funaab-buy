@@ -11,8 +11,12 @@ from django.utils.timezone import now, timedelta
 from django.utils import timezone
 from datetime import timedelta
 from django.http import JsonResponse
+from PIL import Image
+import io
 
 from .utils import upload_image_to_imgbb  # Assuming the above function is in utils.py
+
+
 
 
 def ping(request):
@@ -311,6 +315,8 @@ CATEGORY_URL_MAPPING = {
     'gadgets_computers': 'computers',
 }
 @login_required(login_url='Eapp:login')
+
+
 def sell(request):
     if request.method == 'POST':
         # Get today's date range
@@ -342,12 +348,24 @@ def sell(request):
                     messages.error(request, 'Only image files are allowed (JPEG, PNG, GIF).')
                     return render(request, 'sell.html', {'form': form})
 
-                # Upload the image to ImgBB and get the URL
-                image_url = upload_image_to_imgbb(product_image)
+                # Convert the image to WebP format using Pillow
+                try:
+                    image = Image.open(product_image)
+                    image = image.convert('RGB')  # Convert to RGB to ensure compatibility
+                    webp_image_io = io.BytesIO()
+                    image.save(webp_image_io, format='WEBP')
+                    webp_image_io.seek(0)
 
-                if image_url:
-                    # Save the ImgBB image URL in the product
-                    product.product_image_url = image_url
+                    # Upload the WebP image to ImgBB and get the URL
+                    image_url = upload_image_to_imgbb(webp_image_io)
+
+                    if image_url:
+                        # Save the ImgBB image URL in the product
+                        product.product_image_url = image_url
+
+                except Exception as e:
+                    messages.error(request, f'Error converting image: {str(e)}')
+                    return render(request, 'sell.html', {'form': form})
 
             product.save()  # Save the product after updating the image URL
             category = product.product_category  # Get the product category
