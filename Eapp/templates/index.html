@@ -1,6 +1,15 @@
 {% load static %}
 <html lang="en">
-  <head>
+  <head><!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-WHR6H0QVCM"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+    
+      gtag('config', 'G-WHR6H0QVCM');
+    </script>
+    <!-- Basic Meta Tags -->
 <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -92,10 +101,8 @@
       rel="stylesheet"
       href="{% static 'plugins/select2/dist/css/select2.min.css' %}"
     />
-
-   
     <link rel="stylesheet" href="{% static 'css/style.css' %}" />
-  
+
     <style>
 /* Modal container */
 .modal {
@@ -236,34 +243,6 @@
     padding: 8px 10px;
   }
 }
-
-
- 
- /* Style for the 'Next' button */
- .btn-next-category {
-     display: inline-block;
-     background:;
-     background:linear-gradient(135deg, #11998e, #38ef7d);
-     color: #fff;
-     padding: 12px 20px;
-     border-radius: 5px;
-     text-decoration: none;
-     font-weight: bold;
-     text-align: center;
-     margin-top: 60px;
-     margin-left: 20px;
-     transition: background-color 0.3s;
- }
-
- .btn-next-category:hover {
-     background-color: #0056b3;
- }
-
- .btn-next-category:focus {
-     outline: none;
- }
-
-
 </style>
 
   </head>
@@ -275,7 +254,7 @@
           <div class="header__left">
             <div class="menu--product-categories"></div>
             <a class="ps-logo" href=""
-              ><img src="{% static 'img/logo_light.png' %}" alt="" 
+              ><img src="{% static 'img/logo_light.png' %}" alt=""
             /></a>
           </div>
           <div class="header__center"></div>
@@ -518,11 +497,11 @@
     <div class="ps-product-list ps-clothings">
   <div class="ps-container">
     <!-- Consumer Electronics Section -->
-   <div class="ps-section__header">
-    <h3>Electronics</h3>
-</div>
-<div class="ps-section__content">
-    <div
+    <div class="ps-section__header">
+      <h3> Electronics</h3>
+    </div>
+    <div class="ps-section__content">
+      <div
         class="ps-carousel--nav owl-slider"
         data-owl-auto="false"
         data-owl-loop="false"
@@ -538,16 +517,21 @@
         data-owl-item-xl="6"
         data-owl-duration="1000"
         data-owl-mousedrag="on"
-    >
+      >
         <!-- Loop through electronics products -->
-        {% for product in electronics %}
-            <div class="ps-product">
-                <div class="ps-product__thumbnail">
+       {% for product in products %}
+  {% if product.product_category == 'electronics' %}
+    <div class="ps-product">
+
+
+
+
+       <div class="ps-product__thumbnail">
                     <a href="JavaScript:void(0)" onclick="showImage('{{ product.product_image_url }}')">
                         {% if product.product_image_url %}
-                            <img src="{{ product.product_image_url }}" alt="{{ product.product_name }}"  loading="lazy" />
+                            <img src="{{ product.product_image_url }}" alt="{{ product.product_name }}" />
                         {% else %}
-                            <img src="{% static 'img/default-placeholder.png' %}" alt="No image available"  loading="lazy"  />
+                            <img src="{% static 'img/default-placeholder.png' %}" alt="No image available" />
                         {% endif %}
                     </a>
                     <div class="ps-product__badge">
@@ -556,33 +540,32 @@
                         {% else %}
                             &#8358 {{ product.formatted_price }}
                         {% endif %}
-                    </div>
-                </div>
-                <div class="ps-product__container">
-                    <a class="ps-product__vendor" href="JavaScript:void(0)">LOCATION: {{ product.location }}</a>
-                    <div class="ps-product__content">
-                        <a class="ps-product__title" href="JavaScript:void(0)" style="text-transform: uppercase;">
-                            {{ product.product_name }}
-                        </a>
-                        <p class="ps-product__contact">
-                            <a href="https://wa.me/{{ product.phone_number }}?text=Hello%2C%20I%E2%80%99m%20interested%20in%20the%20{{ product.product_name|urlencode }}%20you%20posted%20on%20Funaab%20Buy"
-                               target="_blank">Chat Seller</a>
-                        </p>
-                        <br><br><br>
-                    </div>
-                </div>
-            </div>
-        {% endfor %}
-        <a href="electronics" class="btn-next-category">View All</a> 
-      </div>
+      </div></div>
 
       
+      
+      <div class="ps-product__container">
+        <!-- Display seller's location instead of product category -->
+        <a class="ps-product__vendor" href="JavaScript:void(0)">LOCATION: {{ product.location }}</a>
+        <div class="ps-product__content">
+          <a class="ps-product__title" href="JavaScript:void(0)" style="text-transform: uppercase;">
+    {{ product.product_name }}
+</a>
+
+<p class="ps-product__contact">
+  <a href="https://wa.me/{{ product.phone_number }}?text=Hello%2C%20I%E2%80%99m%20interested%20in%20the%20{{ product.product_name|urlencode }}%20you%20posted%20on%20Funaab%20Buy"
+  target="_blank">Chat Seller</a>
+</p>
+<br><br><br>
+        </div>
+      </div>
+    </div>
+  {% endif %}
+{% endfor %}
+
+    </div>
   </div>
 </div>
-  
-
-
-
 <div id="imageModal" style="display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.8); text-align: center; justify-content: center; align-items: center;">
   <span onclick="closeImage()" style="position: absolute; top: 140px; right: 40px; color: white; font-size: 60px; font-weight: bold; cursor: pointer;">&times;</span>
   
@@ -609,75 +592,75 @@
     </div>
     <div class="ps-section__content">
       <div
-          class="ps-carousel--nav owl-slider"
-          data-owl-auto="false"
-          data-owl-loop="false"
-          data-owl-speed="10000"
-          data-owl-gap="0"
-          data-owl-nav="true"
-          data-owl-dots="true"
-          data-owl-item="7"
-          data-owl-item-xs="2"
-          data-owl-item-sm="2"
-          data-owl-item-md="3"
-          data-owl-item-lg="4"
-          data-owl-item-xl="6"
-          data-owl-duration="1000"
-          data-owl-mousedrag="on"
+        class="ps-carousel--nav owl-slider"
+        data-owl-auto="false"
+        data-owl-loop="false"
+        data-owl-speed="10000"
+        data-owl-gap="0"
+        data-owl-nav="true"
+        data-owl-dots="true"
+        data-owl-item="7"
+        data-owl-item-xs="2"
+        data-owl-item-sm="2"
+        data-owl-item-md="3"
+        data-owl-item-lg="4"
+        data-owl-item-xl="6"
+        data-owl-duration="1000"
+        data-owl-mousedrag="on"
       >
-          <!-- Loop through electronics products -->
-          {% for product in home %}
-              <div class="ps-product">
-                  <div class="ps-product__thumbnail">
-                      <a href="JavaScript:void(0)" onclick="showImage('{{ product.product_image_url }}')">
-                          {% if product.product_image_url %}
-                              <img src="{{ product.product_image_url }}" alt="{{ product.product_name }}"  loading="lazy"/>
-                          {% else %}
-                              <img src="{% static 'img/default-placeholder.png' %}" alt="No image available"  loading="lazy"  />
-                          {% endif %}
-                      </a>
-                      <div class="ps-product__badge">
-                          {% if product.is_sold %}
-                              SOLD
-                          {% else %}
-                              &#8358 {{ product.formatted_price }}
-                          {% endif %}
-                      </div>
-                  </div>
-                  <div class="ps-product__container">
-                      <a class="ps-product__vendor" href="JavaScript:void(0)">LOCATION: {{ product.location }}</a>
-                      <div class="ps-product__content">
-                          <a class="ps-product__title" href="JavaScript:void(0)" style="text-transform: uppercase;">
-                              {{ product.product_name }}
-                          </a>
-                          <p class="ps-product__contact">
-                              <a href="https://wa.me/{{ product.phone_number }}?text=Hello%2C%20I%E2%80%99m%20interested%20in%20the%20{{ product.product_name|urlencode }}%20you%20posted%20on%20Funaab%20Buy"
-                                 target="_blank">Chat Seller</a>
-                          </p>
-                          <br><br><br>
-                      </div>
-                  </div>
-              </div>
-          {% endfor %}
-
-          <a href="home" class="btn-next-category">View All</a> 
-      </div>
-
       
-  </div>
-</div>
-  
+        {% for product in products %}
+          {% if product.product_category == 'home' %}
+           <div class="ps-product">
+      
+       <div class="ps-product__thumbnail">
+                    <a href="JavaScript:void(0)" onclick="showImage('{{ product.product_image_url }}')">
+                        {% if product.product_image_url %}
+                            <img src="{{ product.product_image_url }}" alt="{{ product.product_name }}" />
+                        {% else %}
+                            <img src="{% static 'img/default-placeholder.png' %}" alt="No image available" />
+                        {% endif %}
+                    </a>
+                    <div class="ps-product__badge">
+                        {% if product.is_sold %}
+                            SOLD
+                        {% else %}
+                            &#8358 {{ product.formatted_price }}
+                        {% endif %}
+      </div></div>
+
+      <div class="ps-product__container">
+        <!-- Display seller's location instead of product category -->
+        <a class="ps-product__vendor" href="JavaScript:void(0)">LOCATION: {{ product.location }}</a>
+        <div class="ps-product__content">
+          <a class="ps-product__title" href="JavaScript:void(0)" style="text-transform: uppercase;">
+    {{ product.product_name }}
+</a>
+
+<p class="ps-product__contact">
+  <a href="https://wa.me/{{ product.phone_number }}?text=Hello%2C%20I%E2%80%99m%20interested%20in%20the%20{{ product.product_name|urlencode }}%20you%20posted%20on%20Funaab%20Buy"
+  target="_blank">Chat Seller</a></p>
 
 
+<br><br><br>
+        </div>
+      </div>
+    </div>
+  {% endif %}
+{% endfor %}
 
-  <div id="imageModal" style="display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.8); text-align: center; justify-content: center; align-items: center;">
-    <span onclick="closeImage()" style="position: absolute; top: 140px; right: 40px; color: white; font-size: 60px; font-weight: bold; cursor: pointer;">&times;</span>
-    
-    <div style="display: flex; height: 100%; justify-content: center; align-items: center;">
-      <img id="modalImage" style="max-width: 90%; max-height: 90%; object-fit: contain;" />
     </div>
   </div>
+</div>
+<div id="imageModal" style="display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.8); text-align: center; justify-content: center; align-items: center;">
+  <span onclick="closeImage()" style="position: absolute; top: 140px; right: 40px; color: white; font-size: 60px; font-weight: bold; cursor: pointer;">&times;</span>
   
+  <div style="display: flex; height: 100%; justify-content: center; align-items: center;">
+    <img id="modalImage" style="max-width: 90%; max-height: 90%; object-fit: contain;" />
+  </div>
+</div>
+
+
 
 
 <div class="ps-product-list ps-clothings">
@@ -688,73 +671,74 @@
     </div>
     <div class="ps-section__content">
       <div
-          class="ps-carousel--nav owl-slider"
-          data-owl-auto="false"
-          data-owl-loop="false"
-          data-owl-speed="10000"
-          data-owl-gap="0"
-          data-owl-nav="true"
-          data-owl-dots="true"
-          data-owl-item="7"
-          data-owl-item-xs="2"
-          data-owl-item-sm="2"
-          data-owl-item-md="3"
-          data-owl-item-lg="4"
-          data-owl-item-xl="6"
-          data-owl-duration="1000"
-          data-owl-mousedrag="on"
+        class="ps-carousel--nav owl-slider"
+        data-owl-auto="false"
+        data-owl-loop="false"
+        data-owl-speed="10000"
+        data-owl-gap="0"
+        data-owl-nav="true"
+        data-owl-dots="true"
+        data-owl-item="7"
+        data-owl-item-xs="2"
+        data-owl-item-sm="2"
+        data-owl-item-md="3"
+        data-owl-item-lg="4"
+        data-owl-item-xl="6"
+        data-owl-duration="1000"
+        data-owl-mousedrag="on"
       >
-          <!-- Loop through electronics products -->
-          {% for product in health_beauty %}
-              <div class="ps-product">
-                  <div class="ps-product__thumbnail">
-                      <a href="JavaScript:void(0)" onclick="showImage('{{ product.product_image_url }}')">
-                          {% if product.product_image_url %}
-                              <img src="{{ product.product_image_url }}" alt="{{ product.product_name }}"  loading="lazy"/>
-                          {% else %}
-                              <img src="{% static 'img/default-placeholder.png' %}" alt="No image available"  loading="lazy"  />
-                          {% endif %}
-                      </a>
-                      <div class="ps-product__badge">
-                          {% if product.is_sold %}
-                              SOLD
-                          {% else %}
-                              &#8358 {{ product.formatted_price }}
-                          {% endif %}
-                      </div>
-                  </div>
-                  <div class="ps-product__container">
-                      <a class="ps-product__vendor" href="JavaScript:void(0)">LOCATION: {{ product.location }}</a>
-                      <div class="ps-product__content">
-                          <a class="ps-product__title" href="JavaScript:void(0)" style="text-transform: uppercase;">
-                              {{ product.product_name }}
-                          </a>
-                          <p class="ps-product__contact">
-                              <a href="https://wa.me/{{ product.phone_number }}?text=Hello%2C%20I%E2%80%99m%20interested%20in%20the%20{{ product.product_name|urlencode }}%20you%20posted%20on%20Funaab%20Buy"
-                                 target="_blank">Chat Seller</a>
-                          </p>
-                          <br><br><br>
-                      </div>
-                  </div>
-              </div>
-          {% endfor %}
-          <a href="beauty" class="btn-next-category">View All</a> 
-        </div>
-  
-        
+        <!-- Loop through electronics products -->
+        {% for product in products %}
+          {% if product.product_category == 'health_beauty' %}
+            <div class="ps-product">
+      
+       <div class="ps-product__thumbnail">
+                    <a href="JavaScript:void(0)" onclick="showImage('{{ product.product_image_url }}')">
+                        {% if product.product_image_url %}
+                            <img src="{{ product.product_image_url }}" alt="{{ product.product_name }}" />
+                        {% else %}
+                            <img src="{% static 'img/default-placeholder.png' %}" alt="No image available" />
+                        {% endif %}
+                    </a>
+                    <div class="ps-product__badge">
+                        {% if product.is_sold %}
+                            SOLD
+                        {% else %}
+                            &#8358 {{ product.formatted_price }}
+                        {% endif %}
+      </div></div>
+
+      <div class="ps-product__container">
+        <!-- Display seller's location instead of product category -->
+        <a class="ps-product__vendor" href="JavaScript:void(0)">LOCATION: {{ product.location }}</a>
+        <div class="ps-product__content">
+          <a class="ps-product__title" href="JavaScript:void(0)" style="text-transform: uppercase;">
+    {{ product.product_name }}
+</a>
+
+<p class="ps-product__contact">
+  <a href="https://wa.me/{{ product.phone_number }}?text=Hello%2C%20I%E2%80%99m%20interested%20in%20the%20{{ product.product_name|urlencode }}%20you%20posted%20on%20Funaab%20Buy"
+  target="_blank">Chat Seller</a></p>
+<br><br><br>
+        </div>    
+
+      </div>
+    </div>
+  {% endif %}
+{% endfor %}
+
     </div>
   </div>
-    
- 
+</div>
+<div id="imageModal" style="display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.8); text-align: center; justify-content: center; align-items: center;">
+  <span onclick="closeImage()" style="position: absolute; top: 140px; right: 40px; color: white; font-size: 60px; font-weight: bold; cursor: pointer;">&times;</span>
   
-  <div id="imageModal" style="display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.8); text-align: center; justify-content: center; align-items: center;">
-    <span onclick="closeImage()" style="position: absolute; top: 140px; right: 40px; color: white; font-size: 60px; font-weight: bold; cursor: pointer;">&times;</span>
-    
-    <div style="display: flex; height: 100%; justify-content: center; align-items: center;">
-      <img id="modalImage" style="max-width: 90%; max-height: 90%; object-fit: contain;" />
-    </div>
+  <div style="display: flex; height: 100%; justify-content: center; align-items: center;">
+    <img id="modalImage" style="max-width: 90%; max-height: 90%; object-fit: contain;" />
   </div>
-  
+</div>
+
+
 
 
 <!-- Home & Kitchen Section -->
@@ -765,75 +749,77 @@
     </div>
     <div class="ps-section__content">
       <div
-          class="ps-carousel--nav owl-slider"
-          data-owl-auto="false"
-          data-owl-loop="false"
-          data-owl-speed="10000"
-          data-owl-gap="0"
-          data-owl-nav="true"
-          data-owl-dots="true"
-          data-owl-item="7"
-          data-owl-item-xs="2"
-          data-owl-item-sm="2"
-          data-owl-item-md="3"
-          data-owl-item-lg="4"
-          data-owl-item-xl="6"
-          data-owl-duration="1000"
-          data-owl-mousedrag="on"
+        class="ps-carousel--nav owl-slider"
+        data-owl-auto="false"
+        data-owl-loop="false"
+        data-owl-speed="10000"
+        data-owl-gap="0"
+        data-owl-nav="true"
+        data-owl-dots="true"
+        data-owl-item="7"
+        data-owl-item-xs="2"
+        data-owl-item-sm="2"
+        data-owl-item-md="3"
+        data-owl-item-lg="4"
+        data-owl-item-xl="6"
+        data-owl-duration="1000"
+        data-owl-mousedrag="on"
       >
-          <!-- Loop through electronics products -->
-          {% for product in jewelry_accessories %}
-              <div class="ps-product">
-                  <div class="ps-product__thumbnail">
-                      <a href="JavaScript:void(0)" onclick="showImage('{{ product.product_image_url }}')">
-                          {% if product.product_image_url %}
-                              <img src="{{ product.product_image_url }}" alt="{{ product.product_name }}"  loading="lazy"/>
-                          {% else %}
-                              <img src="{% static 'img/default-placeholder.png' %}" alt="No image available"  loading="lazy"  />
-                          {% endif %}
-                      </a>
-                      <div class="ps-product__badge">
-                          {% if product.is_sold %}
-                              SOLD
-                          {% else %}
-                              &#8358 {{ product.formatted_price }}
-                          {% endif %}
-                      </div>
-                  </div>
-                  <div class="ps-product__container">
-                      <a class="ps-product__vendor" href="JavaScript:void(0)">LOCATION: {{ product.location }}</a>
-                      <div class="ps-product__content">
-                          <a class="ps-product__title" href="JavaScript:void(0)" style="text-transform: uppercase;">
-                              {{ product.product_name }}
-                          </a>
-                          <p class="ps-product__contact">
-                              <a href="https://wa.me/{{ product.phone_number }}?text=Hello%2C%20I%E2%80%99m%20interested%20in%20the%20{{ product.product_name|urlencode }}%20you%20posted%20on%20Funaab%20Buy"
-                                 target="_blank">Chat Seller</a>
-                          </p>
-                          <br><br><br>
-                      </div>
-                  </div>
-              </div>
-          {% endfor %}
-          <a href="jewelry" class="btn-next-category">View All</a> 
+      
+        {% for product in products %}
+          {% if product.product_category == 'jewelry_accessories' %}
+            <div class="ps-product">
+      
+       <div class="ps-product__thumbnail">
+                    <a href="JavaScript:void(0)" onclick="showImage('{{ product.product_image_url }}')">
+                        {% if product.product_image_url %}
+                            <img src="{{ product.product_image_url }}" alt="{{ product.product_name }}" />
+                        {% else %}
+                            <img src="{% static 'img/default-placeholder.png' %}" alt="No image available" />
+                        {% endif %}
+                    </a>
+                    <div class="ps-product__badge">
+                        {% if product.is_sold %}
+                            SOLD
+                        {% else %}
+                            &#8358 {{ product.formatted_price }}
+                        {% endif %}
+      </div></div>
+
+      <div class="ps-product__container">
+        <!-- Display seller's location instead of product category -->
+        <a class="ps-product__vendor" href="JavaScript:void(0)">LOCATION: {{ product.location }}</a>
+        <div class="ps-product__content">
+          <a class="ps-product__title" href="JavaScript:void(0)" style="text-transform: uppercase;">
+    {{ product.product_name }}
+</a>
+
+<p class="ps-product__contact">
+  <a href="https://wa.me/{{ product.phone_number }}?text=Hello%2C%20I%E2%80%99m%20interested%20in%20the%20{{ product.product_name|urlencode }}%20you%20posted%20on%20Funaab%20Buy"
+  target="_blank">Chat Seller</a></p>  
+
+<br><br><br>
         </div>
-  
-        
+      </div>
+    </div>
+
+  {% endif %}
+
+{% endfor %}
+
     </div>
   </div>
-    
+</div>
+<div id="imageModal" style="display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.8); text-align: center; justify-content: center; align-items: center;">
+  <span onclick="closeImage()" style="position: absolute; top: 140px; right: 40px; color: white; font-size: 60px; font-weight: bold; cursor: pointer;">&times;</span>
   
-  
-  
-  
-  <div id="imageModal" style="display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.8); text-align: center; justify-content: center; align-items: center;">
-    <span onclick="closeImage()" style="position: absolute; top: 140px; right: 40px; color: white; font-size: 60px; font-weight: bold; cursor: pointer;">&times;</span>
-    
-    <div style="display: flex; height: 100%; justify-content: center; align-items: center;">
-      <img id="modalImage" style="max-width: 90%; max-height: 90%; object-fit: contain;" />
-    </div>
+  <div style="display: flex; height: 100%; justify-content: center; align-items: center;">
+    <img id="modalImage" style="max-width: 90%; max-height: 90%; object-fit: contain;" />
   </div>
-  
+</div>
+
+
+
 
      
         
@@ -848,74 +834,151 @@
     </div>
     <div class="ps-section__content">
       <div
-          class="ps-carousel--nav owl-slider"
-          data-owl-auto="false"
-          data-owl-loop="false"
-          data-owl-speed="10000"
-          data-owl-gap="0"
-          data-owl-nav="true"
-          data-owl-dots="true"
-          data-owl-item="7"
-          data-owl-item-xs="2"
-          data-owl-item-sm="2"
-          data-owl-item-md="3"
-          data-owl-item-lg="4"
-          data-owl-item-xl="6"
-          data-owl-duration="1000"
-          data-owl-mousedrag="on"
+        class="ps-carousel--nav owl-slider"
+        data-owl-auto="false"
+        data-owl-loop="false"
+        data-owl-speed="10000"
+        data-owl-gap="0"
+        data-owl-nav="true"
+        data-owl-dots="true"
+        data-owl-item="7"
+        data-owl-item-xs="2"
+        data-owl-item-sm="2"
+        data-owl-item-md="3"
+        data-owl-item-lg="4"
+        data-owl-item-xl="6"
+        data-owl-duration="1000"
+        data-owl-mousedrag="on"
       >
-          <!-- Loop through electronics products -->
-          {% for product in apparel %}
-              <div class="ps-product">
-                  <div class="ps-product__thumbnail">
-                      <a href="JavaScript:void(0)" onclick="showImage('{{ product.product_image_url }}')">
-                          {% if product.product_image_url %}
-                              <img src="{{ product.product_image_url }}" alt="{{ product.product_name }}"  loading="lazy"/>
-                          {% else %}
-                              <img src="{% static 'img/default-placeholder.png' %}" alt="No image available"  loading="lazy"  />
-                          {% endif %}
-                      </a>
-                      <div class="ps-product__badge">
-                          {% if product.is_sold %}
-                              SOLD
-                          {% else %}
-                              &#8358 {{ product.formatted_price }}
-                          {% endif %}
-                      </div>
-                  </div>
-                  <div class="ps-product__container">
-                      <a class="ps-product__vendor" href="JavaScript:void(0)">LOCATION: {{ product.location }}</a>
-                      <div class="ps-product__content">
-                          <a class="ps-product__title" href="JavaScript:void(0)" style="text-transform: uppercase;">
-                              {{ product.product_name }}
-                          </a>
-                          <p class="ps-product__contact">
-                              <a href="https://wa.me/{{ product.phone_number }}?text=Hello%2C%20I%E2%80%99m%20interested%20in%20the%20{{ product.product_name|urlencode }}%20you%20posted%20on%20Funaab%20Buy"
-                                 target="_blank">Chat Seller</a>
-                          </p>
-                          <br><br><br>
-                      </div>
-                  </div>
-              </div>
-          {% endfor %}
-          <a href="apparel" class="btn-next-category">View All</a> 
+        <!-- Loop through electronics products -->
+        {% for product in products %}
+          {% if product.product_category == 'apparel' %}
+            <div class="ps-product">
+      
+       <div class="ps-product__thumbnail">
+                    <a href="JavaScript:void(0)" onclick="showImage('{{ product.product_image_url }}')">
+                        {% if product.product_image_url %}
+                            <img src="{{ product.product_image_url }}" alt="{{ product.product_name }}" />
+                        {% else %}
+                            <img src="{% static 'img/default-placeholder.png' %}" alt="No image available" />
+                        {% endif %}
+                    </a>
+                    <div class="ps-product__badge">
+                        {% if product.is_sold %}
+                            SOLD
+                        {% else %}
+                            &#8358 {{ product.formatted_price }}
+                        {% endif %}
+      </div></div>
+
+      <div class="ps-product__container">
+        <!-- Display seller's location instead of product category -->
+        <a class="ps-product__vendor" href="JavaScript:void(0)">LOCATION: {{ product.location }}</a>
+        <div class="ps-product__content">
+          <a class="ps-product__title" href="JavaScript:void(0)" style="text-transform: uppercase;">
+    {{ product.product_name }}
+</a>
+
+<p class="ps-product__contact">
+  <a href="https://wa.me/{{ product.phone_number }}?text=Hello%2C%20I%E2%80%99m%20interested%20in%20the%20{{ product.product_name|urlencode }}%20you%20posted%20on%20Funaab%20Buy"
+  target="_blank">Chat Seller</a></p>
+<br><br><br>
         </div>
-  
-        
+      </div>
+    </div>
+  {% endif %}
+{% endfor %}
+
     </div>
   </div>
-    
+</div>
+<div id="imageModal" style="display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.8); text-align: center; justify-content: center; align-items: center;">
+  <span onclick="closeImage()" style="position: absolute; top: 140px; right: 40px; color: white; font-size: 60px; font-weight: bold; cursor: pointer;">&times;</span>
   
-  
-  
-  <div id="imageModal" style="display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.8); text-align: center; justify-content: center; align-items: center;">
-    <span onclick="closeImage()" style="position: absolute; top: 140px; right: 40px; color: white; font-size: 60px; font-weight: bold; cursor: pointer;">&times;</span>
-    
-    <div style="display: flex; height: 100%; justify-content: center; align-items: center;">
-      <img id="modalImage" style="max-width: 90%; max-height: 90%; object-fit: contain;" />
+  <div style="display: flex; height: 100%; justify-content: center; align-items: center;">
+    <img id="modalImage" style="max-width: 90%; max-height: 90%; object-fit: contain;" />
+  </div>
+</div>
+
+
+
+
+<div class="ps-product-list ps-clothings">
+  <div class="ps-container">
+    <!-- Consumer Electronics Section -->
+    <div class="ps-section__header">
+      <h3>Bags</h3>
+    </div>
+    <div class="ps-section__content">
+      <div
+        class="ps-carousel--nav owl-slider"
+        data-owl-auto="false"
+        data-owl-loop="false"
+        data-owl-speed="10000"
+        data-owl-gap="0"
+        data-owl-nav="true"
+        data-owl-dots="true"
+        data-owl-item="7"
+        data-owl-item-xs="2"
+        data-owl-item-sm="2"
+        data-owl-item-md="3"
+        data-owl-item-lg="4"
+        data-owl-item-xl="6"
+        data-owl-duration="1000"
+        data-owl-mousedrag="on"
+      >
+        <!-- Loop through electronics products -->
+        {% for product in products %}
+          {% if product.product_category == 'bags' %}
+            <div class="ps-product">
+      
+       <div class="ps-product__thumbnail">
+                    <a href="JavaScript:void(0)" onclick="showImage('{{ product.product_image_url }}')">
+                        {% if product.product_image_url %}
+                            <img src="{{ product.product_image_url }}" alt="{{ product.product_name }}" />
+                        {% else %}
+                            <img src="{% static 'img/default-placeholder.png' %}" alt="No image available" />
+                        {% endif %}
+                    </a>
+                    <div class="ps-product__badge">
+                        {% if product.is_sold %}
+                            SOLD
+                        {% else %}
+                            &#8358 {{ product.formatted_price }}
+                        {% endif %}
+      </div></div>
+
+      <div class="ps-product__container">
+        <!-- Display seller's location instead of product category -->
+        <a class="ps-product__vendor" href="JavaScript:void(0)">LOCATION: {{ product.location }}</a>
+        <div class="ps-product__content">
+          <a class="ps-product__title" href="JavaScript:void(0)" style="text-transform: uppercase;">
+    {{ product.product_name }}
+</a>
+
+<p class="ps-product__contact">
+  <a href="https://wa.me/{{ product.phone_number }}?text=Hello%2C%20I%E2%80%99m%20interested%20in%20the%20{{ product.product_name|urlencode }}%20you%20posted%20on%20Funaab%20Buy"
+  target="_blank">Chat Seller</a></p>
+<br><br><br>
+        </div>
+      </div>
+    </div>
+  {% endif %}
+{% endfor %}
+
     </div>
   </div>
+</div>
+<div id="imageModal" style="display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.8); text-align: center; justify-content: center; align-items: center;">
+  <span onclick="closeImage()" style="position: absolute; top: 140px; right: 40px; color: white; font-size: 60px; font-weight: bold; cursor: pointer;">&times;</span>
   
+  <div style="display: flex; height: 100%; justify-content: center; align-items: center;">
+    <img id="modalImage" style="max-width: 90%; max-height: 90%; object-fit: contain;" />
+  </div>
+</div>
+
+
+
 
 
 
@@ -928,74 +991,71 @@
     </div>
     <div class="ps-section__content">
       <div
-          class="ps-carousel--nav owl-slider"
-          data-owl-auto="false"
-          data-owl-loop="false"
-          data-owl-speed="10000"
-          data-owl-gap="0"
-          data-owl-nav="true"
-          data-owl-dots="true"
-          data-owl-item="7"
-          data-owl-item-xs="2"
-          data-owl-item-sm="2"
-          data-owl-item-md="3"
-          data-owl-item-lg="4"
-          data-owl-item-xl="6"
-          data-owl-duration="1000"
-          data-owl-mousedrag="on"
+        class="ps-carousel--nav owl-slider"
+        data-owl-auto="false"
+        data-owl-loop="false"
+        data-owl-speed="10000"
+        data-owl-gap="0"
+        data-owl-nav="true"
+        data-owl-dots="true"
+        data-owl-item="7"
+        data-owl-item-xs="2"
+        data-owl-item-sm="2"
+        data-owl-item-md="3"
+        data-owl-item-lg="4"
+        data-owl-item-xl="6"
+        data-owl-duration="1000"
+        data-owl-mousedrag="on"
       >
-          <!-- Loop through electronics products -->
-          {% for product in footwear %}
-              <div class="ps-product">
-                  <div class="ps-product__thumbnail">
-                      <a href="JavaScript:void(0)" onclick="showImage('{{ product.product_image_url }}')">
-                          {% if product.product_image_url %}
-                              <img src="{{ product.product_image_url }}" alt="{{ product.product_name }}"  loading="lazy"/>
-                          {% else %}
-                              <img src="{% static 'img/default-placeholder.png' %}" alt="No image available"  loading="lazy"  />
-                          {% endif %}
-                      </a>
-                      <div class="ps-product__badge">
-                          {% if product.is_sold %}
-                              SOLD
-                          {% else %}
-                              &#8358 {{ product.formatted_price }}
-                          {% endif %}
-                      </div>
-                  </div>
-                  <div class="ps-product__container">
-                      <a class="ps-product__vendor" href="JavaScript:void(0)">LOCATION: {{ product.location }}</a>
-                      <div class="ps-product__content">
-                          <a class="ps-product__title" href="JavaScript:void(0)" style="text-transform: uppercase;">
-                              {{ product.product_name }}
-                          </a>
-                          <p class="ps-product__contact">
-                              <a href="https://wa.me/{{ product.phone_number }}?text=Hello%2C%20I%E2%80%99m%20interested%20in%20the%20{{ product.product_name|urlencode }}%20you%20posted%20on%20Funaab%20Buy"
-                                 target="_blank">Chat Seller</a>
-                          </p>
-                          <br><br><br>
-                      </div>
-                  </div>
-              </div>
-          {% endfor %}
-          <a href="footwear" class="btn-next-category">View All</a> 
+        <!-- Loop through electronics products -->
+        {% for product in products %}
+          {% if product.product_category == 'footwear' %}
+            <div class="ps-product">
+      
+       <div class="ps-product__thumbnail">
+                    <a href="JavaScript:void(0)" onclick="showImage('{{ product.product_image_url }}')">
+                        {% if product.product_image_url %}
+                            <img src="{{ product.product_image_url }}" alt="{{ product.product_name }}" />
+                        {% else %}
+                            <img src="{% static 'img/default-placeholder.png' %}" alt="No image available" />
+                        {% endif %}
+                    </a>
+                    <div class="ps-product__badge">
+                        {% if product.is_sold %}
+                            SOLD
+                        {% else %}
+                            &#8358 {{ product.formatted_price }}
+                        {% endif %}
+      </div></div>
+
+      <div class="ps-product__container">
+        <!-- Display seller's location instead of product category -->
+        <a class="ps-product__vendor" href="JavaScript:void(0)">LOCATION: {{ product.location }}</a>
+        <div class="ps-product__content">
+          <a class="ps-product__title" href="JavaScript:void(0)" style="text-transform: uppercase;">
+    {{ product.product_name }}
+</a>
+
+<p class="ps-product__contact">
+  <a href="https://wa.me/{{ product.phone_number }}?text=Hello%2C%20I%E2%80%99m%20interested%20in%20the%20{{ product.product_name|urlencode }}%20you%20posted%20on%20Funaab%20Buy"
+  target="_blank">Chat Seller</a></p>
+<br><br><br>
         </div>
-  
-        
+      </div>
+    </div>
+  {% endif %}
+{% endfor %}
+
     </div>
   </div>
-    
+</div>
+<div id="imageModal" style="display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.8); text-align: center; justify-content: center; align-items: center;">
+  <span onclick="closeImage()" style="position: absolute; top: 140px; right: 40px; color: white; font-size: 60px; font-weight: bold; cursor: pointer;">&times;</span>
   
-  
-  
-  <div id="imageModal" style="display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.8); text-align: center; justify-content: center; align-items: center;">
-    <span onclick="closeImage()" style="position: absolute; top: 140px; right: 40px; color: white; font-size: 60px; font-weight: bold; cursor: pointer;">&times;</span>
-    
-    <div style="display: flex; height: 100%; justify-content: center; align-items: center;">
-      <img id="modalImage" style="max-width: 90%; max-height: 90%; object-fit: contain;" />
-    </div>
+  <div style="display: flex; height: 100%; justify-content: center; align-items: center;">
+    <img id="modalImage" style="max-width: 90%; max-height: 90%; object-fit: contain;" />
   </div>
-  
+</div>
 
 
 
@@ -1018,73 +1078,74 @@
     </div>
     <div class="ps-section__content">
       <div
-          class="ps-carousel--nav owl-slider"
-          data-owl-auto="false"
-          data-owl-loop="false"
-          data-owl-speed="10000"
-          data-owl-gap="0"
-          data-owl-nav="true"
-          data-owl-dots="true"
-          data-owl-item="7"
-          data-owl-item-xs="2"
-          data-owl-item-sm="2"
-          data-owl-item-md="3"
-          data-owl-item-lg="4"
-          data-owl-item-xl="6"
-          data-owl-duration="1000"
-          data-owl-mousedrag="on"
+        class="ps-carousel--nav owl-slider"
+        data-owl-auto="false"
+        data-owl-loop="false"
+        data-owl-speed="10000"
+        data-owl-gap="0"
+        data-owl-nav="true"
+        data-owl-dots="true"
+        data-owl-item="7"
+        data-owl-item-xs="2"
+        data-owl-item-sm="2"
+        data-owl-item-md="3"
+        data-owl-item-lg="4"
+        data-owl-item-xl="6"
+        data-owl-duration="1000"
+        data-owl-mousedrag="on"
       >
-          <!-- Loop through electronics products -->
-          {% for product in headgear %}
-              <div class="ps-product">
-                  <div class="ps-product__thumbnail">
-                      <a href="JavaScript:void(0)" onclick="showImage('{{ product.product_image_url }}')">
-                          {% if product.product_image_url %}
-                              <img src="{{ product.product_image_url }}" alt="{{ product.product_name }}"  loading="lazy"/>
-                          {% else %}
-                              <img src="{% static 'img/default-placeholder.png' %}" alt="No image available"  loading="lazy"  />
-                          {% endif %}
-                      </a>
-                      <div class="ps-product__badge">
-                          {% if product.is_sold %}
-                              SOLD
-                          {% else %}
-                              &#8358 {{ product.formatted_price }}
-                          {% endif %}
-                      </div>
-                  </div>
-                  <div class="ps-product__container">
-                      <a class="ps-product__vendor" href="JavaScript:void(0)">LOCATION: {{ product.location }}</a>
-                      <div class="ps-product__content">
-                          <a class="ps-product__title" href="JavaScript:void(0)" style="text-transform: uppercase;">
-                              {{ product.product_name }}
-                          </a>
-                          <p class="ps-product__contact">
-                              <a href="https://wa.me/{{ product.phone_number }}?text=Hello%2C%20I%E2%80%99m%20interested%20in%20the%20{{ product.product_name|urlencode }}%20you%20posted%20on%20Funaab%20Buy"
-                                 target="_blank">Chat Seller</a>
-                          </p>
-                          <br><br><br>
-                      </div>
-                  </div>
-              </div>
-          {% endfor %}
-          <a href="headgear" class="btn-next-category">View All</a> 
+        <!-- Loop through electronics products -->
+        {% for product in products %}
+          {% if product.product_category == 'headgear' %}
+            <div class="ps-product">
+      
+       <div class="ps-product__thumbnail">
+                    <a href="JavaScript:void(0)" onclick="showImage('{{ product.product_image_url }}')">
+                        {% if product.product_image_url %}
+                            <img src="{{ product.product_image_url }}" alt="{{ product.product_name }}" />
+                        {% else %}
+                            <img src="{% static 'img/default-placeholder.png' %}" alt="No image available" />
+                        {% endif %}
+                    </a>
+                    <div class="ps-product__badge">
+                        {% if product.is_sold %}
+                            SOLD
+                        {% else %}
+                            &#8358 {{ product.formatted_price }}
+                        {% endif %}
+      </div></div>
+
+      <div class="ps-product__container">
+        <!-- Display seller's location instead of product category -->
+        <a class="ps-product__vendor" href="JavaScript:void(0)">LOCATION: {{ product.location }}</a>
+        <div class="ps-product__content">
+          <a class="ps-product__title" href="JavaScript:void(0)" style="text-transform: uppercase;">
+    {{ product.product_name }}
+</a>
+
+<p class="ps-product__contact">
+  <a href="https://wa.me/{{ product.phone_number }}?text=Hello%2C%20I%E2%80%99m%20interested%20in%20the%20{{ product.product_name|urlencode }}%20you%20posted%20on%20Funaab%20Buy"
+  target="_blank">Chat Seller</a></p>
+<br><br><br>
         </div>
-  
-        
+      </div>
+    </div>
+  {% endif %}
+{% endfor %}
+
     </div>
   </div>
-    
+</div>
+<div id="imageModal" style="display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.8); text-align: center; justify-content: center; align-items: center;">
+  <span onclick="closeImage()" style="position: absolute; top: 140px; right: 40px; color: white; font-size: 60px; font-weight: bold; cursor: pointer;">&times;</span>
   
- 
-  <div id="imageModal" style="display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.8); text-align: center; justify-content: center; align-items: center;">
-    <span onclick="closeImage()" style="position: absolute; top: 140px; right: 40px; color: white; font-size: 60px; font-weight: bold; cursor: pointer;">&times;</span>
-    
-    <div style="display: flex; height: 100%; justify-content: center; align-items: center;">
-      <img id="modalImage" style="max-width: 90%; max-height: 90%; object-fit: contain;" />
-    </div>
+  <div style="display: flex; height: 100%; justify-content: center; align-items: center;">
+    <img id="modalImage" style="max-width: 90%; max-height: 90%; object-fit: contain;" />
   </div>
-  
+</div>
+
+
+
 
 
 
@@ -1104,75 +1165,75 @@
     </div>
     <div class="ps-section__content">
       <div
-          class="ps-carousel--nav owl-slider"
-          data-owl-auto="false"
-          data-owl-loop="false"
-          data-owl-speed="10000"
-          data-owl-gap="0"
-          data-owl-nav="true"
-          data-owl-dots="true"
-          data-owl-item="7"
-          data-owl-item-xs="2"
-          data-owl-item-sm="2"
-          data-owl-item-md="3"
-          data-owl-item-lg="4"
-          data-owl-item-xl="6"
-          data-owl-duration="1000"
-          data-owl-mousedrag="on"
+        class="ps-carousel--nav owl-slider"
+        data-owl-auto="false"
+        data-owl-loop="false"
+        data-owl-speed="10000"
+        data-owl-gap="0"
+        data-owl-nav="true"
+        data-owl-dots="true"
+        data-owl-item="7"
+        data-owl-item-xs="2"
+        data-owl-item-sm="2"
+        data-owl-item-md="3"
+        data-owl-item-lg="4"
+        data-owl-item-xl="6"
+        data-owl-duration="1000"
+        data-owl-mousedrag="on"
       >
-          <!-- Loop through electronics products -->
-          {% for product in gadgets_computers %}
-              <div class="ps-product">
-                  <div class="ps-product__thumbnail">
-                      <a href="JavaScript:void(0)" onclick="showImage('{{ product.product_image_url }}')">
-                          {% if product.product_image_url %}
-                              <img src="{{ product.product_image_url }}" alt="{{ product.product_name }}"  loading="lazy"/>
-                          {% else %}
-                              <img src="{% static 'img/default-placeholder.png' %}" alt="No image available"  loading="lazy"  />
-                          {% endif %}
-                      </a>
-                      <div class="ps-product__badge">
-                          {% if product.is_sold %}
-                              SOLD
-                          {% else %}
-                              &#8358 {{ product.formatted_price }}
-                          {% endif %}
-                      </div>
-                  </div>
-                  <div class="ps-product__container">
-                      <a class="ps-product__vendor" href="JavaScript:void(0)">LOCATION: {{ product.location }}</a>
-                      <div class="ps-product__content">
-                          <a class="ps-product__title" href="JavaScript:void(0)" style="text-transform: uppercase;">
-                              {{ product.product_name }}
-                          </a>
-                          <p class="ps-product__contact">
-                              <a href="https://wa.me/{{ product.phone_number }}?text=Hello%2C%20I%E2%80%99m%20interested%20in%20the%20{{ product.product_name|urlencode }}%20you%20posted%20on%20Funaab%20Buy"
-                                 target="_blank">Chat Seller</a>
-                          </p>
-                          <br><br><br>
-                      </div>
-                  </div>
-              </div>
-          {% endfor %}
-          <a href="computers" class="btn-next-category">View All</a> 
+        <!-- Loop through electronics products -->
+        {% for product in products %}
+          {% if product.product_category == 'gadgets_computers' %}
+          <div class="ps-product">
+      
+       <div class="ps-product__thumbnail">
+                    <a href="JavaScript:void(0)" onclick="showImage('{{ product.product_image_url }}')">
+                        {% if product.product_image_url %}
+                            <img src="{{ product.product_image_url }}" alt="{{ product.product_name }}" />
+                        {% else %}
+                            <img src="{% static 'img/default-placeholder.png' %}" alt="No image available" />
+                        {% endif %}
+                    </a>
+                    <div class="ps-product__badge">
+                        {% if product.is_sold %}
+                            SOLD
+                        {% else %}
+                            &#8358 {{ product.formatted_price }}
+                        {% endif %}
+      </div></div>
+
+      <div class="ps-product__container">
+        <!-- Display seller's location instead of product category -->
+        <a class="ps-product__vendor" href="JavaScript:void(0)">LOCATION: {{ product.location }}</a>
+        <div class="ps-product__content">
+          <a class="ps-product__title" href="JavaScript:void(0)" style="text-transform: uppercase;">
+    {{ product.product_name }}
+</a>
+
+<p class="ps-product__contact">
+  <a href="https://wa.me/{{ product.phone_number }}?text=Hello%2C%20I%E2%80%99m%20interested%20in%20the%20{{ product.product_name|urlencode }}%20you%20posted%20on%20Funaab%20Buy"
+  target="_blank">Chat Seller</a></p>
+<br><br><br>
         </div>
-  
-        
+      </div>
+    </div>
+  {% endif %}
+{% endfor %}
+
     </div>
   </div>
-    
+</div>
+<div id="imageModal" style="display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.8); text-align: center; justify-content: center; align-items: center;">
+  <span onclick="closeImage()" style="position: absolute; top: 140px; right: 40px; color: white; font-size: 60px; font-weight: bold; cursor: pointer;">&times;</span>
   
-  
-  
-  
-  <div id="imageModal" style="display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.8); text-align: center; justify-content: center; align-items: center;">
-    <span onclick="closeImage()" style="position: absolute; top: 140px; right: 40px; color: white; font-size: 60px; font-weight: bold; cursor: pointer;">&times;</span>
-    
-    <div style="display: flex; height: 100%; justify-content: center; align-items: center;">
-      <img id="modalImage" style="max-width: 90%; max-height: 90%; object-fit: contain;" />
-    </div>
+  <div style="display: flex; height: 100%; justify-content: center; align-items: center;">
+    <img id="modalImage" style="max-width: 90%; max-height: 90%; object-fit: contain;" />
   </div>
-  
+</div>
+
+
+
+
 
 
 <!-- Home & Kitchen Section -->
@@ -1183,75 +1244,71 @@
     </div>
     <div class="ps-section__content">
       <div
-          class="ps-carousel--nav owl-slider"
-          data-owl-auto="false"
-          data-owl-loop="false"
-          data-owl-speed="10000"
-          data-owl-gap="0"
-          data-owl-nav="true"
-          data-owl-dots="true"
-          data-owl-item="7"
-          data-owl-item-xs="2"
-          data-owl-item-sm="2"
-          data-owl-item-md="3"
-          data-owl-item-lg="4"
-          data-owl-item-xl="6"
-          data-owl-duration="1000"
-          data-owl-mousedrag="on"
+        class="ps-carousel--nav owl-slider"
+        data-owl-auto="false"
+        data-owl-loop="false"
+        data-owl-speed="10000"
+        data-owl-gap="0"
+        data-owl-nav="true"
+        data-owl-dots="true"
+        data-owl-item="7"
+        data-owl-item-xs="2"
+        data-owl-item-sm="2"
+        data-owl-item-md="3"
+        data-owl-item-lg="4"
+        data-owl-item-xl="6"
+        data-owl-duration="1000"
+        data-owl-mousedrag="on"
       >
-          <!-- Loop through electronics products -->
-          {% for product in food %}
-              <div class="ps-product">
-                  <div class="ps-product__thumbnail">
-                      <a href="JavaScript:void(0)" onclick="showImage('{{ product.product_image_url }}')">
-                          {% if product.product_image_url %}
-                              <img src="{{ product.product_image_url }}" alt="{{ product.product_name }}"  loading="lazy"/>
-                          {% else %}
-                              <img src="{% static 'img/default-placeholder.png' %}" alt="No image available"  loading="lazy"  />
-                          {% endif %}
-                      </a>
-                      <div class="ps-product__badge">
-                          {% if product.is_sold %}
-                              SOLD
-                          {% else %}
-                              &#8358 {{ product.formatted_price }}
-                          {% endif %}
-                      </div>
-                  </div>
-                  <div class="ps-product__container">
-                      <a class="ps-product__vendor" href="JavaScript:void(0)">LOCATION: {{ product.location }}</a>
-                      <div class="ps-product__content">
-                          <a class="ps-product__title" href="JavaScript:void(0)" style="text-transform: uppercase;">
-                              {{ product.product_name }}
-                          </a>
-                          <p class="ps-product__contact">
-                              <a href="https://wa.me/{{ product.phone_number }}?text=Hello%2C%20I%E2%80%99m%20interested%20in%20the%20{{ product.product_name|urlencode }}%20you%20posted%20on%20Funaab%20Buy"
-                                 target="_blank">Chat Seller</a>
-                          </p>
-                          <br><br><br>
-                      </div>
-                  </div>
-              </div>
-          {% endfor %}
-          <a href="food" class="btn-next-category">View All</a> 
+      
+        {% for product in products %}
+          {% if product.product_category == 'food' %}
+            <div class="ps-product">
+      
+       <div class="ps-product__thumbnail">
+                    <a href="JavaScript:void(0)" onclick="showImage('{{ product.product_image_url }}')">
+                        {% if product.product_image_url %}
+                            <img src="{{ product.product_image_url }}" alt="{{ product.product_name }}" />
+                        {% else %}
+                            <img src="{% static 'img/default-placeholder.png' %}" alt="No image available" />
+                        {% endif %}
+                    </a>
+                    <div class="ps-product__badge">
+                        {% if product.is_sold %}
+                            SOLD
+                        {% else %}
+                            &#8358 {{ product.formatted_price }}
+                        {% endif %}
+      </div></div>
+
+      <div class="ps-product__container">
+        <!-- Display seller's location instead of product category -->
+        <a class="ps-product__vendor" href="JavaScript:void(0)">LOCATION: {{ product.location }}</a>
+        <div class="ps-product__content">
+          <a class="ps-product__title" href="JavaScript:void(0)" style="text-transform: uppercase;">
+    {{ product.product_name }}
+</a>
+
+<p class="ps-product__contact">
+  <a href="https://wa.me/{{ product.phone_number }}?text=Hello%2C%20I%E2%80%99m%20interested%20in%20the%20{{ product.product_name|urlencode }}%20you%20posted%20on%20Funaab%20Buy"
+  target="_blank">Chat Seller</a></p>
+<br><br><br>
         </div>
-  
-        
+      </div>
+    </div>
+  {% endif %}
+{% endfor %}
+
     </div>
   </div>
-    
+</div>
+<div id="imageModal" style="display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.8); text-align: center; justify-content: center; align-items: center;">
+  <span onclick="closeImage()" style="position: absolute; top: 140px; right: 40px; color: white; font-size: 60px; font-weight: bold; cursor: pointer;">&times;</span>
   
-  
-  
-  
-  <div id="imageModal" style="display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.8); text-align: center; justify-content: center; align-items: center;">
-    <span onclick="closeImage()" style="position: absolute; top: 140px; right: 40px; color: white; font-size: 60px; font-weight: bold; cursor: pointer;">&times;</span>
-    
-    <div style="display: flex; height: 100%; justify-content: center; align-items: center;">
-      <img id="modalImage" style="max-width: 90%; max-height: 90%; object-fit: contain;" />
-    </div>
+  <div style="display: flex; height: 100%; justify-content: center; align-items: center;">
+    <img id="modalImage" style="max-width: 90%; max-height: 90%; object-fit: contain;" />
   </div>
-  
+</div>
 
 
 
